@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/books.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <section class="section">
+
+            {% for skatepark in skateparks %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ skatepark.title }}</h2>
+                        {#  <img src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt=""> #}
+                            <h3>{{ skatepark.description}}</h3>
+                        {#             {% if skatepark.club %} #}
+                        {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
+                        {#                    {% endif %} #}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}
