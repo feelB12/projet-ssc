@@ -1,17 +1,19 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/bookdetails.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flex.css') }}">
 {% endblock stylesheets %}
 
 {% block main %}
     <div class="card">
+        <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+        <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
         <div class="card-text">
-            <h1>{{ skatepark.title }}</h1>
-            <h3>{{ skatepark.description }}</h3>
-            <h3>{{ skatepark.address }}</h3>
-            <h3>{{ skatepark.town }}</h3>
-            <h3>{{ skatepark.area }}</h3>
+            <h1>{{ skatepark.title }}</h1><br>
+            <h3>{{ skatepark.description }}</h3><br>
+            <h3>{{ skatepark.address }}</h3><br>
+            <h3>{{ skatepark.town }}</h3><br>
+            <h3>{{ skatepark.area }}</h3><br>
 
             {#  {% for club in skatepark.clubs %} #}
             {#    <p>{{ club.title }}</p> #}

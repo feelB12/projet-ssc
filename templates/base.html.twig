@@ -9,23 +9,125 @@ Cette page est mon gabarit.-->
     <!--Dans le title de ma page base, j'appelle la fonction block metatitle qui va me permettre
     d'afficher mon metatitle sur toutes les pages de mon site-->
     <title>{% block metatitle %}Skateboard Social club{% endblock metatitle%}</title>
-    <!--J'utilise la balise link et la fonction asset pour rattacher ma feuille de style à mon html-->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/page.css') }}">
+    <!--J'utilise la balise link et la fonction asset pour rattacher ma feuille de style à mon html-->
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+
 
 </head>
 <body>
-<header class="header">
-    <h1>SKATEBOARD SOCIAL CLUB</h1>
-    <nav class="nav-bar">
-        <ul class="menu">
+<header>
+    <nav role='navigation'>
+        <a class="marge"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp"></a>
+        <ul>
+            <li><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></li>
+            <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+            <li>
+                <div id="menuToggle">
+                    <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul class="container" id="menu">
+                        <a href='#'><li class="col">SESSIONS</li></a>
+                        <a href='#'><li class="col">SKATEPARKS</li></a>
+                        <a href='#'><li class="col">CLUBS</li></a>
+                        <a href='#'><li class="col">SHOPS</li></a>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </nav>
+
+<!--
+    <nav>
+            <a><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp"></a>
+            <ul>
+
+                <li><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></li>
+                <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn "><img src="{{ asset('icon/burger.png') }}" alt="login" class=""></button>
+                        <div class="dropdown-content">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+    </nav>
+    <nav>
+        <a><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp"></a>
+        <ul>
+
+            <li><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></li>
+            <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn "><img src="{{ asset('icon/burger.png') }}" alt="login" class=""></button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    -->
+    <!--
+    <nav role="navigation">
+        <a class="marge"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp"></a>
+        <ul>
+            <li><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></li>
+            <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+            <li><div id="menuToggle">
+                    <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul class="container" id="menu">
+                        <a href='#'><li class="col">SESSION</li></a>
+                        <a href='#'><li class="col">SKATEPARKS</li></a>
+                        <a href='#'><li class="col">CLUBS</li></a>
+                        <a href='#'><li class="col">SHOPS</li></a>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    -->
+
+   <!--
+    <nav role="navigation">
+        <a class="marge"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp"></a>
+        <ul>
+            <li><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></li>
+            <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+            <li><div id="menuToggle">
+                    <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul class="container" id="menu">
+                        <a href='#'><li class="col">SESSION</li></a>
+                        <a href='#'><li class="col">SKATEPARKS</li></a>
+                        <a href='#'><li class="col">CLUBS</li></a>
+                        <a href='#'><li class="col">SHOPS</li></a>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+        -->
 </header>
+
 <main>
 
     {% block main %}{% endblock main %}
@@ -33,5 +135,6 @@ Cette page est mon gabarit.-->
 </main>
 <footer class="footer">
 </footer>
+
 </body>
 </html>

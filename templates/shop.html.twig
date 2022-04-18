@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <article class="book-detail">
+        <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="Shop">
+        <img class="title" src="{{ asset('icon/') }}" alt="Shop">
+        {#        <div class="book-image">#}
+        {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+        {#        </div>#}
+        <div class="card-text">
+            <h1>{{ shop.title }}</h1><br>
+            <h3>{{ shop.description }}</h3><br>
+            <h3>{{ shop.address }}</h3><br>
+            <h3>{{ shop.town }}</h3><br>
+            <h3>{{ shop.area }}</h3><br>
+{# {% if club.skatepark %} #}
+           {#     <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
+          {#  {% endif %} #}
+        </div>
+    </article>
+{% endblock main %}

@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hbg.css') }}">
+{% endblock stylesheets %}
+
+{% block burger %}
+                <input type="checkbox"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="container" id="menu">
+                    <a href='#'><li class="col">SESSION</li></a>
+                    <a href='#'><li class="col">SKATEPARKS</li></a>
+                    <a href='#'><li class="col">CLUBS</li></a>
+                    <a href='#'><li class="col">SHOPS</li></a>
+                </ul>
+{% endblock burger %}

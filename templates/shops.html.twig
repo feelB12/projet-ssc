@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="shop">
+        <section class="section">
+            {% for shop in shops %}
+                <div class="card">
+                    <div class="card-text">
+                        <h1>{{ shop.title }}</h2>
+{#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
+                        <h2>{{ shop.description}}</h2>
+                        <h3>{{ shop.town}}</h3>
+                        <h3>{{ shop.area}}</h3>
+                       {#     {% if shop.skatepark %} #}
+                       {#         <h3>{{ shop.skatepark.town }} {{ shop.skatepark.area }}</h3> #}
+                       {#     {% endif %} #}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}

@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <article class="top">
+    <img class="title left logo resp top" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
+    <img class="title right logo resp top" src="{{ asset('icon/club.png') }}" alt="Club-icon">
+    </article>
+    <article class="book-detail">
+        {#        <div class="book-image">#}
+        {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+        {#        </div>#}
+        <div class="card-text top">
+            <h1>{{ club.title }}</h1><br>
+            <h3>{{ club.description }}</h3><br>
+            <h3>{{ club.address }}</h3><br>
+            <h3>{{ club.town }}</h3><br>
+            <h3>{{ club.area }}</h3><br>
+
+            {#  {% for club in skatepark.clubs %} #}
+            {#    <p>{{ club.title }}</p> #}
+            {#    {% endfor %} #}
+
+            {#  {% if club.skatepark %}  #}
+            {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
+            {#{% endif %} #}
+        </div>
+    </article>
+{% endblock main %}
