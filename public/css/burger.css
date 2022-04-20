@@ -42,18 +42,6 @@ a:hover  {
 }
 #menuToggle input
 {
-   /* display: block;
-    width: 80px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
-    cursor: pointer;
-    opacity: 0;
-    z-index: 2;
-    -webkit-touch-callout: none;
-*/
-
     display: block;
     width: 40px;
     height: 32px;
@@ -73,17 +61,6 @@ a:hover  {
 {
     /*
     display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #ebd000;
-    border-radius: 3px;
-    z-index: 1;
-    transform-origin: 4px 0px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    opacity 0.55s ease;
     */
 
     display: flex;
@@ -132,17 +109,8 @@ a:hover  {
 #menu
 {
    /*
-    position: absolute;
     display: flex;
-    width: 300px;
-    margin: 0 100px 0 0;
     padding: 10vh 0 0 0;
-    background: #ebd000;
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    transform-origin: 0% 0%;
-    transform: translate(100% , 0);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 
     */
 
@@ -150,7 +118,7 @@ a:hover  {
     width: 350px;
     margin: -100px 0 0 0;
     padding: 125px 0 0 0;
-    /*padding-top: 125px;*/
+
     right: -100px;
 
     background: #ebd000;
