@@ -1,0 +1,32 @@
+
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+
+    <main>
+        <img class="title left resp" src="{{ asset('icon/sessions_titre.png') }}" alt="session">
+        <img class="title right resp" src="{{ asset('icon/session.png') }}" alt="session-icon">
+
+
+        <section class="section">
+            {% for session in sessions %}
+
+                <div class="card">
+
+                    <div class="card-text">
+                        <h1>{{ session.title }}</h1>
+                        {#  <img src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt=""> #}
+                        <h2>{{ session.description}}</h2>
+                        <h3>{{ session.town}}</h3>
+                        <h3>{{ session.area}}</h3>
+                        {#             {% if skatepark.club %} #}
+                        {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
+                        {#                    {% endif %} #}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}
