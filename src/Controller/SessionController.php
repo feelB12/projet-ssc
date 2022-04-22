@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SessionController
+class SessionController extends AbstractController
 {
     /**
      * @Route("/sessions", name="sessions")
@@ -17,7 +17,7 @@ class SessionController
     public function sessions(SessionRepository $sessionRepository)
     {
         $sessions = $sessionRepository->findAll();
-        return $this->render('sessions.html.twig', [
+        return $this->render('session.html.twig', [
             'sessions' => $sessions
         ]);
     }
