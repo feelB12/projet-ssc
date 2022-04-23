@@ -14,10 +14,11 @@ class SessionController extends AbstractController
     /**
      * @Route("/sessions", name="sessions")
      */
+
     public function sessions(SessionRepository $sessionRepository)
     {
         $sessions = $sessionRepository->findAll();
-        return $this->render('session.html.twig', [
+        return $this->render('sessions.html.twig', [
             'sessions' => $sessions
         ]);
     }
@@ -32,4 +33,6 @@ class SessionController extends AbstractController
             'session' => $session
         ]);
     }
+
+
 }

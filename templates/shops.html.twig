@@ -5,12 +5,14 @@
 {% block main %}
     <main>
         <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="shop">
+        <img class="title" src="{{  asset('icon/shops.png') }}" alt="shop">
+
         <section class="section">
             {% for shop in shops %}
                 <div class="card">
                     <div class="card-text">
-                        <h1>{{ shop.title }}</h2>
-{#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
+                        <h1>{{ shop.title }}</h1>
+                            {#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
                         <h2>{{ shop.description}}</h2>
                         <h3>{{ shop.town}}</h3>
                         <h3>{{ shop.area}}</h3>
