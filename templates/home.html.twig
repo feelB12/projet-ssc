@@ -1,0 +1,33 @@
+{%  include "_header.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+{% endblock stylesheets %}
+
+{% block metatitle %}Hello{% endblock metatitle %}
+
+{% block main %}
+    <main>
+        <article class="top">
+            <img class="title left logo resp top" src="{{ asset('icon/sessions_titre.png') }}" alt="session">
+            <img class="title right logo resp top" src="{{ asset('icon/session.png') }}" alt="session-icon">
+        </article>
+        <article class="top">
+            <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+            <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
+        </article>
+        <article class="top">
+            <img class="title left logo resp top" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
+            <img class="title right logo resp top" src="{{ asset('icon/club.png') }}" alt="Club-icon">
+        </article>
+        <article class="top">
+            <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="Shop">
+            <img class="title" src="{{ asset('icon/shops.png') }}" alt="Shop">
+        </article>
+    </main>
+{% endblock main %}
+
+{%  include "_footer.html.twig" %}
+
+

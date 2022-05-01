@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{% block metatitle %}
+    {{ club.title }} | Skateboard Social Club
+{% endblock metatitle %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
@@ -7,27 +11,46 @@
 
 {% block main %}
     <article class="top">
-    <img class="title left logo resp top" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
-    <img class="title right logo resp top" src="{{ asset('icon/club.png') }}" alt="Club-icon">
+        <img class="title left logo resp top" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
+        <img class="title right logo resp top" src="{{ asset('icon/club.png') }}" alt="Club-icon">
+        <link rel="stylesheet" href="{{ asset('css/search.css') }}">
     </article>
+    <article class="">
+{% block search %}{% endblock search %}
+    </article>
+
     <article class="book-detail">
-        {#        <div class="book-image">#}
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+            {#        <div class="book-image">#}
         {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
         {#        </div>#}
-        <div class="card-text top">
-            <h1>{{ club.title }}</h1><br>
-            <h3>{{ club.description }}</h3><br>
-            <h3>{{ club.address }}</h3><br>
-            <h3>{{ club.town }}</h3><br>
-            <h3>{{ club.area }}</h3><br>
 
-            {#  {% for club in skatepark.clubs %} #}
-            {#    <p>{{ club.title }}</p> #}
-            {#    {% endfor %} #}
+            <div class="card-text">
+                <div class="container">
+                    <img src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;">
+                    <div class="content">
+                        <h1>{{ club.title }}</h1>
+                        <p>{{ club.address }}</p>
+                        <p>{{ club.town }}</p>
+                    </div>
+                </div>
 
-            {#  {% if club.skatepark %}  #}
-            {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
-            {#{% endif %} #}
-        </div>
+                <h1>{{ club.title }}</h1><br>
+                <h3>{{ club.description }}</h3><br>
+                <h3>{{ club.address }}</h3><br>
+                <h3>{{ club.town }}</h3><br>
+                <h3>{{ club.area }}</h3><br>
+
+                {#  {% for club in skatepark.clubs %} #}
+                {#    <p>{{ club.title }}</p> #}
+                {#    {% endfor %} #}
+
+                {#  {% if club.skatepark %}  #}
+                {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
+                {#{% endif %} #}
+            </div>
     </article>
 {% endblock main %}

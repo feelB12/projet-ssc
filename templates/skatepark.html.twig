@@ -1,7 +1,12 @@
 {% extends "base.html.twig" %}
 
+{% block metatitle %}
+    {{ skatepark.title }} | Skateboard Social Club
+{% endblock metatitle %}
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/flex.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
 {% endblock stylesheets %}
 
 {% block main %}

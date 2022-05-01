@@ -106,7 +106,6 @@ li {
 }
 main {
     display: inline-block;
-
 }
 
 footer {
@@ -114,6 +113,10 @@ footer {
     line-height: 10vh;
     background-color: black;
     position: sticky;
+}
+
+.arrow {
+    transform: rotate(-90deg);
 }
 
 .book-detail {
@@ -158,19 +161,34 @@ footer {
     padding: 6rem 0 2rem 0;
 }
 
-.content {
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cont {
+     flex-direction: column;
+    /* height: 200px; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center;*/
 }
 .inside {
     width: 10em;
 }
 
 .container {
-    flex-direction: column;
+    /* flex-direction: column; */
+    position: relative;
+    max-width: 800px; /* Maximum width */
+    margin: 0 auto; /* Center it */
 }
+
+.container .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(251,27,255); /* Fallback color */
+    /* background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #ffffff; /* white text */
+    width: 100%; /* Full width */
+    padding: 20px; /* Some padding */
+}
+
 .card-text h2, h3 {
     display: inline-block;
     padding-bottom: 1rem;

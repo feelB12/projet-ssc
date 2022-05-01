@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\ClubRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ClubRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ClubRepository::class)

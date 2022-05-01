@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{% block metatitle %}
+    {{ session.title }} | Skateboard Social Club
+{% endblock metatitle %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">

@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'hades';
+    src: url('../font/hades.otf')
+}
+/*** general ***/
+
+.relative {
+    position: relative;
+}
+
+.absol {
+    position: absolute;
+}
+
+.droite {
+    float: right;
+}
+
+.gauche {
+    float: left;
+}
+
+.cls {
+    clear: both;
+}
+
+h1,
+h2 {
+    font-family: 'hades';
+    text-align: center;
+}
+
+h2 {
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+.mG {
+    margin-left: 50%;
+}
+
+.mD {
+    margin-left: 10%;
+}
+
+.pmG {
+    margin-left: 5%
+}
+/*** dieu ***/
+
+#dieux {
+    background-image: url('../img/fond2.jpeg');
+    background-size: cover;
+    padding-bottom: 50px;
+}
+
+.row {
+    padding: 50px 10px;
+}
+
+.dieu {
+    width: 30%;
+    height: 300px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+}
+
+h3 {
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em
+}
+
+.ares {
+    background-image: url(../img/Ares.png);
+}
+
+.ares h3 {
+    background-color: #FD2525;
+    color: #E7DBD0;
+}
+
+.pose {
+    background-image: url(../img/Poseidon.png);
+}
+
+.pose h3 {
+    background-color: #6F9C73;
+    color: #041112;
+}
+
+.athe {
+    background-image: url(../img/Athena.png);
+}
+
+.athe h3 {
+    background-color: #6976AD;
+    color: #FCFCA8;
+}
+
+.zeus {
+    background-image: url(../img/zeus.png);
+}
+
+.zeus h3 {
+    background-color: #FEF0A4;
+    color: #7A6552;
+}
+
+.arte {
+    background-image: url(../img/Artemis.png);
+}
+
+.arte h3 {
+    background-color: #507E3C;
+    color: #FFFFFF;
+}
+
+.demet {
+    background-image: url(../img/Demeter.png);
+}
+
+.demet h3 {
+    background-color: #ABD2D3;
+    color: #80674C;
+}
+
+.dieu h3+p {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    height: 100%;
+    font-size: 1.3em;
+    padding: 50px 10px;
+    position: absolute;
+    display: none;
+    border-radius: 20px;
+}
+@keyframes toTheTop {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.dieu:hover>p {
+    opacity: 1;
+    display: block;
+    animation: toTheTop 2s forwards;
+}
+
+
+@media screen and (max-width:550px) {
+    .mG,
+    .pmG {
+        margin: 0;
+        }
+    footer {
+        display: none;
+    }
+}

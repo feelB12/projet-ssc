@@ -1,16 +1,36 @@
-
 {% extends "base.html.twig" %}
 
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock stylesheets %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block metatitle %}
+    Clubs | Skateboard Social Club
+{% endblock metatitle %}
 
 {% block main %}
 
-    <main>
         <img class="title left resp" src="{{ asset('icon/clubs_titre.png') }}" alt="club">
         <img class="title right resp" src="{{ asset('icon/club.png') }}" alt="Club-icon">
-
-
         <section class="section">
+            <div class="search-form">
+                <div class="search-box">
+                    <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">
+                    <input type="text"/>
+                    <span></span>
+                </div>
+            </div>
+            <article class="book-detail">
+                <article class="">
+                    {% block search %}{% endblock search %}
+                </article>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            </article>
+
             {% for club in clubs %}
 
                 <div class="card">
@@ -28,5 +48,4 @@
                 </div>
             {% endfor %}
         </section>
-    </main>
 {% endblock main%}

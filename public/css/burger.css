@@ -108,11 +108,12 @@ a:hover  {
 }
 #menu
 {
-   /*
-    display: flex;
-    padding: 10vh 0 0 0;
 
-    */
+    display: flex;
+
+    /*
+  padding: 10vh 0 0 0;
+   */
 
     position: absolute;
     width: 350px;
