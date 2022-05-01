@@ -47,6 +47,16 @@ class Session
      */
     private $area;
 
+    /**
+     * @ORM\Column(type="datetime, nullable=true")
+     */
+    private $publishedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $finished;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +130,30 @@ class Session
     public function setArea(string $area): self
     {
         $this->area = $area;
+
+        return $this;
+    }
+
+    public function getPublishedAt(): ?\DateTimeInterface
+    {
+        return $this->publishedAt;
+    }
+
+    public function setPublishedAt(\DateTimeInterface $publishedAt): self
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    public function getFinished(): ?\DateTimeInterface
+    {
+        return $this->finished;
+    }
+
+    public function setFinished(?\DateTimeInterface $finished): self
+    {
+        $this->finished = $finished;
 
         return $this;
     }
