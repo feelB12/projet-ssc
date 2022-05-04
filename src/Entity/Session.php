@@ -48,14 +48,14 @@ class Session
     private $area;
 
     /**
-     * @ORM\Column(type="datetime, nullable=true")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $publishedAt;
+    private $startAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $finished;
+    private $finishedAt;
 
     public function getId(): ?int
     {
@@ -134,26 +134,26 @@ class Session
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeInterface
+    public function getStartAt(): ?\DateTimeInterface
     {
-        return $this->publishedAt;
+        return $this->startAt;
     }
 
-    public function setPublishedAt(\DateTimeInterface $publishedAt): self
+    public function setStartAt(?\DateTimeInterface $startAt): self
     {
-        $this->publishedAt = $publishedAt;
+        $this->startAt = $startAt;
 
         return $this;
     }
 
-    public function getFinished(): ?\DateTimeInterface
+    public function getFinishedAt(): ?\DateTimeInterface
     {
-        return $this->finished;
+        return $this->finishedAt;
     }
 
-    public function setFinished(?\DateTimeInterface $finished): self
+    public function setFinishedAt(?\DateTimeInterface $finishedAt): self
     {
-        $this->finished = $finished;
+        $this->finishedAt = $finishedAt;
 
         return $this;
     }
