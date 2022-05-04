@@ -13,7 +13,12 @@
     <main>
         <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skateparks">
         <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
-
+        <section>
+            <form>
+                <input type="search" name="q" placeholder="Rechercher">
+                <input type="submit" value="Lancer !">
+            </form>
+        </section>
         <section class="section">
             {% for skatepark in skateparks %}
                 <div class="card">

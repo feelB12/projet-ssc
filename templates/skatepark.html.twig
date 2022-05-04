@@ -10,19 +10,40 @@
 {% endblock stylesheets %}
 
 {% block main %}
-    <div class="card">
-        <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
-        <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
-        <div class="card-text">
-            <h1>{{ skatepark.title }}</h1><br>
-            <h3>{{ skatepark.description }}</h3><br>
-            <h3>{{ skatepark.address }}</h3><br>
-            <h3>{{ skatepark.town }}</h3><br>
-            <h3>{{ skatepark.area }}</h3><br>
+    <section class="border">
+        <article class="top">
+            <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+            <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
+        </article>
+        <article class="book-detail">
+            <div>
+                <form>
+                    <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">
+                    <input type="search" name="q" placeholder="Rechercher">
+                    <input type="submit" value="Lancer !">
+                </form>
+                {% block search %}<h1>Rechercher</h1>{% endblock search %}
+            </div>
+            <div class="card-text">
+                <h1>{{ skatepark.title }}</h1><br>
+                <h3>{{ skatepark.address }} {{ skatepark.town }}</h3>
+                <div class="container">
+                    <img src="{{ asset('uploads/darwin.jpg') }}" alt="map" style="width:100%;">
+                </div>
+            </div>
+            <div class="card-text">
+                <h1>{{ skatepark.title }}</h1>
+                <h3>{{ skatepark.description }}</h3>
+                <h3>{{ skatepark.address }}</h3>
+                <h3>{{ skatepark.town }}</h3>
 
-            {#  {% for club in skatepark.clubs %} #}
-            {#    <p>{{ club.title }}</p> #}
-            {#    {% endfor %} #}
-        </div>
-    </div>
+                {#  {% for club in skatepark.clubs %} #}
+                {#    <p>{{ club.title }}</p> #}
+                {#    {% endfor %} #}
+            </div>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
+    </section>
 {% endblock main %}

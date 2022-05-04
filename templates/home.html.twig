@@ -8,7 +8,62 @@
 {% block metatitle %}Hello{% endblock metatitle %}
 
 {% block main %}
-    <main>
+   <main>
+       <section class="section">
+           {% for sessions in lastSessions %}
+           <div class="card">
+               <div class="card-text">
+                   <h2>{{ sessions.title }}</h2>
+                   <h3>{{ sessions.description }}</h3>
+               </div>
+               <div class="card-image">
+                   <!-- <img src="{{ session.image }}" alt="image de la session"> -->
+               </div>
+           </div>
+          {% endfor %}
+       </section>
+
+       <section class="section">
+           {% for skatepark in lastSkateparks %}
+               <div class="card">
+                   <div class="card-text">
+                       <h2>{{ skatepark.title }}</h2>
+                       <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+                   </div>
+                   <div class="card-image">
+                       <!-- <img src="{{ session.image }}" alt="image de la session"> -->
+                   </div>
+               </div>
+           {% endfor %}
+       </section>
+       <section class="section">
+           {% for shop in lastShops %}
+               <div class="card">
+                   <div class="card-text">
+                       <h2>{{ shop.title }}</h2>
+                       <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+                   </div>
+                   <div class="card-image">
+                       <!-- <img src="{{ shop.image }}" alt="image de la session"> -->
+                   </div>
+               </div>
+           {% endfor %}
+       </section>
+       <section class="section">
+           {% for club in lastClubs %}
+               <div class="card">
+                   <div class="card-text">
+                       <h2>{{ club.title }}</h2>
+                       <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+                   </div>
+                   <div class="card-image">
+                       <!-- <img src="{{ club.image }}" alt="image de la session"> -->
+                   </div>
+               </div>
+           {% endfor %}
+       </section>
+
+       <!--
         <article class="top">
             <img class="title left logo resp top" src="{{ asset('icon/sessions_titre.png') }}" alt="session">
             <img class="title right logo resp top" src="{{ asset('icon/session.png') }}" alt="session-icon">
@@ -25,7 +80,9 @@
             <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="Shop">
             <img class="title" src="{{ asset('icon/shops.png') }}" alt="Shop">
         </article>
+         -->
     </main>
+
 {% endblock main %}
 
 {%  include "_footer.html.twig" %}
