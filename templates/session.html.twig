@@ -24,7 +24,16 @@
             <h3>{{ session.address }}</h3><br>
             <h3>{{ session.town }}</h3><br>
             <h3>{{ session.area }}</h3><br>
-
+                {% if session.startAt %}
+                    <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s") }}</h3>
+                {% else %}
+                    <h3>La session n'est pas commencé </h3>
+                {% endif %}
+                {% if session.finishedAt %}
+                    <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") }}</h3>
+                {% else %}
+                    <h3>La session n'est pas finie </h3>
+                {% endif %}
             {#  {% for club in skatepark.clubs %} #}
             {#    <p>{{ club.title }}</p> #}
             {#    {% endfor %} #}

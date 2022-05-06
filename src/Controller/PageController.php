@@ -2,13 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Session;
-use App\Entity\Skatepark;
-use App\Entity\Club;
-use App\Entity\Shop;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
-
 use App\Repository\SessionRepository;
 use App\Repository\SkateparkRepository;
 use App\Repository\ClubRepository;
@@ -19,34 +12,57 @@ use symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/home", name="home")
      */
-    public function home()
+    public function home(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
     {
-        return $this->render('home.html.twig');
+        $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastClubs =$clubRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastShops = $shopRepository->findBy([], ['id' => 'DESC'], 3);
+
+        $skateparks = $skateparkRepository->findAll();
+        $sessions = $sessionRepository->findAll();
+        $clubs = $clubRepository->findAll();
+        $shops = $shopRepository->findAll();
+
+        return $this->render( "home.html.twig", [
+            'clubs' => $clubs,
+            'skateparks' => $skateparks,
+            'sessions' => $sessions,
+            'lastClubs' => $lastClubs,
+            'lastSkateparks' => $lastSkateparks,
+            'lastSessions' => $lastSessions,
+            'shops' => $lastShops,
+            'lastShops' =>$lastShops
+        ]);
     }
-
-     /* public function home(SessionRepository $sessionRepository, ShopRepository $shopRepository, ClubRepository $clubRepository, )
-        {
-
-        /**$lastSession =$sessionRepository->findBy([], ['id' => 'DESC'], 1);
-        /**$lastSkatepark =$skateparkRepository->findBy([], ['id' => 'DESC'], 1);*/
-        /**$lastShop =$shopRepository->findBy([], ['id' => 'DESC'], 1);
-        /**$lastClub =$clubRepository->findBy([], ['id' => 'DESC'], 1);
-
-        return $this->render("home", [
-           /** 'lastSession' => $lastSession,
-           /** 'lastSkatepark' => $lastSkatepark,
-           /** 'lastShop' => $lastShop,
-           /** 'lastClub' => $lastClub*/
-       /** ]);*/
-
     /**
-     * @Route("/home", name="accueil")
+     * @Route("/", name="accueil")
      */
-    public function accueil()
+    public function accueil(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
     {
-        return $this->render( 'home.html.twig');
+        $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastClubs =$clubRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastShops = $shopRepository->findBy([], ['id' => 'DESC'], 1);
+
+        $skateparks = $skateparkRepository->findAll();
+        $sessions = $sessionRepository->findAll();
+        $clubs = $clubRepository->findAll();
+        $shops = $shopRepository->findAll();
+
+        return $this->render( "home.html.twig", [
+            'clubs' => $clubs,
+            'skateparks' => $skateparks,
+            'sessions' => $sessions,
+            'lastClubs' => $lastClubs,
+            'lastSkateparks' => $lastSkateparks,
+            'lastSessions' => $lastSessions,
+            'shops' => $lastShops,
+            'lastShops' =>$lastShops
+        ]);
+
     }
 
 }

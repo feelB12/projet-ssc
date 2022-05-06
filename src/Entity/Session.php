@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\SessionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * @ORM\Entity(repositoryClass=SessionRepository::class)
  */
