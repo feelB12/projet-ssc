@@ -11,18 +11,30 @@
         <link rel="stylesheet" href="{{ asset('css/details.css') }}">
         <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
         <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-
     </head>
 <body>
     <header>
-        <nav role='navigation'>
-            <a href="{{ path('home') }}" class="marge">
-                <img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp">
-            </a>
+        <nav role='navigation' id="main">
+            <a class="left logo resp" href="{{ path('home') }}"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo"></a>
             <ul>
-                <li><a><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></a></li>
-                <a><li><a>{% block search %}<img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">{% endblock search %}</li></a>
-                <li><a><img src="{{ asset('icon/login.png') }}" alt="login" class=""></a></li>
+                <a href=""><li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li></a>
+                <a href=""><li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li></a>
+                <li>
+                        <div id="searchToogle">
+                            <input type="checkbox"/>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                                <ul class="cont" id="search">
+                                <a href=""><li class="col"><img class="logo" src="{{ asset('icon/loupe.png') }}" alt="login">
+                                        <div>
+                                            {% block search %}{% endblock search %}
+                                        </div>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+                    </li>
                 <li>
                     <div id="menuToggle">
                         <input type="checkbox"/>
@@ -40,19 +52,17 @@
             </ul>
         </nav>
     </header>
-<main id="main">
-
-    {% block main %}{% endblock main %}
-
-</main>
+    <main>
+        {% block main %}{% endblock main %}
+    </main >
     <footer class="footer">
         <nav>
             <ul>
-                <a href="#main" class="marge">
-                    <li>
+                <li>
+                    <a href="#main" class="flex-end">
                         <img src="{{ asset('icon/fleche_droite.png') }}" alt="logo" class="left logo resp arrow">
-                 </li>
-                </a>
+                    </a>
+                </li>
             </ul>
         </nav>
     </footer>

@@ -4,59 +4,62 @@ pour éviter de les copier à chaque fois sur une page.
 Cette page est mon gabarit.-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!--Dans le title de ma page base, j'appelle la fonction block metatitle qui va me permettre
-    d'afficher mon metatitle sur toutes les pages de mon site-->
-    <title>{% block metatitle %}Welcome{% endblock metatitle%}| Skateboard Social club</title>
+    <head>
+        <meta charset="UTF-8">
+        <!--Dans le title de ma page base, j'appelle la fonction block metatitle qui va me permettre
+        d'afficher mon metatitle sur toutes les pages de mon site-->
+        <title>{% block metatitle %}Home{% endblock metatitle%}| Skateboard Social club</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
-    <!--J'utilise la balise link et la fonction asset pour rattacher ma feuille de style à mon html-->
-    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!--css-->
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 
-</head>
+    </head>
 <body>
-    <header>
-        <nav role='navigation'>
-            <a href="{{ path('home') }}" class="marge">
-                <img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp">
-            </a>
-            <ul>
-                <li><a><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></a></li>
-                <li><a><img src="{{ asset('icon/login.png') }}" alt="login" class="">
-                  <!--  <div id="menuToggle2">
-                        <input type="checkbox"/>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul class="container" id="login">
-                            <a href="{{ path('sessions') }}"><li class="col">Login</li></a>
-                            <a href="{{ path('skateparks') }}"><li class="col">Setup</li></a>
-                            <a href="{{ path('shops') }}"><li class="col">Logout</li></a>
-                        </ul>
-                    </div>
-                    -->
-                    </a>
-                </li>
-                <li>
-                    <div id="menuToggle">
-                        <input type="checkbox"/>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul class="container" id="menu">
-                            <a href="{{ path('sessions') }}"><li class="col">SESSIONS</li></a>
-                            <a href="{{ path('skateparks') }}"><li class="col">SKATEPARKS</li></a>
-                            <a href="{{ path('clubs') }}"><li class="col">CLUBS</li></a>
-                            <a href="{{ path('shops') }}"><li class="col">SHOPS</li></a>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
-<main>
+<header>
+    <nav role='navigation'>
+        <a href="{{ path('home') }}" class="marge">
+            <img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo" class="left logo resp">
+        </a>
+        <ul>
+            <li><a><img src="{{ asset('icon/loupe.png') }}" alt="loupe" class=""></a></li>
+            {% block search %}
+            {% endblock search %}
+            <li><a href="{{ path('home') }}"><img src="{{ asset('icon/loupe.png') }}" alt="login" class=""></a></li>
+            <li><a href="{{ path('home') }}"><img src="{{ asset('icon/login.png') }}" alt="login" class=""></a></li>
+            <li>
+                <div id="menuToggle">
+                    <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul class="cont" id="menu">
+                        <a href="{{ path('sessions') }}"><li class="col">SESSIONS</li></a>
+                        <a href="{{ path('skateparks') }}"><li class="col">SKATEPARKS</li></a>
+                        <a href="{{ path('clubs') }}"><li class="col">CLUBS</li></a>
+                        <a href="{{ path('shops') }}"><li class="col">SHOPS</li></a>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <!--  <div id="menuToggle2">
+                <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                   <ul class="container" id="login">
+                        <a href="{{ path('sessions') }}"><li class="col">Login</li></a>
+                        <a href="{{ path('skateparks') }}"><li class="col">Setup</li></a>
+                        <a href="{{ path('shops') }}"><li class="col">Logout</li></a>
+                    </ul>
+         </div>
+            -->
+
 

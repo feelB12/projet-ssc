@@ -89,12 +89,12 @@ a  {
   padding: 10vh 0 0 0;
    */
     position: absolute;
-    width: 350px;
-    margin: -100px 0 0 0;
-    padding: 125px 0 0 0;
-    right: -100px;
+    width: 300px;
+    margin: -25% 0 0 0;
+    padding: 5% 0 20% 0;
+    right: -30%;
     background: #ebd000;
-    border: solid 2px #FFFFFF;
+
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
@@ -109,13 +109,12 @@ a  {
 }
 
 #menu li {
-    color: #385cff;
+    color: #FFFFFF;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-content: center;
-    border: solid 2px #FFFFFF;
-    padding: 10px 0 0 0;
+    border-top: solid 2px #FFFFFF;
     line-height: 10px ;
     font-size: 22px;
     font-weight: bold;

@@ -1,14 +1,16 @@
-{%  include "_header.html.twig" %}
+{% extends "base.html.twig" %}
+
+{% block metatitle %}
+    Home | Skateboard Social Club
+{% endblock metatitle %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
-{% block metatitle %}Hello{% endblock metatitle %}
-
 {% block main %}
-   <main>
        <section class="section">
            {% for session in lastSessions %}
                <div class="card">
@@ -95,10 +97,4 @@
             <img class="title" src="{{ asset('icon/shops.png') }}" alt="Shop">
         </article>
          -->
-    </main>
-
 {% endblock main %}
-
-{%  include "_footer.html.twig" %}
-
-

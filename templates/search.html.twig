@@ -7,20 +7,9 @@
 {% endblock stylesheets %}
 
 {% block search %}
-
     <form>
-        <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">
-        <input type="text" placeholder="A red placeholder text..">
-        <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">
+        <input type="search" name="q" placeholder="Rechercher" >
+        <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">
+        <input type="submit" value="Lancer !">
     </form>
-
-    <!--
-    <div class="search-form">
-        <div class="search-box">
-            <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="">
-            <input type="text" />
-            <span></span>
-        </div>
-    </div>
-    -->
 {% endblock search %}
