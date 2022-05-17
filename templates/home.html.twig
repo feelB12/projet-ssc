@@ -12,57 +12,92 @@
 
 {% block main %}
        <section class="section">
-           {% for session in lastSessions %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2>{{ session.title }}</h2>
-                   </div>
+           <form>
+               <article class="detail">
+                   <div class="card-text" id="divSearch">
+                       <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                       </div>
+                       <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal">
+                       </div>
+                       {% block search %}{% endblock search %}
+                    </div>
+               </article>
+           </form>
+                <div class="line"></div>
+           <article>
+               <div class="homeElement">
+                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></div>
                </div>
-           {% endfor %}
-           <a href="{{ path('sessions') }}">Voir toutes les sessions</a>
+               <div class="line"></div>
+               {% for session in lastSessions %}
+                   <div class="card">
+                       <div class="card-text">
+                           <h2>{{ session.title }}</h2>
+                           <h3>{{ session.description }}</h3><br>
+                           <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+                       </div>
+                       <div class="card-image">
+                           <!-- if session.finished <img src=" session.image }}" alt="image de la session"> -->
+                       </div>
+                   </div>
+               {% endfor %}
+               <a href="{{ path('sessions') }}">Voir toutes les sessions</a>
+           </article>
        </section>
        <section class="section">
-           {% for skatepark in lastSkateparks %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2>{{ skatepark.title }}</h2>
-                   </div>
+           <article>
+               <div class="homeElement">
+                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
                </div>
-           {% endfor %}
-           <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
+               <div class="line"></div>
+               {% for skatepark in lastSkateparks %}
+                   <div class="card">
+                       <div class="card-text">
+                           <h2>{{ skatepark.title }}</h2>
+                           <h3>{{ skatepark.description }}</h3><br>
+                       </div>
+                   </div>
+               {% endfor %}
+               <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
+           </article>
        </section>
        <section class="section">
-           {% for club in lastClubs %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2>{{ club.title }}</h2>
-                   </div>
+           <article>
+               <div class="homeElement">
+                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
                </div>
-           {% endfor %}
-           <a href="{{ path('clubs') }}">Voir tous les clubs</a>
+               <div class="line"></div>
+               {% for club in lastClubs %}
+                   <div class="card">
+                       <div class="card-text">
+                           <h2>{{ club.title }}</h2>
+                           <h3>{{ club.description }}</h3><br>
+                       </div>
+                   </div>
+               {% endfor %}
+               <a href="{{ path('clubs') }}">Voir tous les clubs</a>
+           </article>
        </section>
        <section class="section">
-           {% for shop in lastShops %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2>{{ shop.title }}</h2>
-                   </div>
+           <article>
+               <div class="homeElement">
+                   <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
                </div>
-           {% endfor %}
-           <a href="{{ path('shops') }}">Voir tous les shops</a>
-       </section>
-       <section class="section">
-           {% for shop in lastShops %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2>{{ shop.title }}</h2>
-                       <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+               <div class="line"></div>
+               {% for shop in lastShops %}
+                   <div class="card">
+                       <div class="card-text">
+                           <h2>{{ shop.title }}</h2>
+                           <h3>{{ shop.description }}</h3><br>
+                       </div>
                    </div>
-                   <div class="card-image">
-                       <!-- <img src=" shop.image }}" alt="image de la session"> -->
-                   </div>
-               </div>
-           {% endfor %}
+               {% endfor %}
+               <a href="{{ path('shops') }}">Voir tous les shops</a>
+           </article>
        </section>
        <!--
        <section class="section">

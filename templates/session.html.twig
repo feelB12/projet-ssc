@@ -10,37 +10,59 @@
 {% endblock stylesheets %}
 
 {% block main %}
-    <article class="top">
-        <img class="title left logo resp top" src="{{ asset('icon/sessions_titre.png') }}" alt="session">
-        <img class="title right logo resp top" src="{{ asset('icon/session.png') }}" alt="session-icon">
-    </article>
-    <article class="book-detail">
-        {#        <div class="book-image">#}
-        {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
-        {#        </div>#}
-        <div class="card-text top">
-            <h1>{{ session.title }}</h1><br>
-            <h3>{{ session.description }}</h3><br>
-            <h3>{{ session.address }}</h3><br>
-            <h3>{{ session.town }}</h3><br>
-            <h3>{{ session.area }}</h3><br>
-                {% if session.startAt %}
-                    <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
-                {% else %}
-                    <h3>La session n'est pas commencé </h3>
-                {% endif %}
-                {% if session.finishedAt %}
-                    <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
-                {% else %}
-                    <h3>La session n'est pas finie </h3>
-                {% endif %}
-            {#  {% for club in skatepark.clubs %} #}
-            {#    <p>{{ club.title }}</p> #}
-            {#    {% endfor %} #}
-
-            {#  {% if club.skatepark %}  #}
-            {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
-            {#{% endif %} #}
+    <section class="">
+        <div id="ico">
+            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></div>
         </div>
-    </article>
+        <div class="line"></div>
+        <div class="">
+            <form>
+                <div id="divSearch">
+                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
+                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
+                    {% block search %}{% endblock search %}
+                </div>
+            </form>
+        </div>
+        <div class="line"></div>
+    </section>
+    <section class="section">
+        <article class="book-detail">
+            <article class="">
+            </article>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
+        <article>
+            {#        <div class="book-image">#}
+            {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+            {#        </div>#}
+            <div class="card-text">
+                <h1>{{ session.title }}</h1><br>
+                <h3>{{ session.description }}</h3><br>
+                <h3>{{ session.address }}</h3><br>
+                <h3>{{ session.town }}</h3><br>
+                <h3>{{ session.area }}</h3><br>
+                    {% if session.startAt %}
+                        <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
+                    {% else %}
+                        <h3>La session n'est pas commencé </h3>
+                    {% endif %}
+                    {% if session.finishedAt %}
+                        <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
+                    {% else %}
+                        <h3>La session n'est pas finie </h3>
+                    {% endif %}
+                {#  {% for club in skatepark.clubs %} #}
+                {#    <p>{{ club.title }}</p> #}
+                {#    {% endfor %} #}
+
+                {#  {% if club.skatepark %}  #}
+                {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
+                {#{% endif %} #}
+            </div>
+        </article>
+    </section>
 {% endblock main %}

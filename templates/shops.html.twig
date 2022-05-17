@@ -10,25 +10,41 @@
 {% endblock metatitle %}
 
 {% block main %}
-    <main>
-        <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="shop">
-        <img class="title" src="{{  asset('icon/shops.png') }}" alt="shop">
-
-        <section class="section">
-            {% for shop in shops %}
-                <div class="card">
-                    <div class="card-text">
-                        <h1>{{ shop.title }}</h1>
-                            {#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
-                        <h2>{{ shop.description}}</h2>
-                        <h3>{{ shop.town}}</h3>
-                        <h3>{{ shop.area}}</h3>
-                       {#     {% if shop.skatepark %} #}
-                       {#         <h3>{{ shop.skatepark.town }} {{ shop.skatepark.area }}</h3> #}
-                       {#     {% endif %} #}
-                    </div>
+    <section class="">
+        <div id="ico">
+            <div class="element"><img class="title logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+        </div>
+        <div class="line"></div>
+        <div class="">
+            <form>
+                <div id="divSearch">
+                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
+                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
                 </div>
-            {% endfor %}
-        </section>
-    </main>
+            </form>
+        </div>
+        <div class="line"></div>
+        <article class="book-detail">
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
+    </section>
+    <section class="section">
+        {% for shop in shops %}
+            <div class="card">
+                <div class="card-text">
+                    <h1>{{ shop.title }}</h1>
+                        {#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
+                    <h2>{{ shop.description}}</h2>
+                    <h3>{{ shop.town}}</h3>
+                    <h3>{{ shop.area}}</h3>
+                   {#     {% if shop.skatepark %} #}
+                   {#         <h3>{{ shop.skatepark.town }} {{ shop.skatepark.area }}</h3> #}
+                   {#     {% endif %} #}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 {% endblock main%}
