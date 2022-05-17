@@ -51,6 +51,8 @@
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
                     </div>
+                    <a class="link" href="{{ path('club', {"id": club.id}) }}">Voir le club</a>
+                    <a class="link" href="{{ path('club_delete', {"id": club.id}) }}">Voir le club</a>
                 </div>
             {% endfor %}
         </section>

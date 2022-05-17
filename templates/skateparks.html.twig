@@ -49,6 +49,8 @@
                     {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                     {#                    {% endif %} #}
                 </div>
+                <a class="link" href="{{ path('skatepark', {"id": skatepark.id}) }}">Voir le skatepark</a>
+                <a class="link" href="{{ path('skatepark_delete', {"id": skatepark.id}) }}">Supprimer le skatepark</a>
             </div>
         {% endfor %}
     </section>
