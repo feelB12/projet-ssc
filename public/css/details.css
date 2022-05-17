@@ -75,6 +75,12 @@ img {
     width: auto;
     height: auto;
 }
+.img-card {
+    display: inline-block;
+    width: 700px;
+    height: 700px;
+    object-fit: cover;
+}
 ul {
     display: flex;
     justify-content: flex-end;
@@ -243,6 +249,7 @@ article {
     font-size: small;
 }
 .container {
+    margin: auto;
     position: relative;
     flex-direction: row;
     display: flex;
@@ -304,12 +311,12 @@ article {
 }
 #abs1 {
     background-color: #FFFFFF;
-    margin-top: 30%;
+    margin-top: 40%;
     left: 10px;
 }
 #abs2 {
     background-color: #FFFFFF;
-    margin-top: 30%;
+    margin-top: 40%;
     right: 10px;
 }
 #abs3 {
@@ -364,20 +371,17 @@ article {
 .arrow {
     transform: rotate(-90deg);
 }
-
 .arrow-left{
+    position: static;
     max-width: 5vh;
     transform: rotate(180deg);
     border: solid 2px cadetblue;
-
 }
 .arrow-right{
+    position: static;
     max-width: 5vh;
     border: solid 2px cadetblue;
 }
-
-article {}
-div {}
 
 form{
     margin-bottom: 2%;
@@ -392,29 +396,6 @@ form{
 .absol {
     position: absolute;
 }
-.top {
-    border: 2px solid saddlebrown;
-    object-fit: contain;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.arrow {
-    transform: rotate(-90deg);
-}
-
-.arrow-left{
-    position: static;
-    max-width: 5vh;
-    transform: rotate(180deg);
-    border: solid 2px cadetblue;
-
-}
-.arrow-right{
-    position: static;
-    max-width: 5vh;
-    border: solid 2px cadetblue;
-}
 #center{
     position: relative;
     display: flex;
@@ -422,7 +403,6 @@ form{
     flex-direction: row;
     justify-content: space-between;
 }
-
 .icon {
     width: 5vh;
     height: auto;
@@ -436,18 +416,15 @@ form{
     max-height: 50vh;
     padding: 6rem 0 2rem 0;
 }
-
 .inside {
     width: 10em;
 }
-
 .contain {
     position: relative;
     display: flex;
     /* justify-content: flex-start;*/
     /* justify-items: center;*/
     /* align-items: start;*/
-
     /* margin: 0 auto;Center it */
 }
 /*
@@ -469,6 +446,30 @@ form{
 }
 .date {
     padding-top: 2rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.w40 {
+    width: 40%;
+}
+
+.w30 {
+    width: 30%;
 }
 
 /************************

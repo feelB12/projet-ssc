@@ -25,7 +25,8 @@
                 </div>
             </form>
         </div>
-        <div class="line"></div>
+        <div class="line">
+        </div>
     </section>
     <section class="section">
         <article class="book-detail">
@@ -37,21 +38,31 @@
         </article>
     </section>
     <section class="section">
+        <article>
             {% for session in sessions %}
-
                 <div class="card">
-
                     <div class="card-text">
                         <h1>{{ session.title }}</h1>
                         {#  <img src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt=""> #}
                         <h2>{{ session.description}}</h2>
                         <h3>{{ session.town}}</h3>
                         <h3>{{ session.area}}</h3>
+                        {% if session.startAt %}
+                            <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
+                        {% else %}
+                            <h3>La session n'est pas commencé </h3>
+                        {% endif %}
+                        {% if session.finishedAt %}
+                            <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
+                        {% else %}
+                            <h3>La session n'est pas finie </h3>
+                        {% endif %}
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
                     </div>
                 </div>
             {% endfor %}
+        </article>
     </section>
 {% endblock main%}

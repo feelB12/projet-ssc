@@ -2,9 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-
-        <title>{% block metatitle %}{% endblock metatitle%}</title>
-
+            <title>{% block metatitle %}{% endblock metatitle%}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
@@ -17,25 +15,29 @@
         <nav role='navigation' id="main">
             <a class="left logo resp" href="{{ path('home') }}"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo"></a>
             <ul>
-                <a href=""><li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li></a>
-                <a href=""><li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li></a>
-                <li>
-                        <div id="searchToogle">
-                            <input type="checkbox"/>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                                <ul class="cont" id="search">
-                                <a href=""><li class="col"><img class="logo" src="{{ asset('icon/loupe.png') }}" alt="login">
-                                        <div>
-                                            {% block search %}{% endblock search %}
-                                        </div>
-                                    </li>
-                                </a>
-                            </ul>
-                        </div>
-                    </li>
-                <li>
+                <a href="">
+                    <li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li>
+                </a>
+                <a href="">
+                    <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+                </a>
+                    <li>
+                            <div id="searchToogle">
+                                <input type="checkbox"/>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                    <ul class="cont" id="search">
+                                    <a href=""><li class="col"><img class="logo" src="{{ asset('icon/loupe.png') }}" alt="login">
+                                            <div>
+                                                {% block search %}{% endblock search %}
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                        </li>
+                    <li>
                     <div id="menuToggle">
                         <input type="checkbox"/>
                         <span></span>
