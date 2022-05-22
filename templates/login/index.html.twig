@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Login | Skateboard Social Club
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    {% if error %}
+        <div> {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <section class="section">
+
+        <div class="detail">
+            <div class="">
+                <form action="{{ path('login') }}" method="post">
+
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="_password"/>
+
+
+                    <button type="submit">login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

@@ -128,6 +128,8 @@ footer {
 **    Main
  **************************/
 main {
+    width: 100%;
+    height: 50%;
     display: inline-block;
     padding: 1rem 2rem;
     margin: auto;
@@ -137,6 +139,12 @@ section {
     margin-top: 10%;
     margin-bottom: 10%;
 }
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 article {
 }
 #ico {
@@ -456,6 +464,12 @@ form{
     justify-content: center;
 }
 
+.fdr{
+    flex-direction: row;
+    width: 25%;
+    margin: auto;
+    height: auto;
+}
 .justify-between {
     justify-content: space-between;
 }
@@ -470,6 +484,9 @@ form{
 
 .w30 {
     width: 30%;
+}
+.top20 {
+    margin-top: 20%;
 }
 
 /************************

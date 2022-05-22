@@ -26,9 +26,9 @@
                 <div class="line"></div>
            <article>
                <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></div>
-               </div>
+                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></a></div>
+                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></a></div>
+                   </div>
                <div class="line"></div>
                {% for session in lastSessions %}
                    <div class="card">
@@ -48,8 +48,8 @@
        <section class="section">
            <article>
                <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
                </div>
                <div class="line"></div>
                {% for skatepark in lastSkateparks %}
@@ -60,7 +60,7 @@
                        </div>
                    </div>
                {% endfor %}
-               <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
+               <a href="{{ path('sessions') }}">Voir tous les skateparks</a>
            </article>
        </section>
        <section class="section">

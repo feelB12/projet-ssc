@@ -3,18 +3,17 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
 {% block metatitle %}
-    Clubs | Skateboard Social Club
+    Sessions | Skateboard Social Club
 {% endblock metatitle %}
 
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -39,20 +38,35 @@
         </article>
     </section>
     <section class="section">
-            {% for club in clubs %}
+        <article>
+            {% for session in sessions %}
                 <div class="card">
                     <div class="card-text">
-                        <h1>{{ club.title }}</h1>
+                        <h1>{{ session.title }}</h1>
                         {#  <img src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt=""> #}
-                        <h2>{{ club.description}}</h2>
-                        <h3>{{ club.town}}</h3>
-                        <h3>{{ club.area}}</h3>
+                        <h2>{{ session.description}}</h2>
+                        <h3>{{ session.town}}</h3>
+                        <h3>{{ session.area}}</h3>
+                        {% if session.startAt %}
+                            <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
+                        {% else %}
+                            <h3>La session n'est pas commencé </h3>
+                        {% endif %}
+                        {% if session.finishedAt %}
+                            <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
+                        {% else %}
+                            <h3>La session n'est pas finie </h3>
+                        {% endif %}
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
                     </div>
-                    <a class="link" href="{{ path('club', {"id": club.id}) }}">Voir le club</a>
+                    <a class="link" href="{{ path('admin_session', {"id": session.id}) }}">Voir la session</a>
+                    <a class="link" href="{{ path('admin_session_create', {"id": session.id}) }}">Créer un session</a>
+                    <a class="link" href="{{ path('admin_session_update', {"id": session.id}) }}">Modifier un session</a>
+                    <a class="link" href="{{ path('admin_session_delete', {"id": session.id}) }}">Supprimer la session</a>
                 </div>
             {% endfor %}
-        </section>
+        </article>
+    </section>
 {% endblock main%}

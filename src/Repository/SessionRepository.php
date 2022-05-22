@@ -18,7 +18,25 @@ class SessionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Session::class);
     }
+    public function searchByTitle($word)
+    {
+        // j'utilise la méthode createQueryBuilder provenant de la classe parent
+        // et je définis un alias pour la table session
+        $queryBuilder = $this->createQueryBuilder('session');
 
+        // je demande à Doctrine de créer une requête SQL
+        // qui fait une requête SELECT sur la table session
+        // à condition que le titre du session
+        // contiennent le contenu de $word (à un endroit ou à un autre, grâce à LIKE %xxxx%)
+        $query = $queryBuilder->select('session')
+            ->where('session.title LIKE :word')
+            ->setParameter('word', '%'.$word.'%')
+            ->getQuery();
+
+        // je récupère les résultats de la requête SQL
+        // et je les retourne
+        return $query->getResult();
+    }
     // /**
     //  * @return Session[] Returns an array of Session objects
     //  */

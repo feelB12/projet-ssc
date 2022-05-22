@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Session;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,6 +21,7 @@ class SessionType extends AbstractType
             ->add('area')
             ->add('startAt')
             ->add('finishedAt')
+            ->add('valider', SubmitType::class)
         ;
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\SkateparkRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SkateparkRepository;
 
 /**
  * @ORM\Entity(repositoryClass=SkateparkRepository::class)

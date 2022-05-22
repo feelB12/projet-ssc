@@ -18,7 +18,25 @@ class SkateparkRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Skatepark::class);
     }
+    public function searchByTitle($word)
+    {
+        // j'utilise la méthode createQueryBuilder provenant de la classe parent
+        // et je définis un alias pour la table skatepark
+        $queryBuilder = $this->createQueryBuilder('skatepark');
 
+        // je demande à Doctrine de créer une requête SQL
+        // qui fait une requête SELECT sur la table skatepark
+        // à condition que le titre du skatepark
+        // contiennent le contenu de $word (à un endroit ou à un autre, grâce à LIKE %xxxx%)
+        $query = $queryBuilder->select('skatepark')
+            ->where('skatepark.title LIKE :word')
+            ->setParameter('word', '%' . $word . '%')
+            ->getQuery();
+
+        // je récupère les résultats de la requête SQL
+        // et je les retourne
+        return $query->getResult();
+    }
     // /**
     //  * @return Skatepark[] Returns an array of Skatepark objects
     //  */

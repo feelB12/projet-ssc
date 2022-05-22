@@ -21,7 +21,20 @@
             <form>
                 <div id="divSearch">
                     <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
+                    <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal"></div>
+                    {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                     {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
+                </div>
+            </form>
+            <form action="{{ path('admin_search_clubs') }}">
+                <div class="">
+
+                    <div class="btn">
+                        <img class="logo" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                        <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        <input type="submit">
+                    </div>
+
                     {% block search %}{% endblock search %}
                 </div>
             </form>
@@ -51,7 +64,10 @@
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
                     </div>
-                    <a class="link" href="{{ path('club', {"id": club.id}) }}">Voir le club</a>
+                    <a class="link" href="{{ path('admin_club', {"id": club.id}) }}">Voir le club</a>
+                    <a class="link" href="{{ path('admin_club_create', {"id": club.id}) }}">Créer un club</a>
+                    <a class="link" href="{{ path('admin_club_update', {"id": club.id}) }}">Modifier un club</a>
+                    <a class="link" href="{{ path('admin_club_delete', {"id": club.id}) }}">Supprimer le club</a>
                 </div>
             {% endfor %}
         </section>

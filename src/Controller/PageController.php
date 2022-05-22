@@ -30,17 +30,17 @@ class PageController extends AbstractController
             'clubs' => $clubs,
             'skateparks' => $skateparks,
             'sessions' => $sessions,
+            'shops' => $lastShops,
             'lastClubs' => $lastClubs,
             'lastSkateparks' => $lastSkateparks,
             'lastSessions' => $lastSessions,
-            'shops' => $lastShops,
             'lastShops' =>$lastShops
         ]);
     }
     /**
      * @Route("/", name="accueil")
      */
-    public function accueil(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
+    public function accueil(SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository, ClubRepository $clubRepository )
     {
         $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 1);
         $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 1);

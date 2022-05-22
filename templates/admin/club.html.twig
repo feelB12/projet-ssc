@@ -1,0 +1,228 @@
+{% extends "base.html.twig" %}
+
+{% block metatitle %}
+    {{ club.title }} | Skateboard Social Club
+{% endblock metatitle %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <section class="">
+        <div id="ico">
+            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+            <div class="element"><img class="logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+        </div>
+        <div class="line"></div>
+        <div class="">
+            <form>
+                <div id="divSearch">
+                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
+                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
+                    {% block search %}{% endblock search %}
+                </div>
+            </form>
+        </div>
+        <div class="line"></div>
+        <article class="card-detail">
+                <div class="card-title"><h1>{{ club.title }}</h1><br></div>
+        </article>
+        <article class="card-address">
+            <div class="card-title"><h2>{{ club.address }} {{ club.town }}</h2></div>
+        </article>
+        <article class="detail">
+            <div class="card-text">
+                <div class="" id="tm">
+                    <div class="" id="tmbk">
+                        <div id="abs1" class="absolute">
+                            <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
+                            </b><br />
+                        </div>
+                        <div id="abs2" class="absolute">
+                            <b><img class="arrow-right right logoBig resp" src="{{ asset('icon/fleche_droite.png') }}" alt="Next">
+                            </b><br />
+                        </div>
+                        <div id="sta1" class="static">
+                            <b><img class="img-card" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map">
+                            </b><br />
+                        </div>
+                    </div>
+                    <div class="image">
+                        <table>
+                            <tr>
+                                <td>Lundi</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>fermé</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Mardi</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Mercredi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Jeudi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <div class="list">
+                    <ul id="abs4" class="absolute indicators ">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <article class="detail">
+            <div class="card-text">
+                <div class="justifyBox">
+                    <p>{{ club.description }}{{ club.description }}</p>
+                </div>
+            </div>
+            {#  {% for club in skatepark.clubs %}<p>{{ club.title }}</p>{% endfor %} #}
+            {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
+            <div class="card-text">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            {#        <div class="book-image">#}
+            {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+            {#        </div>#}
+        </article>
+        <article class="detail">
+            <div class="card-text">
+                <div class="container" id="tm">
+                    <div class="image" id="bk">
+                        <div id="center">
+                            <img src="{{ asset('icon/fleche_droite.png') }}" alt="logo" class="left logo resp arrow-left" style="z-index:4;">
+                            <a href="" class="media"></a>
+                            <a href=""><img class="" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;z-index:3;"></a>
+                            <a href="" class="media"></a>
+                            <img src="{{ asset('icon/fleche_droite.png') }}" alt="logo" class="arrow-right right logo resp" style="z-index:4;">
+                        </div>
+                        <div class="image">
+                            <table>
+                                <tr>
+                                    <td>Lundi</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>fermé</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Mardi</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td>21:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Mercredi</td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td> 19:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Jeudi</td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td>21:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Vendredi</td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td>21:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Samedi</td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td> 19:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Dimanche</td>
+                                </tr>
+                                <tr>
+                                    <td> 14:00 - </td>
+                                    <td> 19:00</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+                <!--<div class="card" style="border:solid 2px darkblue;"><img class="car" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;"></div>-->
+        <article class="detail">
+            <div class="card-text">
+                <div class="justifyBox">
+                    <p>{{ club.description }}{{ club.description }}</p>
+                </div>
+            </div>
+                {#  {% for club in skatepark.clubs %}<p>{{ club.title }}</p>{% endfor %} #}
+                {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
+        </article>
+            <article class="book-detail">
+                <article class="">
+                </article>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </article>
+        </section>
+        {#        <div class="book-image">#}
+        {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+        {#        </div>#}
+
+
+{% endblock main %}

@@ -12,8 +12,8 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -49,7 +49,10 @@
                     {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                     {#                    {% endif %} #}
                 </div>
-                <a class="link" href="{{ path('skatepark', {"id": skatepark.id}) }}">Voir le skatepark</a>
+                <a class="link" href="{{ path('admin_skatepark', {"id": skatepark.id}) }}">Voir le skatepark</a>
+                <a class="link" href="{{ path('admin_skatepark_create', {"id": skatepark.id}) }}">Créer un skatepark</a>
+                <a class="link" href="{{ path('admin_skatepark_update', {"id": skatepark.id}) }}">Modifier le skatepark</a>
+                <a class="link" href="{{ path('admin_skatepark_delete', {"id": skatepark.id}) }}">Supprimer le skatepark</a>
             </div>
         {% endfor %}
     </section>

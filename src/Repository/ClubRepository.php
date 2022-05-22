@@ -18,15 +18,15 @@ class ClubRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Club::class);
     }
-    public function searchByTitle()
+    public function searchByTitle($word)
     {
         // j'utilise la méthode createQueryBuilder provenant de la classe parent
         // et je définis un alias pour la table book
         $queryBuilder = $this->createQueryBuilder('club');
 
         // je demande à Doctrine de créer une requête SQL
-        // qui fait une requête SELECT sur la table book
-        // à condition que le titre du book
+        // qui fait une requête SELECT sur la table club
+        // à condition que le titre du club
         // contiennent le contenu de $word (à un endroit ou à un autre, grâce à LIKE %xxxx%)
         $query = $queryBuilder->select('club')
             ->where('club.title LIKE :word')
