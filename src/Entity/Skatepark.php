@@ -47,6 +47,11 @@ class Skatepark
      */
     private $area;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $coverFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Skatepark
     public function setArea(string $area): self
     {
         $this->area = $area;
+
+        return $this;
+    }
+
+    public function getCoverFilename(): ?string
+    {
+        return $this->coverFilename;
+    }
+
+    public function setCoverFilename(?string $coverFilename): self
+    {
+        $this->coverFilename = $coverFilename;
 
         return $this;
     }

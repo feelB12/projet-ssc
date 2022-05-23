@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "front/base.html.twig" %}
 
 {% block metatitle %}
     Home | Skateboard Social Club
@@ -48,8 +48,8 @@
        <section class="section">
            <article>
                <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
+                   <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
                </div>
                <div class="line"></div>
                {% for skatepark in lastSkateparks %}
@@ -60,7 +60,7 @@
                        </div>
                    </div>
                {% endfor %}
-               <a href="{{ path('sessions') }}">Voir tous les skateparks</a>
+               <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
            </article>
        </section>
        <section class="section">

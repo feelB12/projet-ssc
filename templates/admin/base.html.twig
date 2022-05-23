@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-            <title>{% block metatitle %}{% endblock metatitle%}</title>
+            <title>{% block metatitle %}welcome {{ app.user.email }} | Skateboard Social Club{% endblock metatitle%}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
@@ -30,7 +30,8 @@
                                     <ul class="cont" id="search">
                                     <a href=""><li class="col"><img class="logo" src="{{ asset('icon/loupe.png') }}" alt="login">
                                             <div>
-                                                {% block search %}{% endblock search %}
+                                                {% block search %}
+                                                {% endblock search %}
                                             </div>
                                         </li>
                                     </a>
@@ -45,7 +46,7 @@
                         <span></span>
                         <ul class="cont" id="menu">
                             <a href="{{ path('admin_sessions') }}"><li class="col">SESSIONS</li></a>
-                            <a href="{{ path('admin_sessions') }}"><li class="col">SKATEPARKS</li></a>
+                            <a href="{{ path('admin_skateparks') }}"><li class="col">SKATEPARKS</li></a>
                             <a href="{{ path('admin_clubs') }}"><li class="col">CLUBS</li></a>
                             <a href="{{ path('admin_shops') }}"><li class="col">SHOPS</li></a>
                         </ul>
@@ -54,7 +55,12 @@
             </ul>
         </nav>
     </header>
+
     <main>
+        <div class="detail">
+            <p>Vous êtes connecté en tant que {{ app.user.email }}</p>
+        </div>
+
         {# si message flashes type 'success' echo  #}
         {% for message in app.flashes('success')%}
         <div class="alert alert-success">

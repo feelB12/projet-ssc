@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "admin/base.html.twig" %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
@@ -6,10 +6,22 @@
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
-{% block search %}
-    <form>
+{% block main %}
+    <div class="">
+        <form>
+            <div id="divSearch">
+                <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
+                <div class="btn"><input type="search" id="userId" name="query" placeholder="Ville, Code postal"></div>
+            </div>
+        </form>
+    </div>
+
+    <!--
+     <form>
         <input type="search" name="q" placeholder="Rechercher" >
         <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">
         <input type="submit" value="Lancer !">
     </form>
-{% endblock search %}
+    -->
+
+{% endblock main %}

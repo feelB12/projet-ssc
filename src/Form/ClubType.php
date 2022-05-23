@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Club;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,6 +24,10 @@ class ClubType extends AbstractType
              //       'class'=> Skatepark::class,
               //      'choice_label' => 'title'
                //      ])
+            ->add('coverFilename', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+            ])
             ->add('valider', SubmitType::class)
         ;
     }

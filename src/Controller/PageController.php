@@ -7,12 +7,13 @@ use App\Repository\SkateparkRepository;
 use App\Repository\ClubRepository;
 use App\Repository\ShopRepository;
 use symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("front/home", name="home")
      */
     public function home(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
     {
@@ -26,7 +27,7 @@ class PageController extends AbstractController
         $clubs = $clubRepository->findAll();
         $shops = $shopRepository->findAll();
 
-        return $this->render( "home.html.twig", [
+        return $this->render( "front/home.html.twig", [
             'clubs' => $clubs,
             'skateparks' => $skateparks,
             'sessions' => $sessions,
@@ -38,7 +39,7 @@ class PageController extends AbstractController
         ]);
     }
     /**
-     * @Route("/", name="accueil")
+     * @Route("front/", name="accueil")
      */
     public function accueil(SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository, ClubRepository $clubRepository )
     {
@@ -52,7 +53,7 @@ class PageController extends AbstractController
         $clubs = $clubRepository->findAll();
         $shops = $shopRepository->findAll();
 
-        return $this->render( "home.html.twig", [
+        return $this->render( "front/home.html.twig", [
             'clubs' => $clubs,
             'skateparks' => $skateparks,
             'sessions' => $sessions,
@@ -63,6 +64,21 @@ class PageController extends AbstractController
             'lastShops' =>$lastShops
         ]);
 
-    }
+        }
+        /**
+         * @Route("front/searchs", name="search_all")
+         */
+        public function searchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
+        {
+            // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
+            $word = $request->query->get('query');
 
+            // je fais ma requête en BDD grâce à la méthode que j'ai créée searchByTitle
+            $clubs = $clubRepository->searchByTitle($word);
+
+
+            return $this->render('clubs_search.html.twig', [
+                'clubs' => $clubs
+            ]);
+        }
 }

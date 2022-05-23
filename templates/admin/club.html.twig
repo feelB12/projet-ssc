@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "admin/base.html.twig" %}
 
 {% block metatitle %}
     {{ club.title }} | Skateboard Social Club
@@ -17,16 +17,20 @@
             <div class="element"><img class="logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
         </div>
         <div class="line"></div>
+        <!--
+            <div>
+                <form>
+                    <input type="search" name="q" placeholder="Rechercher" >
+                    <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">
+                    <input type="submit" value="Lancer !">
+                </form>
+            </div>
+        -->
         <div class="">
-            <form>
-                <div id="divSearch">
-                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
-                    {% block search %}{% endblock search %}
-                </div>
-            </form>
+             {% block search %}{% endblock search %}
         </div>
-        <div class="line"></div>
+        <div class="line">
+        </div>
         <article class="card-detail">
                 <div class="card-title"><h1>{{ club.title }}</h1><br></div>
         </article>

@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminClubController extends AbstractController
 {
@@ -26,13 +27,35 @@ class AdminClubController extends AbstractController
     /**
      * @Route("admin/club/create", name="admin_club_create")
      */
-    public function createClub(Request $request, EntityManagerInterface $entityManager)
+    public function createClub(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
         $club = new Club();
         $clubForm = $this->createForm(ClubType::class, $club);
         $clubForm->handleRequest($request);
 
         if ($clubForm->isSubmitted() && $clubForm->isValid()) {
+            // gestion de l'upload img
+            // 1 recupérer les fichiers uploadé
+            $coverFile = $clubForm->get('coverFilename')->getData();
+
+            if ($coverFile) {
+                // 2 recupérer le nom du fichiers uploadé
+                $originalFilename = pathinfo($coverFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // 3 renommer le fichier avec un nom unique
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$coverFile->guessExtension();
+
+                // 4 déplacer le fichier dans le dossier publique
+                $coverFile->move(
+                    $this->getParameter( 'cover_directory'),
+                    $newFilename
+                );
+
+                // 5 enregistrer le nom du fichier dan sla colonne coverFilename
+                    $club->setCoverFilename($newFilename);
+            }
+
             $entityManager->persist($club);
             $entityManager->flush();
         }
