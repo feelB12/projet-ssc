@@ -18,12 +18,16 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form>
-                <div id="divSearch">
-                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
-                    {% block search %}{% endblock search %}
-                </div>
+            <form action="{{ path('search_clubs') }}">
+                <article class="detail">
+                    <div class="card-text" id="divSearch">
+                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                        </div>
+                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        {% block search %}{% endblock search %}
+                    </div>
+                </article>
             </form>
         </div>
         <div class="line">

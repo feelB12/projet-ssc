@@ -62,14 +62,14 @@ class AdminClubController extends AbstractController
         //$this->addFlash('error', "Le club existe déja ou... !");
         $this->addFlash('success', "Le Club a bien été créer !");
 
-        return $this->render('admin/club_create.html.twig',[
+        return $this->render('admin/club.html.twig',[
             'clubForm' => $clubForm->createView()
         ]);
     }
     /**
      * @Route("admin/club/update/{id}", name="admin_club_update")
      */
-    public function updateClub($id, Request $request, ClubRepository $clubRepository, EntityManagerInterface $entityManager)
+    public function updateClub($id, Request $request, ClubRepository $clubRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
     {
         $club = $clubRepository->find($id);
 
@@ -77,9 +77,33 @@ class AdminClubController extends AbstractController
         $clubForm->handleRequest($request);
 
         if ($clubForm->isSubmitted() && $clubForm->isValid()) {
+            // gestion de l'upload img
+            // 1 recupérer les fichiers uploadé
+            $coverFile = $clubForm->get('coverFilename')->getData();
+
+            if ($coverFile) {
+                // 2 recupérer le nom du fichiers uploadé
+                $originalFilename = pathinfo($coverFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // 3 renommer le fichier avec un nom unique
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $coverFile->guessExtension();
+
+                // 4 déplacer le fichier dans le dossier publique
+                $coverFile->move(
+                    $this->getParameter('cover_directory'),
+                    $newFilename
+                );
+
+                // 5 enregistrer le nom du fichier dan sla colonne coverFilename
+                $club->setCoverFilename($newFilename);
+            }
+
             $entityManager->persist($club);
             $entityManager->flush();
         }
+        $this->addFlash('error', "les champ n'ont pas tous été modifié!");
+        $this->addFlash('success', "Le Club a bien été modifié !");
 
         return $this->render('admin/club_update.html.twig',[
             'clubForm' => $clubForm->createView()

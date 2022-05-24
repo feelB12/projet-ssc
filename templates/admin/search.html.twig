@@ -7,6 +7,16 @@
 {% endblock stylesheets %}
 
 {% block main %}
+    <form action="{{ path('admin_search_clubs') }}">
+        <div id="divSearch">
+            <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
+            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal"></div>
+            <input type="submit">
+            {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+            {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
+        </div>
+    </form>
+    <!--
     <div class="">
         <form>
             <div id="divSearch">
@@ -16,7 +26,7 @@
         </form>
     </div>
 
-    <!--
+
      <form>
         <input type="search" name="q" placeholder="Rechercher" >
         <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">

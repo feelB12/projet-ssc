@@ -3,7 +3,6 @@
     padding: 0;
     text-align: center;
     font-size: 1.3rem;
-    color: #CDCDCD;
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     list-style-type: none;
@@ -116,6 +115,7 @@ footer {
     z-index: 2000;
 }
 .footer {
+    top:10vh;
     position: sticky;
     display: flex;
     height: 10vh;
@@ -136,15 +136,17 @@ main {
 }
 section {
     width: 100%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+section .al{
+    width: 60%;
 }
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 article {
 }
 #ico {
@@ -164,11 +166,11 @@ article {
 }
 .title {
     height: auto;
-    margin-top:20%;
 }
 .line {
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 5%;
     border-bottom: solid 2px #CDCDCD;
 }
 #divSearch {
@@ -233,28 +235,33 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #CDCDCD;
 }
-
+.mg10{
+    margin: 10%;
+}
 .card-text {
-    color: #CDCDCD;
-    margin: 2%;
+    padding: 5%;
     text-align: justify;
+    justify-content: center;
+}
+.card-t {
+    margin: 10% 0 5% 15%;
+    text-align: justify;
+    justify-content: center;
 }
 .card-text h1 {
+    width: 100%;
     color: #eb5d00; /* orange text */
-    display: inline-block;
-    padding-bottom: 1rem;
+    display: inline;
 }
 .card-text h2, h3, p {
     text-align: start;
     color: #CDCDCD;
-    display: inline-block;
+    display: inline;
     padding: 1rem;
 }
 .card-text h4{
-    color: #CDCDCD;
-    font-size: small;
+    font-size: 0.8rem;
 }
 .container {
     margin: auto;
@@ -268,9 +275,9 @@ article {
     /* margin: 0 auto;Center it */
 }
 .justifyBox {
+    margin-top: 20%;
     position: relative;
-    margin-right: 15%;
-    padding: 3%;
+    padding: 5%;
     display: flex;
     align-items: start;
 
@@ -340,8 +347,36 @@ article {
     flex-direction: row;
     justify-content: space-between;
 }
+#abs5 {
+    left:22%;
+    width: 56%;
+    display: inline-flex;
+    object-fit: cover;
+    background-color: #fb1bff;
+    color: #FFFFFF;
+    margin-top: 55%;
+    height:auto;
+}
 #sta1 {
     width: border-box;
+}
+.ban{
+    width:700px;
+}
+.adm-btn{
+    border: solid 2px #CDCDCD;
+    display: flex;
+    justify-content: space-around;
+}
+.adm-btn li h4{
+    display: flex;
+}
+.adm-btn h4{
+    font-size: 0.8rem;
+    display: flex;
+}
+.ln{
+    border-bottom: solid 2px #CDCDCD;
 }
 .static {
     position: static;
@@ -396,6 +431,7 @@ form{
 }
 
 .border {
+    width:60%;
 }
 
 .relative {
@@ -445,8 +481,6 @@ form{
 /* Full width *   width: 100%; /
 /* Some padding padding: 20px;
 */
-
-
 .content p{
     color: #385cff;
     display: inline-block;
@@ -456,26 +490,46 @@ form{
     padding-top: 2rem;
 }
 
+/***********************
+// flexbox
+************************/
+
 .flex {
     display: flex;
 }
-
+.justify-between {
+    justify-content: space-around;
+}
 .justify-center {
     justify-content: center;
 }
-
-.fdr{
+.align-center {
+    align-items: center;
+}
+.fdr {
     flex-direction: row;
     width: 25%;
     margin: auto;
     height: auto;
 }
-.justify-between {
-    justify-content: space-between;
+label {
+    display: flex;
+    padding: 5%;
 }
+.pad5 {
 
-.align-center {
-    align-items: center;
+}
+#link1 {
+    color:#385CFF;
+}
+#link2 {
+    color:#4fb16a;
+}
+#link3 {
+    color:#fb1bff;
+}
+#link4 {
+    color:#eb5d00;
 }
 
 .w40 {
@@ -485,6 +539,7 @@ form{
 .w30 {
     width: 30%;
 }
+
 .top20 {
     margin-top: 20%;
 }
@@ -519,7 +574,7 @@ form{
 }
 @media screen and (min-width: 1280px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .carousel-item {
@@ -538,6 +593,11 @@ form{
     .logoBig {
         height: 5vh;
     }
+    .adm-btn h4{
+        font-size: 1.25rem;
+        display: flex;
+    }
+
 }
 
 @media screen and (min-width: 992px) {
@@ -548,17 +608,21 @@ form{
     select,
     optgroup,
     textarea {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     h1 {
-        font-size: 2.75rem;
+        font-size: 3rem;
     }
     .logoBig {
         height: 7vh;
     }
     .carousel-item {
         flex-basis: 325px;
+    }
+    .ban{
+        margin-top: 80%;
+        padding: 0;
     }
 }
 @media screen and (min-width: 1600px) {
@@ -569,6 +633,6 @@ form{
     select,
     optgroup,
     textarea {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 }

@@ -7,8 +7,8 @@
 {% endblock stylesheets %}
 
 {% block search %}
-    <form>
-        <input type="search" name="q" placeholder="Rechercher" >
+    <form  action="{{ path('search_clubs') }}">
+        <input type="search" name="query" placeholder="Rechercher" >
         <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">
         <input type="submit" value="Lancer !">
     </form>

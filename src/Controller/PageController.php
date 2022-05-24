@@ -81,4 +81,73 @@ class PageController extends AbstractController
                 'clubs' => $clubs
             ]);
         }
+    /**
+     * @Route("admin/home", name="admin_home")
+     */
+    public function adminHome(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
+    {
+        $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastClubs =$clubRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastShops = $shopRepository->findBy([], ['id' => 'DESC'], 3);
+
+        $skateparks = $skateparkRepository->findAll();
+        $sessions = $sessionRepository->findAll();
+        $clubs = $clubRepository->findAll();
+        $shops = $shopRepository->findAll();
+
+        return $this->render( "admin/home.html.twig", [
+            'clubs' => $clubs,
+            'skateparks' => $skateparks,
+            'sessions' => $sessions,
+            'shops' => $lastShops,
+            'lastClubs' => $lastClubs,
+            'lastSkateparks' => $lastSkateparks,
+            'lastSessions' => $lastSessions,
+            'lastShops' =>$lastShops
+        ]);
+    }
+    /**
+     * @Route("admin/", name="admin_accueil")
+     */
+    public function adminAccueil(SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository, ClubRepository $clubRepository )
+    {
+        $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastClubs =$clubRepository->findBy([], ['id' => 'DESC'], 1);
+        $lastShops = $shopRepository->findBy([], ['id' => 'DESC'], 1);
+
+        $skateparks = $skateparkRepository->findAll();
+        $sessions = $sessionRepository->findAll();
+        $clubs = $clubRepository->findAll();
+        $shops = $shopRepository->findAll();
+
+        return $this->render( "admin/home.html.twig", [
+            'clubs' => $clubs,
+            'skateparks' => $skateparks,
+            'sessions' => $sessions,
+            'lastClubs' => $lastClubs,
+            'lastSkateparks' => $lastSkateparks,
+            'lastSessions' => $lastSessions,
+            'shops' => $lastShops,
+            'lastShops' =>$lastShops
+        ]);
+
+    }
+    /**
+     * @Route("admin/searchs", name="admin_search_all")
+     */
+    public function adminSearchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
+    {
+        // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
+        $word = $request->query->get('query');
+
+        // je fais ma requête en BDD grâce à la méthode que j'ai créée searchByTitle
+        $clubs = $clubRepository->searchByTitle($word);
+
+
+        return $this->render('admin_clubs_search.html.twig', [
+            'clubs' => $clubs
+        ]);
+    }
 }

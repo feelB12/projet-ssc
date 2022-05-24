@@ -19,11 +19,14 @@
         <div class="">
             {% block search %}
                 <form action="{{ path('admin_search_shops') }}">
-                    <div id="divSearch">
-                        <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal"></div>
-                        <input type="submit">
-                         </div>
+                    <article class="detail">
+                        <div class="card-text" id="divSearch">
+                            <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            </div>
+                            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                            </div>
+                        </div>
+                    </article>
                 </form>
             {% endblock search %}
         </div>

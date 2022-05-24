@@ -5,7 +5,6 @@ body {
   overflow-x: hidden;
 }
 a  {
-  text-decoration: none;
   color: #385cff;
   transition: color 0.3s ease;
 }
@@ -79,9 +78,7 @@ a  {
 #searchToogle input:checked ~ span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
-
-
-#search{
+#search {
   display: flex;
   position: absolute;
   width: 400px;
@@ -102,7 +99,6 @@ a  {
   display: flex;
   align-items: center;
 }
-
 
 #search li {
   color: #FFFFFF;
