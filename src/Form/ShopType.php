@@ -20,6 +20,8 @@ class ShopType extends AbstractType
             ->add('zippcode')
             ->add('town')
             ->add('area')
+            ->add('longitude')
+            ->add('latitude')
             ->add('coverFilename', FileType::class, [
                 'mapped' => false,
                 'required' => false,

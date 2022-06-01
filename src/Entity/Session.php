@@ -74,6 +74,16 @@ class Session
      */
     private $latitudeStartAt;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitudeFinishAt;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitudeFinishAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -207,6 +217,30 @@ class Session
     public function setLatitudeStartAt(?float $latitudeStartAt): self
     {
         $this->latitudeStartAt = $latitudeStartAt;
+
+        return $this;
+    }
+
+    public function getLongitudeFinishAt(): ?float
+    {
+        return $this->longitudeFinishAt;
+    }
+
+    public function setLongitudeFinishAt(?float $longitudeFinishAt): self
+    {
+        $this->longitudeFinishAt = $longitudeFinishAt;
+
+        return $this;
+    }
+
+    public function getLatitudeFinishAt(): ?float
+    {
+        return $this->latitudeFinishAt;
+    }
+
+    public function setLatitudeFinishAt(?float $latitudeFinishAt): self
+    {
+        $this->latitudeFinishAt = $latitudeFinishAt;
 
         return $this;
     }

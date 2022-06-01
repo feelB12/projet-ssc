@@ -62,11 +62,6 @@ class Shop
      */
     private $latitude;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $club;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -175,18 +170,6 @@ class Shop
     public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    public function getClub(): ?string
-    {
-        return $this->club;
-    }
-
-    public function setClub(?string $club): self
-    {
-        $this->club = $club;
 
         return $this;
     }

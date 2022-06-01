@@ -22,6 +22,10 @@ class SessionType extends AbstractType
             ->add('area')
             ->add('startAt')
             ->add('finishedAt')
+            ->add('longitudeStartAt')
+            ->add('latitudeStartAt')
+            ->add('longitudeFinishAt')
+            ->add('latitudeFinishAt')
             ->add('coverFilename', FileType::class, [
                 'mapped' => false,
                 'required' => false,

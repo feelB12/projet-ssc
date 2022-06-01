@@ -20,6 +20,8 @@ class ClubType extends AbstractType
             ->add('zippcode')
             ->add('town')
             ->add('area')
+            ->add('longitude')
+            ->add('latitude')
             //->add('skatepark', EntityType::class, [
              //       'class'=> Skatepark::class,
               //      'choice_label' => 'title'
