@@ -52,6 +52,16 @@ class Skatepark
      */
     private $coverFilename;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +147,30 @@ class Skatepark
     public function setCoverFilename(?string $coverFilename): self
     {
         $this->coverFilename = $coverFilename;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?float $latitude): self
+    {
+        $this->latitude = $latitude;
 
         return $this;
     }

@@ -348,13 +348,12 @@ article {
     justify-content: space-between;
 }
 #abs5 {
-    left:22%;
-    width: 56%;
+    margin-left:18%;
     display: inline-flex;
     object-fit: cover;
     background-color: #fb1bff;
     color: #FFFFFF;
-    margin-top: 55%;
+    margin-top: 43%;
     height:auto;
 }
 #sta1 {
@@ -383,6 +382,7 @@ article {
 }
 
 .absolute {
+    object-fit: cover;
     position: absolute;
     opacity: 0.9;
 }
@@ -597,7 +597,6 @@ label {
         font-size: 1.25rem;
         display: flex;
     }
-
 }
 
 @media screen and (min-width: 992px) {

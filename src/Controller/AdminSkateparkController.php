@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminSkateparkController extends AbstractController
 {
@@ -25,13 +26,34 @@ class AdminSkateparkController extends AbstractController
     /**
      * @Route("admin/skatepark/create", name="admin_skatepark_create")
      */
-    public function createSkatepark(Request $request, EntityManagerInterface $entityManager)
+    public function createSkatepark(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
         $skatepark = new Skatepark();
         $skateparkForm = $this->createForm(SkateparkType::class, $skatepark);
         $skateparkForm->handleRequest($request);
 
         if ($skateparkForm->isSubmitted() && $skateparkForm->isValid()) {
+            // gestion de l'upload img
+            // 1 recupérer les fichiers uploadé
+            $coverFile = $skateparkForm->get('coverFilename')->getData();
+
+            if ($coverFile) {
+                // 2 recupérer le nom du fichiers uploadé
+                $originalFilename = pathinfo($coverFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // 3 renommer le fichier avec un nom unique
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$coverFile->guessExtension();
+
+                // 4 déplacer le fichier dans le dossier publique
+                $coverFile->move(
+                    $this->getParameter( 'cover_directory'),
+                    $newFilename
+                );
+
+                // 5 enregistrer le nom du fichier dan sla colonne coverFilename
+                $skatepark->setCoverFilename($newFilename);
+            }
             $entityManager->persist($skatepark);
             $entityManager->flush();
         }
@@ -45,7 +67,7 @@ class AdminSkateparkController extends AbstractController
     /**
      * @Route("admin/skatepark/update/{id}", name="admin_skatepark_update")
      */
-    public function updateSkatepark($id, Request $request, SkateparkRepository $skateparkRepository, EntityManagerInterface $entityManager)
+    public function updateSkatepark($id, Request $request, SkateparkRepository $skateparkRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
     {
         $skatepark = $skateparkRepository->find($id);
 
@@ -53,9 +75,32 @@ class AdminSkateparkController extends AbstractController
         $skateparkForm->handleRequest($request);
 
         if ($skateparkForm->isSubmitted() && $skateparkForm->isValid()) {
+            // gestion de l'upload img
+            // 1 recupérer les fichiers uploadé
+            $coverFile = $skateparkForm->get('coverFilename')->getData();
+
+            if ($coverFile) {
+                // 2 recupérer le nom du fichiers uploadé
+                $originalFilename = pathinfo($coverFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // 3 renommer le fichier avec un nom unique
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $coverFile->guessExtension();
+
+                // 4 déplacer le fichier dans le dossier publique
+                $coverFile->move(
+                    $this->getParameter('cover_directory'),
+                    $newFilename
+                );
+
+                // 5 enregistrer le nom du fichier dan sla colonne coverFilename
+                $skatepark->setCoverFilename($newFilename);
+            }
             $entityManager->persist($skatepark);
             $entityManager->flush();
         }
+        $this->addFlash('error', "les champ n'ont pas tous été modifié!");
+        $this->addFlash('success', "Le skatepark a bien été modifié !");
 
         return $this->render('admin/skatepark_update.html.twig',[
             'skateparkForm' => $skateparkForm->createView()

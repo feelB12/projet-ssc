@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
 {% block metatitle %}
@@ -12,21 +13,24 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
             {% block search %}
                 <form action="{{ path('admin_search_sessions') }}">
-                    <article class="detail">
-                        <div class="card-text" id="divSearch">
-                            <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
-                            </div>
-                            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                            </div>
+                    <div id="divSearch">
+                        <div class="btn logo icon">
+                            <label for="userId">
+                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                            </label>
                         </div>
-                    </article>
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        <input type="submit">
+                    </div>
                 </form>
             {% endblock search %}
         </div>
@@ -43,35 +47,60 @@
         </article>
     </section>
     <section class="section">
-        <article>
+        <h3 class="al"> Aller à :</h3>
+
             {% for session in sessions %}
-                <div class="card">
                     <div class="card-text">
-                        <h1>{{ session.title }}</h1>
-                        {#  <img src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt=""> #}
-                        <h2>{{ session.description}}</h2>
+                        <div class="card-t">
+                            <h1>{{ session.title }}</h1>
+                        </div>
+                        <div id="abs5" class="absolute ban" alt="banner-address">
+                            <h2>{{ session.address}} {{ session.town}}</h2>
+                        </div>
+                        <div id="sta1" class="static">
+                            <b>
+                                <img class="img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
+                            </b>
+                        </div>
+                    </div>
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ session.description}}</h2>
+                    <div>
                         <h3>{{ session.town}}</h3>
+                    </div>
+                    <div>
                         <h3>{{ session.area}}</h3>
+                    </div>
                         {% if session.startAt %}
-                            <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
-                        {% else %}
-                            <h3>La session n'est pas commencé </h3>
+                            <div>
+                                <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
+                            </div>
+                             {% else %}
+                                 <div>
+                                     <h3>La session n'est pas commencé </h3>
+                                 </div>
                         {% endif %}
                         {% if session.finishedAt %}
-                            <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
-                        {% else %}
-                            <h3>La session n'est pas finie </h3>
+                            <div>
+                                <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
+                            </div>
+                             {% else %}
+                                 <div>
+                                     <h3>La session n'est pas finie </h3>
+                                 </div>
                         {% endif %}
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
-                    </div>
-                    <a class="link" href="{{ path('admin_session', {"id": session.id}) }}">Voir la session</a>
-                    <a class="link" href="{{ path('admin_session_create', {"id": session.id}) }}">Créer un session</a>
-                    <a class="link" href="{{ path('admin_session_update', {"id": session.id}) }}">Modifier un session</a>
-                    <a class="link" href="{{ path('admin_session_delete', {"id": session.id}) }}">Supprimer la session</a>
                 </div>
-            {% endfor %}
-        </article>
+            </div>
+            <ul class="adm-btn">
+                <li><a id="link1" class="pad5" href="{{ path('admin_session', {"id": session.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session"><br><h4>Voir la session</h4></a></li>
+                <li><a id="link2" class="pad5" href="{{ path('admin_session_create', {"id": session.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session"><br><h4>Créer une session</h4></a></li>
+                <li><a id="link3" class="pad5" href="{{ path('admin_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session"><br><h4>Modifier une session</h4></a></li>
+                <li><a id="link4" class="pad5" href="{{  path('admin_session_delete', {"id": session.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer la session"><br><h4>Supprimer la session</h4></a></li>
+            </ul>
+       {% endfor %}
     </section>
 {% endblock main%}

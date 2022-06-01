@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
 {% block metatitle %}
@@ -12,21 +13,23 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="Shops"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_shops') }}" src="{{ asset('icon/shops.png') }}" alt="Shops-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
             {% block search %}
                 <form action="{{ path('admin_search_shops') }}">
-                    <article class="detail">
-                        <div class="card-text" id="divSearch">
-                            <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
-                            </div>
-                            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                            </div>
+                    <div id="divSearch">
+                        <div class="btn logo icon">
+                            <label for="userId">
+                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
                         </div>
-                    </article>
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        <input type="submit">
+                    </div>
                 </form>
             {% endblock search %}
         </div>
@@ -43,26 +46,31 @@
         </article>
     </section>
     <section class="section">
-        <article>
-            {% for shop in shops %}
-                <div class="card">
-                    <div class="card-text">
-                        <h1>{{ shop.title }}</h1>
-                        {#     <img src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt=""> #}
-                        <h2>{{ shop.description}}</h2>
-                        <h3>{{ shop.town}}</h3>
-                        <h3>{{ shop.area}}</h3>
-                        {#     {% if shop.skatepark %} #}
-                        {#         <h3>{{ shop.skatepark.town }} {{ shop.skatepark.area }}</h3> #}
-                        {#     {% endif %} #}
-                    </div>
+        <h3 class="al"> Aller à :</h3>
 
-                    <a class="link" href="{{ path('admin_shop', {"id": shop.id}) }}">Voir le shop</a>
-                    <a class="link" href="{{ path('admin_shop_create', {"id": shop.id}) }}">Créer un shop</a>
-                    <a class="link" href="{{ path('admin_shop_update', {"id": shop.id}) }}">Modifier le shop</a>
-                    <a class="link" href="{{ path('admin_shop_delete', {"id": shop.id}) }}">Supprimer le shop</a>
+            {% for shop in shops %}
+                <div class="card-text">
+                    <div class="card-t">
+                        <h1>{{ shop.title }}</h1>
+                    </div>
+                    <div id="abs5" class="absolute ban" alt="banner-address">
+                        <h2>{{ shop.address}} {{ shop.town}}</h2>
+                    </div>
+                    <div id="sta1" class="static">
+                        <b>
+                            <img class="img-card" src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt="photo-shop">
+                        </b>
+                    </div>
+                    {#             {% if skatepark.club %} #}
+                    {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
+                    {#                    {% endif %} #}
                 </div>
+                <ul class="adm-btn">
+                    <li><a id="link1" class="pad5" href="{{ path('admin_shop', {"id": shop.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le shop"><br><h4>Voir le shop</h4></a></li>
+                    <li><a id="link2" class="pad5" href="{{ path('admin_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
+                    <li><a id="link3" class="pad5" href="{{ path('admin_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un shop"><br><h4>Modifier un shop</h4></a></li>
+                    <li><a id="link4" class="pad5" href="{{ path('admin_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop"><br><h4>Supprimer le shop</h4></a></li>
+                </ul>
             {% endfor %}
-        </article>
     </section>
 {% endblock main%}

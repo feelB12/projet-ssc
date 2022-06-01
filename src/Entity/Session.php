@@ -64,6 +64,16 @@ class Session
      */
     private $coverFilename;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitudeStartAt;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitudeStartAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -173,6 +183,30 @@ class Session
     public function setCoverFilename(?string $coverFilename): self
     {
         $this->coverFilename = $coverFilename;
+
+        return $this;
+    }
+
+    public function getLongitudeStartAt(): ?float
+    {
+        return $this->longitudeStartAt;
+    }
+
+    public function setLongitudeStartAt(?float $longitudeStartAt): self
+    {
+        $this->longitudeStartAt = $longitudeStartAt;
+
+        return $this;
+    }
+
+    public function getLatitudeStartAt(): ?float
+    {
+        return $this->latitudeStartAt;
+    }
+
+    public function setLatitudeStartAt(?float $latitudeStartAt): self
+    {
+        $this->latitudeStartAt = $latitudeStartAt;
 
         return $this;
     }

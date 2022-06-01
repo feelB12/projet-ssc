@@ -13,21 +13,28 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
+            {% block search %}
                 <form action="{{ path('admin_search_clubs') }}">
                     <div id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal"></div>
+                        <div class="btn logo icon">
+                        <label for="userId">
+                            <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                        </label>
+                        </div>
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
                         <input type="submit">
                         {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
                          {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
                     </div>
                 </form>
-            {% block search %} {% endblock search %}
+            {% endblock search %}
         </div>
         <div class="line">
         </div>
@@ -37,24 +44,25 @@
             <article class="">
             </article>
             <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d22633.81659527818!2d-0.5881872095058547!3d44.83730877971263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1secole%20skateboard%20bordeaux!5e0!3m2!1sfr!2sfr!4v1653350068064!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </article>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d22633.81659527818!2d-0.5881872095058547!3d44.83730877971263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1secole%20skateboard%20bordeaux!5e0!3m2!1sfr!2sfr!4v1653350068064!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
     </section>
     <section class="section">
         <h3 class="al"> Aller à :</h3>
             {% for club in clubs %}
                     <div class="card-text">
                         <div class="card-t">
-                        <h1>{{ club.title }}</h1>
+                            <h1>{{ club.title }}</h1>
                         </div>
-                            <div id="abs5" class="absolute ban" alt="banner-address">
-                                <h2>{{ club.address}} {{ club.town}}</h2>
-                            </div>
-                            <div id="sta1" class="static">
-                                <b>
-                                    <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
-                                </b>
-                            </div>
-
+                        <div id="abs5" class="absolute ban" alt="banner-address">
+                            <h2>{{ club.address}} {{ club.town}}</h2>
+                        </div>
+                        <div id="sta1" class="static">
+                            <b>
+                                <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
+                            </b>
+                        </div>
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}

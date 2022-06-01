@@ -52,6 +52,21 @@ class Shop
      */
     private $coverFilename;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $club;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +151,42 @@ class Shop
     public function setCoverFilename(?string $coverFilename): self
     {
         $this->coverFilename = $coverFilename;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?float $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?float $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getClub(): ?string
+    {
+        return $this->club;
+    }
+
+    public function setClub(?string $club): self
+    {
+        $this->club = $club;
 
         return $this;
     }
