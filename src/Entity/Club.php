@@ -62,6 +62,11 @@ class Club
      */
     private $latitude;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $map;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Club
     public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getMap(): ?string
+    {
+        return $this->map;
+    }
+
+    public function setMap(?string $map): self
+    {
+        $this->map = $map;
 
         return $this;
     }
