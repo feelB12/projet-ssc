@@ -311,10 +311,19 @@ article {
     justify-items: stretch;
     text-align: center;
 }
-.image
+#tmsession
+{
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.image-session
 {
     display: flex;
-    color: #CDCDCD;
 }
 #bk
 {
@@ -348,22 +357,20 @@ article {
     justify-content: space-between;
 }
 #abs5 {
-    margin-left:18%;
+    margin: 50% 14% 0 ;
     display: inline-flex;
     object-fit: cover;
     background-color: #fb1bff;
     color: #FFFFFF;
-    margin-top: 43%;
     height:auto;
 }
 #sta1 {
     width: border-box;
 }
 .ban{
-    width:700px;
+    width:705px;
 }
 .adm-btn{
-    border: solid 2px #CDCDCD;
     display: flex;
     justify-content: space-around;
 }
@@ -594,7 +601,7 @@ label {
         height: 5vh;
     }
     .adm-btn h4{
-        font-size: 1.25rem;
+        font-size: 1rem;
         display: flex;
     }
 }
@@ -607,7 +614,7 @@ label {
     select,
     optgroup,
     textarea {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     h1 {

@@ -1,7 +1,7 @@
-{% extends "admin/base.html.twig" %}
+{% extends "profile/base.html.twig" %}
 
 {% block metatitle %}
-    {{ session.title }} | Skateboard Social Club
+    {{ club.title }} | Skateboard Social Club
 {% endblock metatitle %}
 
 {% block stylesheets %}
@@ -13,12 +13,12 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('admin_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('admin_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+            <div class="element"><img class="logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('admin_search_sessions') }}">
+            <form action="{{ path('profile_search_clubs') }}">
                 <article class="detail">
                     <div class="card-text" id="divSearch">
                         <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
@@ -30,12 +30,13 @@
                 </article>
             </form>
         </div>
-        <div class="line"></div>
+        <div class="line">
+        </div>
         <article class="card-detail">
-            <div class="card-title"><h1>{{ session.title }}</h1><br></div>
+                <div class="card-title"><h1>{{ club.title }}</h1><br></div>
         </article>
         <article class="card-address">
-            <div class="card-title"><h2>{{ session.address }} {{ session.town }}</h2></div>
+            <div class="card-title"><h2>{{ club.address }} {{ club.town }}</h2></div>
         </article>
         <article class="detail">
             <div class="card-text">
@@ -53,7 +54,7 @@
                         </div>
                         <div id="sta1" class="static">
                             <b>
-                                <img class="img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
+                                <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
                             </b><br />
                         </div>
                     </div>
@@ -130,63 +131,26 @@
             <div class="card-text">
                 <div>
                     <ul class="adm-btn">
-                        <li><a id="link3" class="pad5" href="{{ path('admin_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un club"><br><h4>Modifier un club</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('admin_session_delete', {"id": session.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club"><br><h4>Supprimer le club</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('admin_session_create', {"id": session.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club"><br><h4>Créer un club</h4></a></li>
+                        <li><a id="link3" class="pad5" href="{{ path('profile_club_update', {"id": club.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un club"><br><h4>Modifier un club</h4></a></li>
+                        <li><a id="link4" class="pad5" href="{{ path('profile_club_delete', {"id": club.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club"><br><h4>Supprimer le club</h4></a></li>
+                        <li><a id="link2" class="pad5" href="{{ path('profile_club_create', {"id": club.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club"><br><h4>Créer un club</h4></a></li>
                     </ul>
                 </div>
                 <div class="justifyBox">
-                    <p>{{ session.description }}{{ session.description }}</p>
+                    <p>{{ club.description }}{{ club.description }}</p>
                 </div>
             </div>
             <div class="card-text">
-                <div class="card-text">
-                    <iframe src="https://www.google.com/maps?q=[{{session.address}}{{session.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <iframe src="https://www.google.com/maps?q=[{{club.address}}{{club.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </article>
         <!--<div class="card" style="border:solid 2px darkblue;"><img class="car" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;"></div>-->
         {#  {% for club in skatepark.clubs %}<p>{{ club.f }}</p>{% endfor %} #}
         {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
     </section>
-    <section class="section">
-        <article class="book-detail">
-            <article class="">
-            </article>
-            <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            {#        <div class="book-image">#}
-            {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
-            {#        </div>#}
-        </article>
-    </section>
-    <section class="section">
-        <article>
-            <div class="card-text">
-                <h1>{{ session.title }}</h1><br>
-                <h3>{{ session.description }}</h3><br>
-                <h3>{{ session.address }}</h3><br>
-                <h3>{{ session.town }}</h3><br>
-                <h3>{{ session.area }}</h3><br>
-                {% if session.startAt %}
-                    <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3>
-                {% else %}
-                    <h3>La session n'est pas commencé </h3>
-                {% endif %}
-                {% if session.finishedAt %}
-                    <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3>
-                {% else %}
-                    <h3>La session n'est pas finie </h3>
-                {% endif %}
-                {#  {% for club in skatepark.clubs %} #}
-                {#    <p>{{ club.title }}</p> #}
-                {#    {% endfor %} #}
+    {#        <div class="book-image">#}
+    {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+    {#        </div>#}
 
-                {#  {% if club.skatepark %}  #}
-                {#   <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
-                {#{% endif %} #}
-            </div>
-        </article>
-    </section>
+
 {% endblock main %}

@@ -11,22 +11,22 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class AdminSkateparkController extends AbstractController
+class UserSkateparkController extends AbstractController
 {
     /**
-     * @Route("admin/skateparks", name="admin_skateparks")
+     * @Route("profile/skateparks", name="profile_skateparks")
      */
-    public function adminSkateparks(SkateparkRepository $skateparkRepository)
+    public function profileSkateparks(SkateparkRepository $skateparkRepository)
     {
         $skateparks = $skateparkRepository->findAll();
-        return $this->render('admin/skateparks.html.twig', [
+        return $this->render('profile/skateparks.html.twig', [
             'skateparks' => $skateparks
         ]);
     }
     /**
-     * @Route("admin/skatepark/create", name="admin_skatepark_create")
+     * @Route("profile/skatepark/create", name="profile_skatepark_create")
      */
-    public function createSkatepark(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
+    public function UserCreateSkatepark(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
         $skatepark = new Skatepark();
         $skateparkForm = $this->createForm(SkateparkType::class, $skatepark);
@@ -60,14 +60,14 @@ class AdminSkateparkController extends AbstractController
         //$this->addFlash('error', "Le skatepark existe déja ou... !");
         $this->addFlash('success', "Le Skatepark a bien été créer !");
 
-        return $this->render('admin/skatepark_create.html.twig',[
+        return $this->render('profile/skatepark_create.html.twig',[
             'skateparkForm' => $skateparkForm->createView()
         ]);
     }
     /**
-     * @Route("admin/skatepark/update/{id}", name="admin_skatepark_update")
+     * @Route("profile/skatepark/update/{id}", name="profile_skatepark_update")
      */
-    public function updateSkatepark($id, Request $request, SkateparkRepository $skateparkRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
+    public function UserUpdateSkatepark($id, Request $request, SkateparkRepository $skateparkRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
     {
         $skatepark = $skateparkRepository->find($id);
 
@@ -102,36 +102,36 @@ class AdminSkateparkController extends AbstractController
         $this->addFlash('error', "les champ n'ont pas tous été modifié!");
         $this->addFlash('success', "Le skatepark a bien été modifié !");
 
-        return $this->render('admin/skatepark_update.html.twig',[
+        return $this->render('profile/skatepark_update.html.twig',[
             'skateparkForm' => $skateparkForm->createView()
         ]);
     }
     /**
-     * @Route("admin/skatepark/{id}", name="admin_skatepark")
+     * @Route("profile/skatepark/{id}", name="profile_skatepark")
      */
-    public function adminSkatepark($id, SkateparkRepository $skateparkRepository)
+    public function profileSkatepark($id, SkateparkRepository $skateparkRepository)
     {
         $skatepark = $skateparkRepository->find($id);
-        return $this->render('admin/skatepark.html.twig', [
+        return $this->render('profile/skatepark.html.twig', [
             'skatepark' => $skatepark
         ]);
     }
     /**
-     * @Route("admin/skatepark/delete/{id}", name="admin_skatepark_delete")
+     * @Route("profile/skatepark/delete/{id}", name="profile_skatepark_delete")
      */
-    public function deleteSkatepark($id, EntityManagerInterface $entityManager, SkateparkRepository $skateparkRepository)
+    public function UserDeleteSkatepark($id, EntityManagerInterface $entityManager, SkateparkRepository $skateparkRepository)
     {
         $skatepark = $skateparkRepository->find($id);
 
         $entityManager->remove($skatepark);
         $entityManager->flush();
 
-        return $this->redirectToRoute("admin_skateparks");
+        return $this->redirectToRoute("profile_skateparks");
     }
     /**
-     * @Route("admin/search", name="admin_search_skateparks")
+     * @Route("profile/search", name="profile_search_skateparks")
      */
-    public function adminSearchSkateparks(SkateparkRepository $skateparkRepository, Request $request)
+    public function profileSearchSkateparks(SkateparkRepository $skateparkRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');
@@ -139,7 +139,7 @@ class AdminSkateparkController extends AbstractController
         // je fais ma requête en BDD grâce à la méthode que j'ai créée searchByTitle
         $skateparks = $skateparkRepository->searchByTitle($word);
 
-        return $this->render('admin/skateparks_search.html.twig', [
+        return $this->render('profile/skateparks_search.html.twig', [
             'skateparks' => $skateparks
         ]);
     }

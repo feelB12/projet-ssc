@@ -4,19 +4,17 @@ namespace App\Controller;
 
 use App\Repository\ClubRepository;
 use App\Repository\SessionRepository;
-use App\Repository\ShopRepository;
-use App\Repository\SkateparkRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\HttpFoundation\Request;
 
-class AdminSearchController extends AbstractController
+
+class UserSearchController extends AbstractController
 {
     /**
-     * @Route("admin/searchs", name="search_all")
+     * @Route("profile/searchs", name="search_all")
      */
-    public function adminSearchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
+    public function profileSearchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');
@@ -25,7 +23,7 @@ class AdminSearchController extends AbstractController
         $clubs = $clubRepository->searchByTitle($word);
 
 
-        return $this->render('admin/clubs_search.html.twig', [
+        return $this->render('profile/clubs_search.html.twig', [
             'clubs' => $clubs
         ]);
     }

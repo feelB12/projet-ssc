@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>{% block metatitle %}welcome {{ app.user.email }} | Skateboard Social Club{% endblock metatitle%}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    </head>
+<body>
+    <header>
+        <nav role='navigation' id="main">
+            <a class="left logo resp" href="{{ path('profile_home') }}"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo"></a>
+            <ul>
+                <a href="">
+                    <li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li>
+                </a>
+                <a href="{{ path('login') }}">
+                    <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
+                </a>
+                    <li>
+                            <div id="searchToogle">
+                                <input type="checkbox"/>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                    <ul class="cont" id="search">
+                                    <a href=""><li class="col"><img class="logo" src="{{ asset('icon/loupe.png') }}" alt="login">
+                                            <div>
+                                                {% block search %}
+                                                {% endblock search %}
+                                            </div>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                        </li>
+                    <li>
+                    <div id="menuToggle">
+                        <input type="checkbox"/>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul class="cont" id="menu">
+                            <a href="{{ path('profile_sessions') }}"><li class="col">SESSIONS</li></a>
+                            <a href="{{ path('profile_skateparks') }}"><li class="col">SKATEPARKS</li></a>
+                            <a href="{{ path('profile_clubs') }}"><li class="col">CLUBS</li></a>
+                            <a href="{{ path('profile_shops') }}"><li class="col">SHOPS</li></a>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="detail">
+            <p>Vous êtes connecté en tant que {{ app.user.email }}</p>
+        </div>
+
+        {# si message flashes type 'success' echo  #}
+        {% for message in app.flashes('success')%}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% for message in app.flashes('error')%}
+            <div class="alert alert-error">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block main %}{% endblock main %}
+    </main >
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#main" class="flex-end">
+                        <img src="{{ asset('icon/fleche_droite.png') }}" alt="logo" class="left logo resp arrow">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>

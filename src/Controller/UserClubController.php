@@ -11,23 +11,23 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class AdminClubController extends AbstractController
+class UserClubController extends AbstractController
 {
     /**
-     * @Route("admin/clubs", name="admin_clubs")
+     * @Route("profile/clubs", name="profile_clubs")
      */
-    public function adminClubs(ClubRepository $clubRepository)
+    public function profileClubs(ClubRepository $clubRepository)
     {
         $clubs = $clubRepository->findAll();
-        return $this->render('admin/clubs.html.twig', [
+        return $this->render('profile/clubs.html.twig', [
             'clubs' => $clubs
         ]);
     }
 
     /**
-     * @Route("admin/club/create", name="admin_club_create")
+     * @Route("profile/club/create", name="profile_club_create")
      */
-    public function createClub(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
+    public function profileCreateClub(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
         $club = new Club();
         $clubForm = $this->createForm(ClubType::class, $club);
@@ -44,16 +44,16 @@ class AdminClubController extends AbstractController
 
                 // 3 renommer le fichier avec un nom unique
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$coverFile->guessExtension();
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $coverFile->guessExtension();
 
                 // 4 déplacer le fichier dans le dossier publique
                 $coverFile->move(
-                    $this->getParameter( 'cover_directory'),
+                    $this->getParameter('cover_directory'),
                     $newFilename
                 );
 
                 // 5 enregistrer le nom du fichier dan sla colonne coverFilename
-                    $club->setCoverFilename($newFilename);
+                $club->setCoverFilename($newFilename);
             }
 
             $entityManager->persist($club);
@@ -62,14 +62,15 @@ class AdminClubController extends AbstractController
         //$this->addFlash('error', "Le club existe déja ou... !");
         $this->addFlash('success', "Le Club a bien été créer !");
 
-        return $this->render('admin/club.html.twig',[
+        return $this->render('profile/club.html.twig', [
             'clubForm' => $clubForm->createView()
         ]);
     }
+
     /**
-     * @Route("admin/club/update/{id}", name="admin_club_update")
+     * @Route("profile/club/update/{id}", name="profile_club_update")
      */
-    public function updateClub($id, Request $request, ClubRepository $clubRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
+    public function profileUpdateClub($id, Request $request, ClubRepository $clubRepository, SluggerInterface $slugger, EntityManagerInterface $entityManager)
     {
         $club = $clubRepository->find($id);
 
@@ -106,36 +107,39 @@ class AdminClubController extends AbstractController
         // $this->addFlash('error', "les champ n'ont pas tous été modifié!");
         $this->addFlash('success', "Le Club a bien été modifié !");
 
-        return $this->render('admin/club_update.html.twig',[
+        return $this->render('profile/club_update.html.twig', [
             'clubForm' => $clubForm->createView()
         ]);
     }
+
     /**
-     * @Route("admin/club/{id}", name="admin_club")
+     * @Route("profile/club/{id}", name="name="profile_club")
      */
-    public function adminClub($id, ClubRepository $clubRepository)
+    public function profileClub($id, ClubRepository $clubRepository)
     {
         $club = $clubRepository->find($id);
-        return $this->render('admin/club.html.twig', [
+        return $this->render('profile/club.html.twig', [
             'club' => $club
         ]);
     }
+
     /**
-     * @Route("admin/club/delete/{id}", name="admin_club_delete")
+     * @Route("profile/club/delete/{id}", name="profile_club_delete")
      */
-    public function deleteClub($id, EntityManagerInterface $entityManager, ClubRepository $clubRepository)
+    public function profileDeleteClub($id, EntityManagerInterface $entityManager, ClubRepository $clubRepository)
     {
         $club = $clubRepository->find($id);
 
         $entityManager->remove($club);
         $entityManager->flush();
 
-        return $this->redirectToRoute("admin_clubs");
+        return $this->redirectToRoute("profile_clubs");
     }
+
     /**
-     * @Route("admin/search", name="admin_search_clubs")
+     * @Route("profile/search", name="profile_search_clubs")
      */
-    public function adminSearchClubs(ClubRepository $clubRepository, Request $request)
+    public function profileSearchClubs(ClubRepository $clubRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');
@@ -143,7 +147,7 @@ class AdminClubController extends AbstractController
         // je fais ma requête en BDD grâce à la méthode que j'ai créée searchByTitle
         $clubs = $clubRepository->searchByTitle($word);
 
-        return $this->render('admin/clubs_search.html.twig', [
+        return $this->render('profile/clubs_search.html.twig', [
             'clubs' => $clubs
         ]);
     }
