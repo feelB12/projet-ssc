@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +16,12 @@ class UserType extends AbstractType
             ->add('roles')
             ->add('password')
             ->add('coverFilename')
-            ->add('valider', SubmitType::class)
+            ->add('name')
+            ->add('firstName')
+            ->add('title')
+            ->add('address')
+            ->add('zippcode')
+            ->add('town')
         ;
     }
 
