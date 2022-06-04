@@ -1,0 +1,77 @@
+{% extends "front/base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block metatitle %}
+    Users | Skateboard Social user
+{% endblock metatitle %}
+
+{% block main %}
+    <section class="">
+        <div id="ico">
+            <div class="element"><img class="title logoBig" href="{{ path('users') }}" src="{{ asset('icon/users_titre.png') }}" alt="user"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('users') }}" src="{{ asset('icon/user.png') }}" alt="user-icon"></div>
+        </div>
+        <div class="line"></div>
+        <div class="">
+            <form action="{{ path('search_users') }}">
+                <article class="detail">
+                    <div class="card-text" id="divSearch">
+                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                        </div>
+                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        {% block search %}{% endblock search %}
+                    </div>
+                </article>
+            </form>
+        </div>
+        <div class="line">
+        </div>
+    </section>
+    <section class="section">
+        <article class="book-detail">
+            <article class="">
+            </article>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d45267.45075272003!2d-0.571391187931922!3d44.837541008065486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sskatepark%20bordeaux!5e0!3m2!1sfr!2sfr!4v1653259114005!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
+    </section>
+    <section class="section">
+        {% for user in users %}
+            <div class="card">
+                <div class="card-text">
+                    <h1>{{ user.title }}</h1>
+                    {#  <img src="{{ asset('uploads/cover/'~user.coverFilename) }}" alt=""> #}
+                    <h2>{{ user.description}}</h2>
+                    <h3>{{ user.town}}</h3>
+                    <h3>{{ user.area}}</h3>
+                    {#             {% if skatepark.user %} #}
+                    {#                        <h3>{{ skatepark.user.town }} {{ skatepark.user.area }}</h3> #}
+                    {#                    {% endif %} #}
+                    <div class="card-ic">
+                        <div id="adm-btn" class="adm-btn">
+                            <div class="ic" ><a id="link1" href="{{ path('profile_user', {"id": user.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir l'utilisateur">
+                                    <br><h4 class="pad5">Voir l'utilisateur</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link2" href="{{ path('profile_user_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer u'utilisateur">
+                                    <br><h4 class="pad5">Créer un utilisateur</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link3" href="{{ path('profile_user_update', {"id": user.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier l'utilisateur">
+                                    <br><h4 class="pad5">Modifier l'utilisateur</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link4" href="{{ path('profile_user_delete', {"id": user.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer l'utilisateur">
+                                    <br><h4 class="pad5">Supprimer l'utilisateur</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock main%}

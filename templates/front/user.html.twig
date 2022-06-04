@@ -1,0 +1,150 @@
+{% extends "front/base.html.twig" %}
+
+{% block metatitle %}
+    {{ user.title }} | Skateboard Social user
+{% endblock metatitle %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <section class="">
+        <div id="ico">
+            <div class="element"><img class="title logoBig" href="{{ path('users') }}" src="{{ asset('icon/users_titre.png') }}" alt="user"></div>
+            <div class="element"><img class="logoBig" href="{{ path('users') }}" src="{{ asset('icon/user.png') }}" alt="user-icon"></div>
+        </div>
+        <div class="line"></div>
+        <div class="">
+            <form action="{{ path('search_users') }}">
+                <article class="detail">
+                    <div class="card-text" id="divSearch">
+                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                        </div>
+                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        {% block search %}{% endblock search %}
+                    </div>
+                </article>
+            </form>
+        </div>
+        <div class="line"></div>
+        <article class="card-detail">
+            <div class="card-title"><h1>{{ user.title }}</h1><br></div>
+        </article>
+        <article class="card-address">
+            <div class="card-title"><h2>{{ user.address }} {{ user.town }}</h2></div>
+        </article>
+        <article class="detail">
+            <div class="card-text">
+                <div class="" id="tm">
+                    <div class="" id="tmbk">
+                        <div id="abs1" class="absolute">
+                            <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
+                            </b><br />
+                        </div>
+                        <div id="abs2" class="absolute">
+                            <b><img class="arrow-right right logoBig resp" src="{{ asset('icon/fleche_droite.png') }}" alt="Next">
+                            </b><br />
+                        </div>
+                        <div id="sta1" class="static">
+                            <b>
+                                <img class="img-card" src="{{ asset('uploads/cover/'~user.coverFilename) }}" alt="photo-user">
+                            </b><br />
+                        </div>
+                    </div>
+                    <div class="image">
+                        <table>
+                            <tr>
+                                <td>Lundi</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>fermé</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Mardi</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Mercredi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Jeudi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td>21:00</td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                            </tr>
+                            <tr>
+                                <td> 14:00 - </td>
+                                <td> 19:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-text">
+                <div class="list">
+                    <ul id="abs4" class="absolute indicators ">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <article class="detail">
+            <div class="card-text">
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('profile_user_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un utilisateur">
+                                <br><h4 class="pad5">Créer un utilisateur</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('profile_user_update', {"id": user.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier l'utilisateur">
+                                <br><h4 class="pad5">Modifier l'utilisateur</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('profile_user_delete', {"id": user.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer l'utilisateur">
+                                <br><h4 class="pad5">Supprimer l'utilisateur</h4></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="justifyBox">
+                    <p>{{ user.description }}{{ user.description }}</p>
+                </div>
+            </div>
+            <div class="card-text">
+                <iframe src="https://www.google.com/maps?q=[{{user.address}}{{user.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </article>
+    </section>
+
+{% endblock main %}
