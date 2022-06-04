@@ -13,8 +13,16 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></div>
+            <div class="element">
+                <a href="{{ path('profile_sessions') }}">
+                    <img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Sessions">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('profile_sessions') }}">
+                    <img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Sessions-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -39,8 +47,8 @@
         </article>
         <article class="detail">
             <div class="card-text">
-                <div class="" id="tmsession">
-                    <div class="image-session" id="tmbk">
+                <div class="" id="tm">
+                    <div class="" id="tmbk">
                         <div id="abs1" class="absolute">
                             <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
                             </b><br />
@@ -57,42 +65,11 @@
                             </b><br />
                         </div>
                     </div>
-                    <div class="image-session">
-                        <div class="">
-                            <h4>{{ session.description }}</h4>
-                            <h4>{{ session.address }}</h4>
-                            <h4>{{ session.town }}</h4>
-                            <h4>{{ session.area }}</h4>
-                            {% if session.startAt %}
-                                    <h4>La session est commencé depuis:</h4>
-                                    <h4> {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h4>
-                            {% else %}
-                                <div>
-                                    <h4>La session n'est pas commencé </h4>
-                                </div>
+                    <div class="image">
+                        <table>
 
-                            {% endif %}
-                            {% if session.finishedAt %}
-                                <div>
-                                    <h4>La session est finie depuis:</h4>
-                                    <h4> {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h4>
-                                </div>
-                            {% else %}
-                                <div>
-                                    <h4>La session n'est pas finie </h4>
-                                </div>
-                            {% endif %}
-                        </div>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="card-text">
-                <div class="list">
-                    <ul id="abs4" class="absolute indicators ">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
                 </div>
             </div>
         </article>
@@ -100,27 +77,45 @@
     <section>
         <article class="detail">
             <div class="card-text">
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link1" class="pad5" href="{{ path('profile_session', {"id": session.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session"><br><h4>Voir la session</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('profile_session_create', {"id": session.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session"><br><h4>Créer une session</h4></a></li>
-                        <li><a id="link3" class="pad5" href="{{ path('profile_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session"><br><h4>Modifier une session</h4></a></li>
-                    </ul>
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('profile_session_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session">
+                                <br><h4 class="pad5">Créer une session</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('profile_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session">
+                                <br><h4 class="pad5">Modifier une session</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('profile_session_delete', {"id": session.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le session">
+                                <br><h4 class="pad5">Supprimer le session</h4></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="justifyBox">
                     <p>{{ session.description }}{{ session.description }}</p>
                 </div>
             </div>
             <div class="card-text">
-                <div class="card-text">
-                    <iframe src="https://www.google.com/maps?q=[{{session.address}}{{session.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <iframe src="https://www.google.com/maps?q=[{{session.address}}{{session.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </article>
     </section>
     <section class="section">
         <article>
-
+            <div class="justifyBox">
+                <h3>{{ session.address }}</h3><br>
+                <h3>{{ session.town }}</h3><br>
+                <h3>{{ session.area }}</h3><br>
+                {% if session.startAt %}
+                    <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                {% else %}
+                    <h3>La session n'est pas commencé </h3><br>
+                {% endif %}
+                {% if session.finishedAt %}
+                    <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                {% else %}
+                    <h3>La session n'est pas finie </h3><br>
+                {% endif %}
+            </div>
         </article>
     </section>
 {% endblock main %}

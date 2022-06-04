@@ -153,6 +153,7 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 5rem;
 }
 .homeElement{
     display: flex;
@@ -248,6 +249,10 @@ article {
     margin: 10% 0 5% 15%;
     text-align: justify;
     justify-content: center;
+}
+.card-ic {
+    margin: 0 2rem 0 2rem;
+    border: solid 2px pink;
 }
 .card-text h1 {
     width: 100%;
@@ -357,23 +362,36 @@ article {
     justify-content: space-between;
 }
 #abs5 {
-    margin: 50% 14% 0 ;
     display: inline-flex;
     object-fit: cover;
     background-color: #fb1bff;
     color: #FFFFFF;
     height:auto;
+    border:  solid 2px #fb1bff;
 }
 #sta1 {
     width: border-box;
 }
 .ban{
-    width:705px;
+    width:700px;
+    margin: 30rem 2.6rem 0 ;
 }
 .adm-btn{
     display: flex;
-    justify-content: space-around;
+
 }
+#adm-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: disc;
+}
+.ic {
+    display: flex;
+    padding: 1rem 2rem 0 2rem;
+}
+
 .adm-btn li h4{
     display: flex;
 }
@@ -525,6 +543,7 @@ label {
 }
 .pad5 {
 
+    visibility: hidden;
 }
 #link1 {
     color:#385CFF;
@@ -579,15 +598,7 @@ label {
     border-radius: 50%;
     border: solid 1px #CDCDCD;
 }
-@media screen and (min-width: 1280px) {
-    h1 {
-        font-size: 2.5rem;
-    }
 
-    .carousel-item {
-        flex-basis: 450px;
-    }
-}
 
 
 /********************************
@@ -604,6 +615,7 @@ label {
         font-size: 1rem;
         display: flex;
     }
+
 }
 
 @media screen and (min-width: 992px) {
@@ -627,8 +639,31 @@ label {
         flex-basis: 325px;
     }
     .ban{
-        margin-top: 80%;
-        padding: 0;
+        width:700px;
+        margin: 30rem 8.75rem 0 ;
+    }
+    .card-ic {
+        margin:0 9rem 0 9rem;
+        border: solid 2px pink;
+    }
+    .adm-btn{
+        width:700px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .carousel-item {
+        flex-basis: 450px;
+    }
+    .pad5 {
+        visibility: visible;
+    }
+    .adm-btn{
+        display: flex;
+        justify-content: space-around;
     }
 }
 @media screen and (min-width: 1600px) {
@@ -641,4 +676,5 @@ label {
     textarea {
         font-size: 1.5rem;
     }
+
 }

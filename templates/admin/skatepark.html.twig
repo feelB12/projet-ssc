@@ -124,14 +124,22 @@
                 </div>
             </div>
         </article>
+    </section>
+    <section>
         <article class="detail">
             <div class="card-text">
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link3" class="pad5" href="{{ path('admin_skatepark_update', {"id": skatepark.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un skatepark"><br><h4>Modifier un skatepark</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('admin_skatepark_delete', {"id": skatepark.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark"><br><h4>Supprimer le skatepark</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('admin_skatepark_create', {"id": skatepark.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark"><br><h4>Créer un skatepark</h4></a></li>
-                    </ul>
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('admin_skatepark_create', {"id": skatepark.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark">
+                                <br><h4 class="pad5">Créer un skatepark</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('admin_skatepark_update', {"id": skatepark.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un skatepark">
+                                <br><h4 class="pad5">Modifier le skatepark</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('admin_skatepark_delete', {"id": skatepark.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark">
+                                <br><h4 class="pad5">Supprimer le skatepark</h4></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="justifyBox">
                     <p>{{ skatepark.description }}{{ skatepark.description }}</p>
@@ -144,46 +152,5 @@
         <!--<div class="card" style="border:solid 2px darkblue;"><img class="car" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;"></div>-->
         {#  {% for club in skatepark.clubs %}<p>{{ club.f }}</p>{% endfor %} #}
         {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
-    </section>
-    {#        <div class="book-image">#}
-    {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
-    {#        </div>#}
-    <section class="section">
-        <article class="book-detail">
-            <article class="">
-            </article>
-            <div class="card-text">
-                <iframe src="https://www.google.com/maps?q=[{{skatepark.address}}{{skatepark.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </article>
-    </section>
-    <section>
-        <article class="book-detail">
-            <!--<div>
-                <form>
-                    <img src="{ asset('icon/loupe.png') }}" alt="loupe" class="logo">
-                    <input type="search" name="q" placeholder="Rechercher">
-                    <input type="submit" value="Lancer !">
-                </form>
-            </div>
-            -->
-            <div class="card-text">
-                <h1>{{ skatepark.title }}</h1><br>
-                <h3>{{ skatepark.address }} {{ skatepark.town }}</h3>
-                <div class="container">
-                    <img src="{{ asset('uploads/darwin.jpg') }}" alt="map" style="width:100%;">
-                </div>
-            </div>
-            <div class="card-text">
-                <h1>{{ skatepark.title }}</h1>
-                <h3>{{ skatepark.description }}</h3>
-                <h3>{{ skatepark.address }}</h3>
-                <h3>{{ skatepark.town }}</h3>
-
-                {#  {% for club in skatepark.clubs %} #}
-                {#    <p>{{ club.title }}</p> #}
-                {#    {% endfor %} #}
-            </div>
-        </article>
     </section>
 {% endblock main %}

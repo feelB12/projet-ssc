@@ -153,7 +153,7 @@ class PageController extends AbstractController
     /**
      * @Route("profile/home", name="profile_home")
      */
-    public function profileHome(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
+    public function UserHome(ShopRepository $shopRepository, SessionRepository $sessionRepository, SkateparkRepository $skateparkRepository, ClubRepository $clubRepository )
     {
         $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 3);
         $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 3);
@@ -179,7 +179,7 @@ class PageController extends AbstractController
     /**
      * @Route("profile/", name="profile_accueil")
      */
-    public function profileAccueil(SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository, ClubRepository $clubRepository )
+    public function UserAccueil(SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository, ClubRepository $clubRepository )
     {
         $lastSkateparks =$skateparkRepository->findBy([], ['id' => 'DESC'], 1);
         $lastSessions =$sessionRepository->findBy([], ['id' => 'DESC'], 1);
@@ -206,7 +206,7 @@ class PageController extends AbstractController
     /**
      * @Route("profile/searchs", name="profile_search_all")
      */
-    public function profileSearchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
+    public function UserSearchs(SessionRepository $sessionRepository,ClubRepository $clubRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');
@@ -220,3 +220,4 @@ class PageController extends AbstractController
         ]);
     }
 }
+

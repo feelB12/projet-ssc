@@ -13,9 +13,17 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></div>
-        </div>
+            <div class="element">
+                <a href="{{ path('profile_sessions') }}">
+                    <img class="title logoBig" src="{{ asset('icon/sessions_titre.png') }}" alt="Sessions">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('profile_sessions') }}">
+                    <img class="title logoBig" src="{{ asset('icon/session.png') }}" alt="Sessions-icon">
+                </a>
+            </div>
+         </div>
         <div class="line"></div>
         <div class="">
             {% block search %}
@@ -92,14 +100,25 @@
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
+                        <div class="card-ic">
+                            <div id="adm-btn" class="adm-btn">
+                                <div class="ic" ><a id="link1" href="{{ path('profile_session', {"id": session.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session">
+                                        <br><h4 class="pad5">Voir la session</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link2" href="{{ path('profile_session_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session">
+                                        <br><h4 class="pad5">Créer une session</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link3" href="{{ path('profile_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session">
+                                        <br><h4 class="pad5">Modifier une session</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link4" href="{{ path('profile_session_delete', {"id": session.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le session">
+                                        <br><h4 class="pad5">Supprimer le session</h4></a>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
-            <ul class="adm-btn">
-                <li><a id="link1" class="pad5" href="{{ path('profile_session', {"id": session.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session"><br><h4>Voir la session</h4></a></li>
-                <li><a id="link2" class="pad5" href="{{ path('profile_session_create', {"id": session.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session"><br><h4>Créer une session</h4></a></li>
-                <li><a id="link3" class="pad5" href="{{ path('profile_session_update', {"id": session.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session"><br><h4>Modifier une session</h4></a></li>
-                <li><a id="link4" class="pad5" href="{{  path('profile_session_delete', {"id": session.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer la session"><br><h4>Supprimer la session</h4></a></li>
-            </ul>
+
        {% endfor %}
     </section>
 {% endblock main%}

@@ -64,13 +64,24 @@
                     {#             {% if skatepark.club %} #}
                     {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                     {#                    {% endif %} #}
+
+                    <div class="card-ic">
+                        <div id="adm-btn" class="adm-btn">
+                            <div class="ic" ><a id="link1" href="{{ path('admin_shop', {"id": shop.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le shop">
+                                    <br><h4 class="pad5">Voir le shop</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link2" href="{{ path('admin_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop">
+                                    <br><h4 class="pad5">Créer un shop</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link3" href="{{ path('admin_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un shop">
+                                    <br><h4 class="pad5">Modifier un shop</h4></a>
+                            </div>
+                            <div class="ic" ><a id="link4" href="{{ path('admin_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop">
+                                    <br><h4 class="pad5">Supprimer le shop</h4></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="adm-btn">
-                    <li><a id="link1" class="pad5" href="{{ path('admin_shop', {"id": shop.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le shop"><br><h4>Voir le shop</h4></a></li>
-                    <li><a id="link2" class="pad5" href="{{ path('admin_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
-                    <li><a id="link3" class="pad5" href="{{ path('admin_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un shop"><br><h4>Modifier un shop</h4></a></li>
-                    <li><a id="link4" class="pad5" href="{{ path('admin_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop"><br><h4>Supprimer le shop</h4></a></li>
-                </ul>
             {% endfor %}
     </section>
 {% endblock main%}

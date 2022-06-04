@@ -14,46 +14,10 @@
     <section class="section">
         <div class="detail">
             <div class="justify-between flex fdr">
-                <div class="flex">
-                    {{ form(skateparkForm)}}
-                    {{ form_start(skateparkForm) }}
-
-                    {{ form_label(skateparkForm.title, 'titre', {
-                        'label_attr': {
-                            'class': 'testLabelClass'
-                        }
-                    }) }}
-
-                    {{ form_widget(skateparkForm.title, {
-                        'attr': {
-                            'class': 'testClass'
-                        }
-                    }) }}
-
-                    {{ form_label(skateparkForm.description) }}
-                    {{ form_widget(skateparkForm.description) }}
-
-                    {{ form_label(skateparkForm.address) }}
-                    {{ form_widget(skateparkForm.address) }}
-
-                    {{ form_label(skateparkForm.zippcode) }}
-                    {{ form_widget(skateparkForm.zippcode) }}
-
-                    {{ form_label(skateparkForm.town) }}
-                    {{ form_widget(skateparkForm.town) }}
-
-                    {{ form_label(skateparkForm.area) }}
-                    {{ form_widget(skateparkForm.area) }}
-
-                    {{ form_label(skateparkForm.coverfilename) }}
-                    {{ form_widget(skateparkForm.coverfilename) }}
-
-                    {{ form_widget(skateparkForm.submit) }}
-
-                    {{ form_end(skateparkForm) }}
+                <div class="flex pad10">
+                    {{ form(skateparkForm) }}
                 </div>
             </div>
         </div>
     </section>
 {% endblock main %}
-

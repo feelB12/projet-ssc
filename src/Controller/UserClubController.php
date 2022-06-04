@@ -62,7 +62,7 @@ class UserClubController extends AbstractController
         //$this->addFlash('error', "Le club existe déja ou... !");
         $this->addFlash('success', "Le Club a bien été créer !");
 
-        return $this->render('profile/club.html.twig', [
+        return $this->render('profile/club_create.html.twig', [
             'clubForm' => $clubForm->createView()
         ]);
     }
@@ -113,7 +113,7 @@ class UserClubController extends AbstractController
     }
 
     /**
-     * @Route("profile/club/{id}", name="name="profile_club")
+     * @Route("profile/club/{id}", name="profile_club")
      */
     public function profileClub($id, ClubRepository $clubRepository)
     {

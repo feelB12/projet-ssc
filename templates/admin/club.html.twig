@@ -13,8 +13,16 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            <div class="element">
+                <a href="{{ path('admin_clubs') }}">
+                    <img class="title logoBig" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('admin_clubs') }}">
+                    <img class="title logoBig" src="{{ asset('icon/club.png') }}" alt="Club-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -129,12 +137,18 @@
     <section>
         <article class="detail">
             <div class="card-text">
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link3" class="pad5" href="{{ path('admin_club_update', {"id": club.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un club"><br><h4>Modifier un club</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('admin_club_delete', {"id": club.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club"><br><h4>Supprimer le club</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('admin_club_create', {"id": club.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club"><br><h4>Créer un club</h4></a></li>
-                    </ul>
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('admin_club_create', {"id": club.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club">
+                                <br><h4 class="pad5">Créer un club</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('admin_club_update', {"id": club.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le club">
+                                <br><h4 class="pad5">Modifier le club</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('admin_club_delete', {"id": club.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club">
+                                <br><h4 class="pad5">Supprimer le club</h4></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="justifyBox">
                     <p>{{ club.description }}{{ club.description }}</p>
@@ -148,9 +162,4 @@
         {#  {% for club in skatepark.clubs %}<p>{{ club.f }}</p>{% endfor %} #}
         {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
     </section>
-    {#        <div class="book-image">#}
-    {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
-    {#        </div>#}
-
-
 {% endblock main %}

@@ -7,13 +7,22 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="titre logoBig" href="{{ path('admin_shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('admin_shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+                <div class="element">
+                    <a href="{{ path('admin_shops') }}">
+                        <img class="titre logoBig" src="{{ asset('icon/shops_titre.png') }}" alt="Shops">
+                    </a>
+                </div>
+                <div class="element">
+                    <a href="{{ path('admin_shops') }}">
+                        <img class="title logoBig" src="{{ asset('icon/shops.png') }}" alt="Shops-icon">
+                    </a>
+                </div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -116,7 +125,7 @@
             </div>
             <div class="card-text">
                 <div class="list">
-                    <ul id="abs4" class="absolute indicators ">
+                    <ul id="abs4" class="absolute indicators">
                         <li></li>
                         <li></li>
                         <li></li>
@@ -124,56 +133,33 @@
                 </div>
             </div>
         </article>
+    </section>
+    <section>
         <article class="detail">
             <div class="card-text">
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('admin_shop_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop">
+                                <br><h4 class="pad5">Créer un shop</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('admin_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le shop">
+                                <br><h4 class="pad5">Modifier le shop</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('admin_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop">
+                                <br><h4 class="pad5">Supprimer le shop</h4></a>
+                        </div>
+                    </div>
+                </div>
                 <div class="justifyBox">
                     <p>{{ shop.description }}{{ shop.description }}</p>
                 </div>
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link3" class="pad5" href="{{ path('admin_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un shop"><br><h4>Modifier un shop</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('admin_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop"><br><h4>Supprimer le shop</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('admin_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
-                    </ul>
-                </div>
-
             </div>
             <div class="card-text">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.6974937602668!2d-0.5611412842345931!3d44.84809358236132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55262a0604501b%3A0x57782374d796fd66!2sHangar%20Darwin%20Skatepark!5e0!3m2!1sfr!2sfr!4v1650801288770!5m2!1sfr!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                <iframe src="https://www.google.com/maps?q=[{{shop.address}}{{shop.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </article>
         <!--<div class="card" style="border:solid 2px darkblue;"><img class="car" src="{{ asset('uploads/darwin-cover.jpg') }}" alt="map" style="width:100%;"></div>-->
         {#  {% for club in skatepark.clubs %}<p>{{ club.f }}</p>{% endfor %} #}
         {#  {% if club.skatepark %}<h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>{% endif %} #}
-    </section>
-    <section class="section">
-        <article class="book-detail">
-            <article class="">
-            </article>
-            <div class="card-text">
-                <iframe src="https://www.google.com/maps?q=[{{shop.address}}{{shop.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-                {#        <div class="book-image">#}
-                {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
-                {#        </div>#}
-        </article>
-    </section>
-    <section class="section">
-        <article>
-            <div class="card-text">
-                <h1>{{ shop.title }}</h1><br>
-                <h3>{{ shop.description }}</h3><br>
-                <h3>{{ shop.address }}</h3><br>
-                <h3>{{ shop.town }}</h3><br>
-                <h3>{{ shop.area }}</h3><br>
-                {# {% if club.skatepark %} #}
-                 {#     <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3> #}
-                 {#  {% endif %} #}
-            </div>
-            <a class="link" href="{{ path('admin_shop_update', {"id": shop.id}) }}">Modifier le shop</a>
-            <a class="link" href="{{ path('admin_shop_delete', {"id": shop.id}) }}">Supprimer le shop</a>
-        </article>
     </section>
 {% endblock main %}

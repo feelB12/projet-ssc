@@ -11,7 +11,7 @@
 {% block main %}
 <section>
     <div class="">
-        <form action="{{ path('admin_search_clubs') }}">
+        <form action="{{ path('search_clubs') }}">
             <article class="detail">
                 <div class="card-text" id="divSearch">
                     <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
@@ -23,6 +23,14 @@
             </article>
         </form>
     </div>
+
+    <div class="right">
+        Tu n'a encore de compte créer en un en cliquant sur  , <a href="{{ path('profile_club_create') }}"><button> Créer </button></a>
+    </div>
+
+    <div>
+        <h2>  </h2>
+    </div>
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -30,7 +38,7 @@
 
         {% if app.user %}
             <div class="right">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}"><button> Logout </button></a>
             </div>
         {% endif %}
 

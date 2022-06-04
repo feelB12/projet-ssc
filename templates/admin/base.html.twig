@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav role='navigation' id="main">
-            <a class="left logo resp" href="{{ path('home') }}"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo"></a>
+            <a class="left logo resp" href="{{ path('admin_home') }}"><img src="{{ asset('logo/logo_blanc_trans.png') }}" alt="logo"></a>
             <ul>
                 <a href="">
                     <li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li>
@@ -21,6 +21,9 @@
                 <a href="{{ path('login') }}">
                     <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
                 </a>
+                    {#    <a href="{{ path('app_logout') }}">   #}
+                    {#      <li><img src="{{ asset('icon/login.png') }}" alt="logout" class=""></li>  #}
+                    {#   </a>   #}
                     <li>
                             <div id="searchToogle">
                                 <input type="checkbox"/>

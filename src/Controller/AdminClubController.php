@@ -62,7 +62,7 @@ class AdminClubController extends AbstractController
         //$this->addFlash('error', "Le club existe déja ou... !");
         $this->addFlash('success', "Le Club a bien été créer !");
 
-        return $this->render('admin/club.html.twig',[
+        return $this->render('admin/club_create.html.twig',[
             'clubForm' => $clubForm->createView()
         ]);
     }

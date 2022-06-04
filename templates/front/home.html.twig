@@ -12,30 +12,73 @@
 
 {% block main %}
        <section class="section">
-           <form>
-               <article class="detail">
-                   <div class="card-text" id="divSearch">
-                       <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+           <div class="">
+               <form action="{{ path('search_all') }}">
+                   <article class="detail">
+                       <div class="card-text" id="divSearch">
+                           <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                           </div>
+                           <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                           </div>
+                           {% block search %}{% endblock search %}
                        </div>
-                       <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal">
-                       </div>
-                       {% block search %}{% endblock search %}
-                    </div>
-               </article>
-           </form>
+                   </article>
+               </form>
+           </div>
                 <div class="line"></div>
            <article>
                <div class="homeElement">
-                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></a></div>
-                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></a></div>
+                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></a></div>
+                   <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></a></div>
                    </div>
                <div class="line"></div>
                {% for session in lastSessions %}
+               <article class="card-detail">
+                   <div class="card-title"><h1>{{ session.title }}</h1><br></div>
+               </article>
+               <article class="card-address">
+                   <div class="card-title"><h2>{{ session.address }} {{ session.town }}</h2></div>
+               </article>
+               <article class="detail">
+                   <div class="card-text">
+                       <div class="" id="tm">
+                           <div class="" id="tmbk">
+                               <div id="abs1" class="absolute">
+                                   <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
+                                   </b><br />
+                               </div>
+                               <div id="abs2" class="absolute">
+                                   <b>
+                                       <img class="arrow-right right logoBig resp" src="{{ asset('icon/fleche_droite.png') }}" alt="Next">
+                                   </b>
+                                   <br />
+                               </div>
+                               <div id="sta1" class="static">
+                                   <b>
+                                       <img class="img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
+                                   </b><br />
+                               </div>
+                           </div>
+                           </div>
+                    </div>
+               </article>
+           </article>
+    </section>
+    <section>
                    <div class="card">
                        <div class="card-text">
                            <h2>{{ session.title }}</h2>
                            <h3>{{ session.description }}</h3><br>
-                           <!--  if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3> -->
+                           {% if session.startAt %}
+                               <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                           {% else %}
+                               <h3>La session n'est pas commencé </h3><br>
+                           {% endif %}
+                           {% if session.finishedAt %}
+                               <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                           {% else %}
+                               <h3>La session n'est pas finie </h3><br>
+                           {% endif %}
                        </div>
                        <div class="card-image">
                            <!-- if session.finished <img src=" session.image }}" alt="image de la session"> -->

@@ -54,8 +54,23 @@
                         {#             {% if skatepark.club %} #}
                         {#                        <h3>{{ skatepark.club.town }} {{ skatepark.club.area }}</h3> #}
                         {#                    {% endif %} #}
+                        <div class="card-ic">
+                            <div id="adm-btn" class="adm-btn">
+                                <div class="ic" ><a id="link1" href="{{ path('club', {"id": club.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le club">
+                                        <br><h4 class="pad5">Voir le club</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link2" href="{{ path('profile_club_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club">
+                                        <br><h4 class="pad5">Créer un club</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link3" href="{{ path('profile_club_update', {"id": club.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le club">
+                                        <br><h4 class="pad5">Modifier le club</h4></a>
+                                </div>
+                                <div class="ic" ><a id="link4" href="{{ path('profile_club_delete', {"id": club.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club">
+                                        <br><h4 class="pad5">Supprimer le club</h4></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <a class="link" href="{{ path('club', {"id": club.id}) }}">Voir le club</a>
                 </div>
             {% endfor %}
         </section>

@@ -116,7 +116,7 @@
             </div>
             <div class="card-text">
                 <div class="list">
-                    <ul id="abs4" class="absolute indicators ">
+                    <ul id="abs4" class="absolute indicators">
                         <li></li>
                         <li></li>
                         <li></li>
@@ -124,41 +124,24 @@
                 </div>
             </div>
         </article>
+    </section>
+    <section>
         <article class="detail">
             <div class="card-text">
+                <div>
+                    <ul class="adm-btn">
+                        <li><a id="link2" class="pad5" href="{{ path('profile_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
+                        <li><a id="link3" class="pad5" href="{{ path('profile_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le shop"><br><h4>Modifier le shop</h4></a></li>
+                        <li><a id="link4" class="pad5" href="{{ path('profile_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop"><br><h4>Supprimer le shop</h4></a></li>
+                    </ul>
+                </div>
                 <div class="justifyBox">
                     <p>{{ shop.description }}{{ shop.description }}</p>
                 </div>
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link1" class="pad5" href="{{ path('profile_shop', {"id": shop.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le shop"><br><h4>Voir le shop</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('profile_shop_create', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
-                    </ul>
+            </div>
+                <div class="card-text">
+                    <iframe src="https://www.google.com/maps?q=[{{shop.address}}{{shop.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-            </div>
-        </article>
-    </section>
-    <section class="section">
-        <article class="book-detail">
-            <article class="">
-            </article>
-            <div class="card-text">
-                <iframe src="https://www.google.com/maps?q=[{{shop.address}}{{shop.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </article>
-    </section>
-    <section class="section">
-        <article>
-            <div class="card-text">
-                <h1>{{ shop.title }}</h1><br>
-                <h3>{{ shop.description }}</h3><br>
-                <h3>{{ shop.address }}</h3><br>
-                <h3>{{ shop.town }}</h3><br>
-                <h3>{{ shop.area }}</h3><br>
-
-            </div>
-            <a class="link" href="{{ path('profile_shop_update', {"id": shop.id}) }}">Modifier le shop</a>
-            <a class="link" href="{{ path('profile_shop_delete', {"id": shop.id}) }}">Supprimer le shop</a>
         </article>
     </section>
 {% endblock main %}

@@ -18,7 +18,7 @@
                 <a href="">
                     <li><img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo"></li>
                 </a>
-                <a href="">
+                <a href="{{ path('login') }}">
                     <li><img src="{{ asset('icon/login.png') }}" alt="login" class=""></li>
                 </a>
                     <li>
@@ -55,6 +55,23 @@
         </nav>
     </header>
     <main>
+        {% if app.user %}
+        <div class="detail">
+            <p>Vous êtes connecté en tant que {{ app.user.email }}</p>
+        </div>
+        {% endif %}
+        {# si message flashes type 'success' echo  #}
+        {% for message in app.flashes('success')%}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error')%}
+            <div class="alert alert-error">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block main %}{% endblock main %}
     </main >
     <footer class="footer">
