@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ClubRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ClubController extends AbstractController
@@ -24,6 +25,16 @@ class ClubController extends AbstractController
      */
     public function club($id, ClubRepository $clubRepository)
     {
+        $club = $clubRepository->find($id);
+
+        // si le club n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($club)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'club' => $club
+            ]);
+        }
+
         $club = $clubRepository->find($id);
         return $this->render('front/club.html.twig', [
             'club' => $club

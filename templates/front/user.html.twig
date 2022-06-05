@@ -13,8 +13,8 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('users') }}" src="{{ asset('icon/users_titre.png') }}" alt="user"></div>
-            <div class="element"><img class="logoBig" href="{{ path('users') }}" src="{{ asset('icon/user.png') }}" alt="user-icon"></div>
+            <div class="element"><img class="title logoBig" href="{{ path('front_users') }}" src="{{ asset('icon/login.png') }}" alt="user"></div>
+            <div class="element"><img class="logoBig" href="{{ path('front_users') }}" src="{{ asset('icon/club-flou1.png') }}" alt="user-icon"></div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -126,19 +126,19 @@
             <div class="card-text">
                 <div class="card-ic">
                     <div id="adm-btn" class="adm-btn">
-                        <div class="ic" ><a id="link2" href="{{ path('profile_user_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un utilisateur">
+                        <div class="ic" ><a id="link2" href="{{ path('front_user_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un utilisateur">
                                 <br><h4 class="pad5">Créer un utilisateur</h4></a>
                         </div>
-                        <div class="ic" ><a id="link3" href="{{ path('profile_user_update', {"id": user.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier l'utilisateur">
+                        <div class="ic" ><a id="link3" href="{{ path('front_user_update', {"id": user.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier l'utilisateur">
                                 <br><h4 class="pad5">Modifier l'utilisateur</h4></a>
                         </div>
-                        <div class="ic" ><a id="link4" href="{{ path('profile_user_delete', {"id": user.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer l'utilisateur">
+                        <div class="ic" ><a id="link4" href="{{ path('front_user_delete', {"id": user.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer l'utilisateur">
                                 <br><h4 class="pad5">Supprimer l'utilisateur</h4></a>
                         </div>
                     </div>
                 </div>
                 <div class="justifyBox">
-                    <p>{{ user.description }}{{ user.description }}</p>
+                    <p></p>
                 </div>
             </div>
             <div class="card-text">

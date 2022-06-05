@@ -1,7 +1,7 @@
 {% extends "front/base.html.twig" %}
 
 {% block metatitle %}
-    Créer un Compte | Skateboard Social Club
+    Modifier un utilisateur | Skateboard Social Club
 {% endblock metatitle %}
 
 {% block stylesheets %}
@@ -14,11 +14,10 @@
     <section class="section">
         <div class="detail">
             <div class="justify-between flex fdr">
-                <div class="flex pad10">
+                <div class="flex">
                     {{ form(userForm) }}
                 </div>
             </div>
         </div>
     </section>
 {% endblock main %}
-

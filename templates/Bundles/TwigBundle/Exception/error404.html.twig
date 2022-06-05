@@ -1,0 +1,83 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'front/base.html.twig' %}
+
+{% block metatitle %}
+    Erreur 404 | Skateboard Social Club
+{% endblock metatitle %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <section class="section">
+    <div class="">
+        <form action="{{ path('search_all') }}">
+            <article class="detail">
+                <div class="card-text" id="divSearch">
+                    <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                    </div>
+                    <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                    </div>
+                    {% block search %}{% endblock search %}
+                </div>
+            </article>
+        </form>
+    </div>
+    <div class="line">
+
+        <h1>La page n'a ps été trouvé car elle n'existe pas </h1>
+        <a class="" href="{{ path('home') }}"><img src="{{ asset('uploads/fallin-nyjah.jpg') }}" alt="logo"></a>
+
+        <p>
+            The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path('home') }}">return to the homepage</a>.
+        </p>
+    </div>
+    <article>
+    <div class="homeElement">
+        <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></a></div>
+        <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></a></div>
+    </div>
+    <div class="line"></div>
+
+    <a href="{{ path('sessions') }}">Voir toutes les sessions</a>
+    </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
+                <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
+            </div>
+            <div class="line"></div>
+
+            <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
+        </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+                <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            </div>
+            <div class="line"></div>
+
+            <a href="{{ path('clubs') }}">Voir tous les clubs</a>
+        </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
+                <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+            </div>
+            <div class="line"></div>
+
+            <a href="{{ path('shops') }}">Voir tous les shops</a>
+        </article>
+    </section>
+
+{% endblock main%}

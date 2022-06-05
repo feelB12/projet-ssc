@@ -21,7 +21,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         parent::__construct($registry, User::class);
     }
+    public function searchByTitle($word)
+    {
+        // j'utilise la méthode createQueryBuilder provenant de la classe parent
+        // et je définis un alias pour la table book
+        $queryBuilder = $this->createQueryBuilder('user');
 
+        // je demande à Doctrine de créer une requête SQL
+        // qui fait une requête SELECT sur la table club
+        // à condition que le titre du club
+        // contiennent le contenu de $word (à un endroit ou à un autre, grâce à LIKE %xxxx%)
+        $query = $queryBuilder->select('user')
+            ->where('user.title LIKE :word')
+            ->setParameter('word', '%'.$word.'%')
+            ->getQuery();
+
+        // je récupère les résultats de la requête SQL
+        // et je les retourne
+        return $query->getResult();
+    }
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */

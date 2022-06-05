@@ -8,6 +8,7 @@ use App\Repository\ClubRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -116,6 +117,7 @@ class AdminClubController extends AbstractController
     public function adminClub($id, ClubRepository $clubRepository)
     {
         $club = $clubRepository->find($id);
+
         return $this->render('admin/club.html.twig', [
             'club' => $club
         ]);

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -219,12 +220,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getZippcode(): ?string
+    public function getZippcode(): ?int
     {
         return $this->zippcode;
     }
 
-    public function setZippcode(?string $zippcode): self
+    public function setZippcode(?int $zippcode): self
     {
         $this->zippcode = $zippcode;
 
