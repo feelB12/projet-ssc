@@ -25,6 +25,15 @@ class SkateparkController extends AbstractController
     public function skatepark($id, SkateparkRepository $skateparkRepository)
     {
         $skatepark = $skateparkRepository->find($id);
+
+        // si le skatepark n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($skatepark)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'skatepark' => $skatepark
+            ]);
+        }
+        $skatepark =$skateparkRepository->find($id);
         return $this->render('front/skatepark.html.twig', [
             'skatepark' => $skatepark
         ]);

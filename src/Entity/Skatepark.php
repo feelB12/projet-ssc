@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SkateparkRepository;
 
@@ -61,6 +63,22 @@ class Skatepark
      * @ORM\Column(type="float", nullable=true)
      */
     private $latitude;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="articles")
+     */
+    private $categories;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Club::class, mappedBy="skateparks")
+     */
+    private $clubs;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->clubs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +189,60 @@ class Skatepark
     public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeArticle($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Club[]
+     */
+    public function getClubs(): Collection
+    {
+        return $this->clubs;
+    }
+
+    public function addClub(Club $club): self
+    {
+        if (!$this->clubs->contains($club)) {
+            $this->clubs[] = $club;
+            $club->addSkatepark($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClub(Club $club): self
+    {
+        if ($this->clubs->removeElement($club)) {
+            $club->removeSkatepark($this);
+        }
 
         return $this;
     }

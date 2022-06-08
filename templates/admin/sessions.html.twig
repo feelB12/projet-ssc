@@ -24,7 +24,8 @@
                 </a>
             </div>
         </div>
-        <div class="line"></div>
+        <div class="line">
+        </div>
         <div class="">
             {% block search %}
                 <form action="{{ path('admin_search_sessions') }}">
@@ -56,7 +57,6 @@
     </section>
     <section class="section">
         <h3 class="al"> Aller à :</h3>
-
         {% for session in sessions %}
             <div class="card-text">
                 <div class="card-t">
@@ -67,7 +67,7 @@
                 </div>
                 <div id="sta1" class="static">
                     <b>
-                        <img class="img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
+                        <img class="img img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
                     </b>
                 </div>
             </div>

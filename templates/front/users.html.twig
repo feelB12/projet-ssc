@@ -21,9 +21,9 @@
             <form action="{{ path('search_users') }}">
                 <article class="detail">
                     <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                        <div class="btn logo icon"><label ><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
                         </div>
                         {% block search %}{% endblock search %}
                     </div>
@@ -59,7 +59,7 @@
                             <div class="ic" ><a id="link1" href="{{ path('front_user', {"id": user.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir l'utilisateur">
                                     <br><h4 class="pad5">Voir l'utilisateur</h4></a>
                             </div>
-                            <div class="ic" ><a id="link2" href="{{ path('front_user_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer u'utilisateur">
+                            <div class="ic" ><a id="link2" href="{{ path('app_register') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer u'utilisateur">
                                     <br><h4 class="pad5">Créer un utilisateur</h4></a>
                             </div>
                             <div class="ic" ><a id="link3" href="{{ path('front_user_update', {"id": user.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier l'utilisateur">

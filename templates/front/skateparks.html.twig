@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 {% endblock stylesheets %}
 
 {% block metatitle %}
@@ -12,18 +13,34 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon"></div>
+            <div class="element">
+                <a href="{{ path('skateparks') }}">
+                    <img class="title logoBig" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('skateparks') }}">
+                    <img class="title logoBig" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
-            <form>
-                <div id="divSearch">
-                    <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div>
-                    <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div>
-                    {% block search %}{% endblock search %}
-                </div>
-            </form>
+            {% block search %}
+                <form action="{{ path('search_skateparks') }}">
+                    <div id="divSearch">
+                        <div class="btn logo icon">
+                            <label for="userId">
+                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                            </label>
+                        </div>
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        </div>
+                        <input type="submit">
+                    </div>
+                </form>
+            {% endblock search %}
         </div>
         <div class="line"></div>
     </section>

@@ -13,8 +13,17 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+
+            <div class="element">
+                <a href="{{ path('admin_clubs') }}">
+                    <img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Clubs">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('admin_clubs') }}">
+                    <img class="title logoBig" href="{{ path('admin_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Clubs-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
@@ -60,7 +69,7 @@
                         </div>
                         <div id="sta1" class="static">
                             <b>
-                                <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
+                                <img class="img img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
                             </b>
                         </div>
                         {#             {% if skatepark.club %} #}

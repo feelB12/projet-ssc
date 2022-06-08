@@ -27,15 +27,16 @@
         <div class="line"></div>
         <div class="">
             <form action="{{ path('admin_search_shops') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                {% block search %}
+                    <article class="detail">
+                        <div class="card-text" id="divSearch">
+                            <div class="btn logo icon"><label><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            </div>
+                            <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
+                            </div>
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                        </div>
-                        {% block search %}{% endblock search %}
-                    </div>
-                </article>
+                    </article>
+                {% endblock search %}
             </form>
         </div>
         <div class="line">
@@ -62,7 +63,7 @@
                         </div>
                         <div id="sta1" class="static">
                             <b>
-                                <img class="img-card" src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt="photo-shop">
+                                <img class="img img-card" src="{{ asset('uploads/cover/'~shop.coverFilename) }}" alt="photo-shop">
                             </b><br />
                         </div>
                     </div>

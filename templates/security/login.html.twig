@@ -10,8 +10,9 @@
 
 {% block main %}
 <section>
+    Tu n'a encore de compte créer en un en cliquant sur  , <a href="{{ path('app_register') }}"><button> Créer </button></a>
     <div class="">
-        <form action="{{ path('search_clubs') }}">
+        <form action="{{ path('search_all') }}">
             <article class="detail">
                 <div class="card-text" id="divSearch">
                     <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
@@ -24,13 +25,6 @@
         </form>
     </div>
 
-    <div class="right">
-        Tu n'a encore de compte créer en un en cliquant sur  , <a href="{{ path('profile_club_create') }}"><button> Créer </button></a>
-    </div>
-
-    <div>
-        <h2>  </h2>
-    </div>
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -72,9 +66,17 @@
             </div>
             #}
 
+
+            <label style="justify-content: space-around;align-items:center;">Remember me:
+                <input style="padding: 1rem;" type="checkbox" name="remember_me"/>
+            </label>
+
             <button class="btn btn-lg btn-primary" type="submit">
                 Sign in
             </button>
+
+
+
         </form>
     </form>
     </section>

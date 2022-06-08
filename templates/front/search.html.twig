@@ -7,9 +7,12 @@
 {% endblock stylesheets %}
 
 {% block search %}
-    <form  action="{{ path('search_clubs') }}">
-        <input type="search" name="query" placeholder="Rechercher" >
-        <img src="{{ asset('icon/loupe.png') }}" alt="loupe" class="title logo resp top">
-        <input type="submit" value="Lancer !">
-    </form>
+    <article class="detail">
+        <div class="card-text" id="divSearch">
+            <div class="btn logo icon"><label><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+            </div>
+            <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
+            </div>
+        </div>
+    </article>
 {% endblock search %}

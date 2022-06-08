@@ -5,6 +5,7 @@
 {% endblock metatitle %}
 
 {% block stylesheets %}
+    {{ parent()}}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
@@ -26,17 +27,23 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('admin_search_clubs') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+            {% block search %}
+                <form action="{{ path('admin_search_clubs') }}">
+                    <div id="divSearch">
+                        <div class="btn logo icon">
+                            <label for="userId">
+                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                            </label>
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
                         </div>
-                        {% block search %}{% endblock search %}
+                        <input type="submit">
+                        {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                        {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
                     </div>
-                </article>
-            </form>
+                </form>
+            {% endblock search %}
         </div>
         <div class="line">
         </div>
@@ -62,7 +69,7 @@
                         </div>
                         <div id="sta1" class="static">
                             <b>
-                                <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
+                                <img class="img img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
                             </b><br />
                         </div>
                     </div>

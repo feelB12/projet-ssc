@@ -41,9 +41,9 @@ class ClubController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/search", name="search_clubs")
+     * @Route("front/clubs/search", name="front_search_clubs")
      */
-    public function searchClubs(ClubRepository $clubRepository, Request $request)
+    public function SearchClubs(ClubRepository $clubRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');
@@ -51,8 +51,8 @@ class ClubController extends AbstractController
         // je fais ma requête en BDD grâce à la méthode que j'ai créée searchByTitle
         $clubs = $clubRepository->searchByTitle($word);
 
-        return $this->render('clubs_search.html.twig', [
-            'clubs' => $clubs
+        return $this->render('front/clubs_search.html.twig', [
+            'clubs' => $clubs,
         ]);
     }
 }

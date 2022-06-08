@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ClubRepository;
 
@@ -66,6 +68,16 @@ class Club
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $map;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Skatepark::class, inversedBy="clubs")
+     */
+    private $skateparks;
+
+    public function __construct()
+    {
+        $this->skateparks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -187,6 +199,30 @@ class Club
     public function setMap(?string $map): self
     {
         $this->map = $map;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skatepark[]
+     */
+    public function getSkateparks(): Collection
+    {
+        return $this->skateparks;
+    }
+
+    public function addSkatepark(Skatepark $skatepark): self
+    {
+        if (!$this->skateparks->contains($skatepark)) {
+            $this->skateparks[] = $skatepark;
+        }
+
+        return $this;
+    }
+
+    public function removeSkatepark(Skatepark $skatepark): self
+    {
+        $this->skateparks->removeElement($skatepark);
 
         return $this;
     }

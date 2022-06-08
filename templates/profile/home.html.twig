@@ -8,21 +8,36 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block main %}
        <section class="section">
-           <form>
-               <article class="detail">
-                   <div class="card-text" id="divSearch">
-                       <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+           {% block search %}
+               <form action="{{ path('profile_search_all') }}">
+                   <div id="divSearch">
+                       <div class="btn logo icon">
+                           <label for="userId">
+                               <a href="# {{ path('profile_search_all') }}" class="logo" type="submit">
+                                   <img src="{{ asset('icon/loupe.png') }}" alt="login" class="logo" type="submit">
+                               </a>
+                           </label>
                        </div>
-                       <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal">
+                       <div class="btn">
+                           <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
                        </div>
-                       {% block search %}{% endblock search %}
-                    </div>
-               </article>
-           </form>
+                       <input type="submit">
+                       {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                       {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
+                   </div>
+               </form>
+           {% endblock search %}
                 <div class="line"></div>
            <article>
                <div class="homeElement">

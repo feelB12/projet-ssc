@@ -17,7 +17,7 @@ class UserSessionController extends AbstractController
      * @Route("profile/sessions", name="profile_sessions")
      */
 
-    public function profileSessions(SessionRepository $sessionRepository)
+    public function ProfileSessions(SessionRepository $sessionRepository)
     {
         $sessions = $sessionRepository->findAll();
         return $this->render('profile/sessions.html.twig', [
@@ -108,8 +108,17 @@ class UserSessionController extends AbstractController
     /**
      * @Route("profile/session/{id}", name="profile_session")
      */
-    public function profileSession($id, SessionRepository $sessionRepository)
+    public function ProfileSession($id, SessionRepository $sessionRepository)
     {
+        $session = $sessionRepository->find($id);
+
+        // si la session n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($session)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'session' => $session
+            ]);
+        }
         $session = $sessionRepository->find($id);
         return $this->render('profile/session.html.twig', [
             'session' => $session
@@ -130,7 +139,7 @@ class UserSessionController extends AbstractController
     /**
      * @Route("profile/search", name="profile_search_sessions")
      */
-    public function profileSearchSessions(SessionRepository $sessionRepository, Request $request)
+    public function ProfileSearchSessions(SessionRepository $sessionRepository, Request $request)
     {
         // je récupère ce que tu l'utilisateur a recherché grâce à la classe Request
         $word = $request->query->get('query');

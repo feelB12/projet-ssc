@@ -8,19 +8,111 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block title %}
     searching result
 {% endblock title %}
 
 {% block main %}
-    {% for club in clubs %}
-        <div class="detail top20">
-            <div class="img-card">
-                <h2> {{ club.title }}</h2>
-                <h3> {{ club.description }}</h3>
+    <section class="">
+        <div id="ico">
+
+            <div class="element">
+                <a href="{{ path('profile_clubs') }}">
+                    <img class="title logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Clubs">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('profile_clubs') }}">
+                    <img class="title logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Clubs-icon">
+                </a>
             </div>
         </div>
-    {% endfor %}
+        <div class="line"></div>
+        <div class="">
+            <form action="{{ path('search_clubs') }}">
+                {% block search %}
+                    <article class="detail">
+                        <div class="card-text" id="divSearch">
+                            <div class="btn logo icon"><label><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            </div>
+                            <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
+                            </div>
+                        </div>
+                    </article>
+                {% endblock search %}
+            </form>
+        </div>
+        <div class="line"></div>Voici le résultat de la recherche pour :
+        {% for club in clubs %}
+            {{  club.title  }}<br>
+            <article class="card-detail">
+                <div class="card-title"><h1>{{ club.title }}</h1><br></div>
+            </article>
+            <article class="card-address">
+                <div class="card-title"><h2>{{ club.address }} {{ club.town }}</h2></div>
+            </article>
+            <article class="detail">
+                <div class="card-text">
+                    <div class="" id="tm">
+                        <div class="" id="tmbk">
+                            <div id="abs1" class="absolute">
+                                <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
+                                </b><br />
+                            </div>
+                            <div id="abs2" class="absolute">
+                                <b><img class="arrow-right right logoBig resp" src="{{ asset('icon/fleche_droite.png') }}" alt="Next">
+                                </b><br />
+                            </div>
+                            <div id="sta1" class="static">
+                                <b>
+                                    <img class="img-card" src="{{ asset('uploads/cover/'~club.coverFilename) }}" alt="photo-club">
+                                </b><br />
+                            </div>
+                        </div>
+                        <div class="image">
+                            <table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <div class="list">
+                        <ul id="abs4" class="absolute indicators ">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <article class="detail">
+                <div class="card-text">
+                    <div class="card-ic">
+                        <div id="adm-btn" class="adm-btn">
+                            <div class="ic" >
+                                <a id="link1" href="{{ path('profile_club', {"id": club.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le club">
+                                    <br><h4 class="pad5">Voir le club</h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="justifyBox">
+                        <p>{{ club.description }}{{ club.description }}</p>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <iframe src="https://www.google.com/maps?q=[{{club.address}}{{club.town}}]&output=embed" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock main %}

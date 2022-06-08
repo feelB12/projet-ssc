@@ -26,12 +26,21 @@ class SessionController extends AbstractController
     public function session($id, SessionRepository $sessionRepository)
     {
         $session = $sessionRepository->find($id);
+
+        // si la session n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($session)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'session' => $session
+            ]);
+        }
+        $session = $sessionRepository->find($id);
         return $this->render('front/session.html.twig', [
             'session' => $session
         ]);
     }
     /**
-     * @Route("front/search", name="search_sessions")
+     * @Route("front/sessions/search", name="search_sessions")
      */
     public function searchSessions(SessionRepository $sessionRepository, Request $request)
     {

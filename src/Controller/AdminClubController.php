@@ -12,12 +12,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class AdminClubController extends AbstractController
+class  AdminClubController extends AbstractController
 {
     /**
      * @Route("admin/clubs", name="admin_clubs")
      */
-    public function adminClubs(ClubRepository $clubRepository)
+    public function AdminClubs(ClubRepository $clubRepository)
     {
         $clubs = $clubRepository->findAll();
         return $this->render('admin/clubs.html.twig', [
@@ -28,7 +28,7 @@ class AdminClubController extends AbstractController
     /**
      * @Route("admin/club/create", name="admin_club_create")
      */
-    public function createClub(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
+    public function CreateClub(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
         $club = new Club();
         $clubForm = $this->createForm(ClubType::class, $club);
@@ -118,6 +118,14 @@ class AdminClubController extends AbstractController
     {
         $club = $clubRepository->find($id);
 
+        // si le club n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($club)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'club' => $club
+            ]);
+        }
+        $club = $clubRepository->find($id);
         return $this->render('admin/club.html.twig', [
             'club' => $club
         ]);

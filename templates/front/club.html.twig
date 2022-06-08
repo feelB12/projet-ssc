@@ -13,22 +13,36 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-            <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            <div class="element">
+                <a href="{{ path('clubs') }}">
+                    <img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Clubs">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('clubs') }}">
+                    <img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Clubs-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
+            {% block search %}
             <form action="{{ path('search_clubs') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
-                        </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                        </div>
-                        {% block search %}{% endblock search %}
+                <div id="divSearch">
+                    <div class="btn logo icon">
+                        <label for="userId">
+                            <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                        </label>
                     </div>
-                </article>
+                    <div class="btn">
+                        <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                    </div>
+                    <input type="submit">
+                    {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                    {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
+                </div>
             </form>
+            {% endblock search %}
         </div>
         <div class="line"></div>
         <article class="card-detail">

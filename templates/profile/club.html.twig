@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block main %}
     <section class="">
@@ -18,17 +25,23 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('profile_search_clubs') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+            {% block search %}
+                <form action="{{ path('front_search_clubs') }}">
+                    <div id="divSearch">
+                        <div class="btn logo icon">
+                            <label for="userId">
+                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                            </label>
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                        <div class="btn">
+                            <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
                         </div>
-                        {% block search %}{% endblock search %}
+                        <input type="submit">
+                        {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                        {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
                     </div>
-                </article>
-            </form>
+                </form>
+            {% endblock search %}
         </div>
         <div class="line">
         </div>

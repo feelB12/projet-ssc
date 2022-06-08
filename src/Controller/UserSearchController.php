@@ -23,7 +23,7 @@ class UserSearchController extends AbstractController
         $clubs = $clubRepository->searchByTitle($word);
 
 
-        return $this->render('profile/clubs_search.html.twig', [
+        return $this->render('front/clubs_search.html.twig', [
             'clubs' => $clubs
         ]);
     }

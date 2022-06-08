@@ -1,0 +1,57 @@
+{% extends "front/base.html.twig" %}
+
+{% block main %}
+
+    <section class="section">
+        {% for session in lastSessions %}
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ session.title }}</h2>
+                    <h3>{{ session.description }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{{ path('admin_sessions') }}">Voir tous les sessions</a>
+        <a class="link" href="{{ path('admin_session_create') }}">Créer un session</a>
+    </section>
+
+    <section class="section">
+        {% for skatepark in lastSkateparks %}
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ skatepark.title }}</h2>
+                    <h3>{{ skatepark.description }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+        {#       <a href="{{ path('admin_skateparks') }}">Voir tous les skateparks</a>#}
+        {#       <a class="link" href="{{ path('admin_skatepark_create') }}">Créer un skatepark</a>#}
+    </section>
+
+    <section class="section">
+        {% for club in lastClubs %}
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ club.title }}</h2>
+                    <h3>{{ club.description }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{{ path('admin_clubs') }}">Voir tous les clubs</a>
+        <a class="link" href="{{ path('admin_club_create') }}">Créer un club</a>
+    </section>
+
+    <section class="section">
+        {% for shop in lastShops %}
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ shop.title }}</h2>
+                    <h3>{{ shop.description }}</h3>
+                </div>
+            </div>
+        {% endfor %}
+        <a href="{{ path('admin_shops') }}">Voir tous les shops</a>
+        <a class="link" href="{{ path('admin_shop_create') }}">Créer un shop</a>
+    </section>
+
+{% endblock main%}

@@ -10,13 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
     /**
      * @Route("front/users", name="front_users")
      */
-    public function Users(UserRepository $userRepository)
+    public function FrontUsers(UserRepository $userRepository)
     {
         $users = $userRepository->findAll();
         return $this->render('front/users.html.twig', [
@@ -24,7 +26,7 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/user/create", name="front_user_create")
+     * @Route("front/user/create", name="front_user_create", methods={"GET","POST"})
      */
     public function CreateUser(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger)
     {
@@ -61,7 +63,7 @@ class UserController extends AbstractController
         //$this->addFlash('error', "Le user existe déja ou... !");
         $this->addFlash('success', "L'utilisateur a bien été créer !");
 
-        return $this->render('front/user_create.html.twig',[
+        return $this->render('registration/register.html.twig',[
             'userForm' => $userForm->createView()
         ]);
     }

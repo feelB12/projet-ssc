@@ -12,17 +12,23 @@
 
 {% block main %}
        <section class="section">
-           <form>
-               <article class="detail">
-                   <div class="card-text" id="divSearch">
-                       <div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+           {% block search %}
+               <form action="{{ path('admin_search_all') }}">
+                   <div id="divSearch">
+                       <div class="btn logo icon">
+                           <label for="userId">
+                               <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                           </label>
                        </div>
-                       <div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal">
+                       <div class="btn">
+                           <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
                        </div>
-                       {% block search %}{% endblock search %}
-                    </div>
-               </article>
-           </form>
+                       <input type="submit">
+                       {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                       {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
+                   </div>
+               </form>
+           {% endblock search %}
                 <div class="line"></div>
            <article>
                <div class="homeElement">

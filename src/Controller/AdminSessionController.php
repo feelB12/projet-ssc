@@ -108,8 +108,17 @@ class AdminSessionController extends AbstractController
     /**
      * @Route("admin/session/{id}", name="admin_session")
      */
-    public function adminSession($id, SessionRepository $sessionRepository)
+    public function AdminSession($id, SessionRepository $sessionRepository)
     {
+        $session = $sessionRepository->find($id);
+
+        // si la session n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($session)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'session' => $session
+            ]);
+        }
         $session = $sessionRepository->find($id);
         return $this->render('admin/session.html.twig', [
             'session' => $session

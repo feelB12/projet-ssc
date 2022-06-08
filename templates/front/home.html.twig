@@ -13,16 +13,17 @@
 {% block main %}
        <section class="section">
            <div class="">
-               <form action="{{ path('search_all') }}">
+               <form action="{{ path('front_search_all') }}">
+                   {% block search %}
                    <article class="detail">
                        <div class="card-text" id="divSearch">
                            <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
                            </div>
                            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
                            </div>
-                           {% block search %}{% endblock search %}
                        </div>
                    </article>
+                   {% endblock search %}
                </form>
            </div>
                 <div class="line"></div>
@@ -59,32 +60,32 @@
                                    </b><br />
                                </div>
                            </div>
-                           </div>
+                       </div>
                     </div>
                </article>
            </article>
     </section>
     <section>
-                   <div class="card">
-                       <div class="card-text">
-                           <h2>{{ session.title }}</h2>
-                           <h3>{{ session.description }}</h3><br>
-                           {% if session.startAt %}
-                               <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3><br>
-                           {% else %}
-                               <h3>La session n'est pas commencé </h3><br>
-                           {% endif %}
-                           {% if session.finishedAt %}
-                               <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3><br>
-                           {% else %}
-                               <h3>La session n'est pas finie </h3><br>
-                           {% endif %}
-                       </div>
-                       <div class="card-image">
-                           <!-- if session.finished <img src=" session.image }}" alt="image de la session"> -->
-                       </div>
-                   </div>
-               {% endfor %}
+       <div class="card">
+           <div class="card-text">
+               <h2>{{ session.title }}</h2>
+                        <h3>{{ session.description }}</h3><br>
+                   {% if session.startAt %}
+                       <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                   {% else %}
+                       <h3>La session n'est pas commencé </h3><br>
+                   {% endif %}
+                   {% if session.finishedAt %}
+                       <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                   {% else %}
+                       <h3>La session n'est pas finie </h3><br>
+                   {% endif %}
+           </div>
+           <div class="card-image">
+               <!-- if session.finished <img src=" session.image }}" alt="image de la session"> -->
+           </div>
+       </div>
+   {% endfor %}
                <a href="{{ path('sessions') }}">Voir toutes les sessions</a>
            </article>
        </section>

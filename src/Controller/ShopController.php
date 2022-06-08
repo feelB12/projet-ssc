@@ -29,12 +29,21 @@ class ShopController extends AbstractController
     public function shop($id, ShopRepository $shopRepository)
     {
         $shop = $shopRepository->find($id);
+
+        // si le shop n'a pas été trouvé je renvoi une exception (erreur)
+        // pour afficher une erreur 404
+        if (is_null($shop)){
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig', [
+                'shop' => $shop
+            ]);
+        }
+        $shop = $shopRepository->find($id);
         return $this->render('front/shop.html.twig', [
             'shop' => $shop
         ]);
     }
     /**
-     * @Route("front/search", name="search_shops")
+     * @Route("front/shops/search", name="search_shops")
      */
     public function searchShops(ShopRepository $shopRepository, Request $request)
     {

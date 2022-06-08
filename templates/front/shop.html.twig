@@ -13,21 +13,30 @@
 {% block main %}
     <section class="">
         <div id="ico">
-            <div class="element"><img class="titre logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
-            <div class="element"><img class="title logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+            <div class="element">
+                <a href="{{ path('shops') }}">
+                    <img class="titre logoBig" src="{{ asset('icon/shops_titre.png') }}" alt="Shops">
+                </a>
+            </div>
+            <div class="element">
+                <a href="{{ path('shops') }}">
+                    <img class="title logoBig" src="{{ asset('icon/shops.png') }}" alt="Shops-icon">
+                </a>
+            </div>
         </div>
         <div class="line"></div>
         <div class="">
             <form action="{{ path('search_shops') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                {% block search %}
+                    <article class="detail">
+                        <div class="card-text" id="divSearch">
+                            <div class="btn logo icon"><label><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            </div>
+                            <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
+                            </div>
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                        </div>
-                        {% block search %}{% endblock search %}
-                    </div>
-                </article>
+                    </article>
+                {% endblock search %}
             </form>
         </div>
         <div class="line">
@@ -129,12 +138,18 @@
     <section>
         <article class="detail">
             <div class="card-text">
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link3" class="pad5" href="{{ path('login', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le shop"><br><h4>Modifier le shop</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('login', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop"><br><h4>Supprimer le shop</h4></a></li>
-                        <li><a id="link2" class="pad5" href="{{ path('login', {"id": shop.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop"><br><h4>Créer un shop</h4></a></li>
-                    </ul>
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('profile_shop_create') }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop">
+                                <br><h4 class="pad5">Créer un shop</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('profile_shop_update', {"id": shop.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le shop">
+                                <br><h4 class="pad5">Modifier le shop</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('profile_shop_delete', {"id": shop.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop">
+                                <br><h4 class="pad5">Supprimer le shop</h4></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="justifyBox">
                     <p>{{ shop.description }}{{ shop.description }}</p>

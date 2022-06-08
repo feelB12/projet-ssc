@@ -1,0 +1,159 @@
+{% extends "front/base.html.twig" %}
+
+{% block metatitle %}
+    Recherche | Skateboard Social Club
+{% endblock metatitle %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+{% endblock stylesheets %}
+
+{% block main %}
+    <section class="section">
+        <div class="">
+            <form action="{{ path('search_sessions') }}">
+                {% block search %}
+                    <article class="detail">
+                        <div class="card-text" id="divSearch">
+                            <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            </div>
+                            <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                            </div>
+                        </div>
+                    </article>
+                {% endblock search %}
+            </form>
+        </div>
+        <div class="line"></div>
+        <article>
+            <div class="homeElement">
+                <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Session"></a></div>
+                <div class="element"><a><img class="logoBig" href="{{ path('sessions') }}" src="{{ asset('icon/session.png') }}" alt="Session-icon"></a></div>
+            </div>
+            <div class="line"></div>
+            {% for session in lastSessions %}
+            <article class="card-detail">
+                <div class="card-title"><h1>{{ session.title }}</h1><br></div>
+            </article>
+            <article class="card-address">
+                <div class="card-title"><h2>{{ session.address }} {{ session.town }}</h2></div>
+            </article>
+            <article class="detail">
+                <div class="card-text">
+                    <div class="" id="tm">
+                        <div class="" id="tmbk">
+                            <div id="abs1" class="absolute">
+                                <b><img class="left logoBig resp arrow-left" src="{{ asset('icon/fleche_droite.png') }}" alt="Preview">
+                                </b><br />
+                            </div>
+                            <div id="abs2" class="absolute">
+                                <b>
+                                    <img class="arrow-right right logoBig resp" src="{{ asset('icon/fleche_droite.png') }}" alt="Next">
+                                </b>
+                                <br />
+                            </div>
+                            <div id="sta1" class="static">
+                                <b>
+                                    <img class="img-card" src="{{ asset('uploads/cover/'~session.coverFilename) }}" alt="photo-session">
+                                </b><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-ic">
+                        <div id="adm-btn" class="adm-btn">
+                            <div class="ic" ><a id="link1" href="{{ path('profile_session', {"id": session.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session">
+                                    <br><h4 class="pad5">Voir la session</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </article>
+    </section>
+    <section>
+        <article>
+            <div class="card">
+                <div class="card-text">
+                    <h2>{{ session.title }}</h2>
+                    <h3>{{ session.description }}</h3><br>
+                    {% if session.startAt %}
+                        <h3>La session est commencé depuis: {{ session.startAt  | date("Y-m-d H:i:s" ) |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                    {% else %}
+                        <h3>La session n'est pas commencé </h3><br>
+                    {% endif %}
+                    {% if session.finishedAt %}
+                        <h3>La session est finie depuis: {{ session.finishedAt  | date("Y-m-d H:i:s") |format_datetime('full', 'short', locale='fr') }}</h3><br>
+                    {% else %}
+                        <h3>La session n'est pas finie </h3><br>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="card-ic">
+                <div id="adm-btn" class="adm-btn">
+                    <div class="ic" ><a id="link1" href="{{ path('sessions') }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir la session">
+                            <br><h4 class="pad5">Voir les sessions</h4></a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
+                <div class="element"><img class="logoBig" href="{{ path('skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
+            </div>
+            <div class="line"></div>
+            {% for skatepark in lastSkateparks %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ skatepark.title }}</h2>
+                        <h3>{{ skatepark.description }}</h3><br>
+                    </div>
+                </div>
+            {% endfor %}
+            <a href="{{ path('skateparks') }}">Voir tous les skateparks</a>
+        </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
+                <div class="element"><img class="logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+            </div>
+            <div class="line"></div>
+            {% for club in lastClubs %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ club.title }}</h2>
+                        <h3>{{ club.description }}</h3><br>
+                    </div>
+                </div>
+            {% endfor %}
+            <a href="{{ path('clubs') }}">Voir tous les clubs</a>
+        </article>
+    </section>
+    <section class="section">
+        <article>
+            <div class="homeElement">
+                <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
+                <div class="element"><img class="logoBig" href="{{ path('shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+            </div>
+            <div class="line"></div>
+            {% for shop in lastShops %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ shop.title }}</h2>
+                        <h3>{{ shop.description }}</h3><br>
+                    </div>
+                </div>
+            {% endfor %}
+            <a href="{{ path('shops') }}">Voir tous les shops</a>
+        </article>
+    </section>
+
+{% endblock main %}
