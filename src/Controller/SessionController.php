@@ -6,14 +6,16 @@ use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
+use Twig\Extra\Intl\IntlExtension;
+use Twig\Loader\LoaderInterface;
 
 class SessionController extends AbstractController
 {
     /**
-     * @Route("front/sessions", name="sessions")
+     * @Route("front/sessions", name="front_sessions")
      */
-
-    public function sessions(SessionRepository $sessionRepository)
+    public function Sessions(SessionRepository $sessionRepository)
     {
         $sessions = $sessionRepository->findAll();
         return $this->render('front/sessions.html.twig', [
@@ -21,10 +23,13 @@ class SessionController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/session/{id}", name="session")
+     * @Route("front/session/{id}", name="front_session")
      */
-    public function session($id, SessionRepository $sessionRepository)
+    public function Session($id, SessionRepository $sessionRepository)
     {
+        $loader ='fr,FR';
+        $twig = new Environment($loader);
+        $twig->addExtension(new IntlExtension());
         $session = $sessionRepository->find($id);
 
         // si la session n'a pas été trouvé je renvoi une exception (erreur)
@@ -36,6 +41,7 @@ class SessionController extends AbstractController
         }
         $session = $sessionRepository->find($id);
         return $this->render('front/session.html.twig', [
+            'twig' => $twig,
             'session' => $session
         ]);
     }

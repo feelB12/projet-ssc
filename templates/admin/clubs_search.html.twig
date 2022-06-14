@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block title %}
     searching result
@@ -31,7 +38,7 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('search_clubs') }}">
+            <form action="{{ path('admin_search_clubs') }}">
                 {% block search %}
                     <article class="detail">
                         <div class="card-text" id="divSearch">
@@ -44,6 +51,8 @@
                 {% endblock search %}
             </form>
         </div>
+
+
         <div class="line"></div>Voici le résultat de la recherche pour :
         {% for club in clubs %}
             {{  club.title  }}<br>

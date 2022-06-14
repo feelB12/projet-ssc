@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
     {{ parent()}}
     {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
@@ -25,17 +25,25 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('profile_search_skateparks') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+
+                {% block search %}
+                    <form action="{{ path('profile_search_skateparks') }}">
+                        <div id="divSearch">
+                            <div class="btn logo icon">
+                                <label for="userId">
+                                    <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                                </label>
+                            </div>
+                            <div class="btn">
+                                <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                            </div>
+                            <input type="submit">
+                            {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
+                            {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                        </div>
-                        {% block search %}{% endblock search %}
-                    </div>
-                </article>
-            </form>
+                    </form>
+                {% endblock search %}
+
         </div>
         <div class="line"></div>
         <article class="card-detail">
@@ -133,12 +141,24 @@
         </article>
         <article class="detail">
             <div class="card-text">
-                <div>
-                    <ul class="adm-btn">
-                        <li><a id="link2" class="pad5" href="{{ path('profile_skatepark_create', {"id": skatepark.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark"><br><h4>Créer un skatepark</h4></a></li>
-                        <li><a id="link3" class="pad5" href="{{ path('profile_skatepark_update', {"id": skatepark.id}) }}"><img src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le skatepark"><br><h4>Modifier le skatepark</h4></a></li>
-                        <li><a id="link4" class="pad5" href="{{ path('profile_skatepark_delete', {"id": skatepark.id}) }}"><img src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark"><br><h4>Supprimer le skatepark</h4></a></li>
-                    </ul>
+                <div class="card-ic">
+                    <div id="adm-btn" class="adm-btn">
+                        <div class="ic" ><a id="link2" href="{{ path('profile_skatepark_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark">
+                                <br><h4 class="pad5">Créer un skatepark</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link3" href="{{ path('profile_skatepark_update', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le skatepark">
+                                <br><h4 class="pad5">Modifier le skatepark</h4></a>
+                        </div>
+                        <div class="ic" ><a id="link4" href="{{ path('profile_skatepark_delete', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark">
+                                <br><h4 class="pad5">Supprimer le skatepark</h4></a>
+                        </div>
+                        <div class="ic" >
+                            <a id="link1" href="{{ path('profile_skatepark', {"id": skatepark.id}) }}">
+                                <img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir le skatepark"><br>
+                                <h4 class="pad5">Voir le suivant</h4>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="justifyBox">
                     <p>{{ skatepark.description }}{{ skatepark.description }}</p>

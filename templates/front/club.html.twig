@@ -1,5 +1,6 @@
 {% extends "front/base.html.twig" %}
 
+
 {% block metatitle %}
     {{ club.title }} | Skateboard Social Club
 {% endblock metatitle %}
@@ -8,43 +9,52 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block main %}
     <section class="">
         <div id="ico">
             <div class="element">
-                <a href="{{ path('clubs') }}">
-                    <img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Clubs">
+                <a href="{{ path('front_clubs') }}">
+                    <img class="title logoBig" href="{{ path('front_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="clubs">
                 </a>
             </div>
             <div class="element">
-                <a href="{{ path('clubs') }}">
-                    <img class="title logoBig" href="{{ path('clubs') }}" src="{{ asset('icon/club.png') }}" alt="Clubs-icon">
+                <a href="{{ path('front_clubs') }}">
+                    <img class="title logoBig" href="{{ path('front_clubs') }}" src="{{ asset('icon/club.png') }}" alt="clubs-icon">
                 </a>
             </div>
         </div>
         <div class="line"></div>
         <div class="">
-            {% block search %}
-            <form action="{{ path('search_clubs') }}">
-                <div id="divSearch">
-                    <div class="btn logo icon">
-                        <label for="userId">
-                            <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
-                        </label>
-                    </div>
-                    <div class="btn">
-                        <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                    </div>
-                    <input type="submit">
-                    {#<div class="btn logo"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label></div> #}
-                    {#<div class="btn"><input type="text" id="userId" name="userId" placeholder="Ville, Code postal"></div> #}
-                </div>
-            </form>
-            {% endblock search %}
-        </div>
-        <div class="line"></div>
+            <div class="">
+                {% block search %}
+                    <form action="{{ path('front_search_clubs') }}">
+                        <div id="divSearch">
+                            <div class="btn logo icon">
+                                <label for="userId">
+                                    <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                                </label>
+                            </div>
+                            <div class="btn">
+                                <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                            </div>
+                            <input type="submit">
+                        </div>
+                    </form>
+                {% endblock search %}
+            </div>
+            <div class="line">
+            </div>
+
+
         <article class="card-detail">
                 <div class="card-title"><h1>{{ club.title }}</h1><br></div>
         </article>

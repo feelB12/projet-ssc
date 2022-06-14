@@ -5,12 +5,11 @@
 {% endblock metatitle %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
 {{ parent()}}
 {% endblock stylesheets %}
 
 {% block main %}
-
     <div class="detail">
         <div class="card-text">
             <form action="{{ path('login') }}" method="post">
@@ -29,5 +28,4 @@
             </form>
         </div>
     </div>
-    </section>
 {% endblock main %}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
     {{ parent()}}
     {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
@@ -40,10 +40,18 @@
            {% endblock search %}
                 <div class="line"></div>
            <article>
-               <div class="homeElement">
-                   <div class="element"><a><img class="logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Club"></a></div>
-                   <div class="element"><a><img class="logoBig" href="{{ path('profile_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Club-icon"></a></div>
+               <div id="ico">
+                   <div class="element">
+                       <a href="{{ path('profile_sessions') }}">
+                           <img class="title logoBig" src="{{ asset('icon/sessions_titre.png') }}" alt="Sessions">
+                       </a>
                    </div>
+                   <div class="element">
+                       <a href="{{ path('profile_sessions') }}">
+                           <img class="title logoBig" src="{{ asset('icon/session.png') }}" alt="Sessions-icon">
+                       </a>
+                   </div>
+               </div>
                <div class="line"></div>
                {% for session in lastSessions %}
                    <div class="card">
@@ -55,16 +63,40 @@
                        <div class="card-image">
                            <!-- if session.finished <img src=" session.image }}" alt="image de la session"> -->
                        </div>
+                       <div class="card-ic">
+                           <div id="adm-btn" class="adm-btn">
+                               <div class="ic" ><a id="link1" href="{{ path('profile_session', {"id": session.id}) }}"><img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir la session">
+                                       <br><h4 class="pad5">Voir la session</h4></a>
+                               </div>
+                               <div class="ic" ><a id="link2" href="{{ path('profile_session_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer une session">
+                                       <br><h4 class="pad5">Créer une session</h4></a>
+                               </div>
+                               <div class="ic" ><a id="link3" href="{{ path('profile_session_update', {"id": session.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier une session">
+                                       <br><h4 class="pad5">Modifier une session</h4></a>
+                               </div>
+                               <div class="ic" ><a id="link4" href="{{ path('profile_session_delete', {"id": session.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le session">
+                                       <br><h4 class="pad5">Supprimer le session</h4></a>
+                               </div>
+                           </div>
+                       </div>
                    </div>
                {% endfor %}
-               <a href="{{ path('profile_sessions') }}">Voir toutes les sessions</a>
+
            </article>
        </section>
        <section class="section">
            <article>
-               <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('profile_skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('profile_skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon"></div>
+               <div id="ico">
+                   <div class="element">
+                       <a href="{{ path('profile_skateparks') }}">
+                           <img class="title logoBig" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+                       </a>
+                   </div>
+                   <div class="element">
+                       <a href="{{ path('profile_skateparks') }}">
+                           <img class="title logoBig" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon">
+                       </a>
+                   </div>
                </div>
                <div class="line"></div>
                {% for skatepark in lastSkateparks %}
@@ -74,15 +106,40 @@
                            <h3>{{ skatepark.description }}</h3><br>
                        </div>
                    </div>
+                   <div class="card-ic">
+                       <div id="adm-btn" class="adm-btn">
+                           <div class="ic" ><a id="link1" href="{{ path('profile_skatepark', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir le skatepark">
+                                   <br><h4 class="pad5">Voir le skatepark</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link2" href="{{ path('profile_skatepark_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark">
+                                   <br><h4 class="pad5">Créer un skatepark</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link3" href="{{ path('profile_skatepark_update', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le skatepark">
+                                   <br><h4 class="pad5">Modifier le skatepark</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link4" href="{{ path('profile_skatepark_delete', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark">
+                                   <br><h4 class="pad5">Supprimer le skatepark</h4></a>
+                           </div>
+                       </div>
+                   </div>
                {% endfor %}
-               <a href="{{ path('profile_skateparks') }}">Voir tous les skateparks</a>
            </article>
        </section>
        <section class="section">
            <article>
-               <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/clubs_titre.png') }}" alt="Club"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('profile_clubs') }}" src="{{ asset('icon/club.png') }}" alt="Club-icon"></div>
+               <div id="ico">
+                   <div id="ico">
+                       <div class="element">
+                           <a href="{{ path('profile_clubs') }}">
+                               <img class="title logoBig" src="{{ asset('icon/clubs_titre.png') }}" alt="club">
+                           </a>
+                       </div>
+                       <div class="element">
+                           <a href="{{ path('profile_clubs') }}">
+                               <img class="title logoBig" src="{{ asset('icon/clubs.png') }}" alt="club-icon">
+                           </a>
+                       </div>
+                   </div>
                </div>
                <div class="line"></div>
                {% for club in lastClubs %}
@@ -92,15 +149,38 @@
                            <h3>{{ club.description }}</h3><br>
                        </div>
                    </div>
+                   <div class="card-ic">
+                       <div id="adm-btn" class="adm-btn">
+                           <div class="ic" ><a id="link1" href="{{ path('profile_club', {"id": club.id}) }}"><img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir le club">
+                                   <br><h4 class="pad5">Voir le club</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link2" href="{{ path('profile_club_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer un club">
+                                   <br><h4 class="pad5">Créer un club</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link3" href="{{ path('profile_club_update', {"id": club.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le club">
+                                   <br><h4 class="pad5">Modifier le club</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link4" href="{{ path('profile_club_delete', {"id": club.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le club">
+                                   <br><h4 class="pad5">Supprimer le club</h4></a>
+                           </div>
+                       </div>
+                   </div>
                {% endfor %}
-               <a href="{{ path('profile_clubs') }}">Voir tous les clubs</a>
            </article>
        </section>
        <section class="section">
            <article>
-               <div class="homeElement">
-                   <div class="element"><img class="logoBig" href="{{ path('profile_shops') }}" src="{{ asset('icon/shops_titre.png') }}" alt="shops"></div>
-                   <div class="element"><img class="logoBig" href="{{ path('profile_shops') }}" src="{{ asset('icon/shops.png') }}" alt="shops-icon"></div>
+               <div id="ico">
+                   <div class="element">
+                       <a href="{{ path('profile_shops') }}">
+                           <img class="title logoBig" src="{{ asset('icon/shops_titre.png') }}" alt="Shop">
+                       </a>
+                   </div>
+                   <div class="element">
+                       <a href="{{ path('profile_shops') }}">
+                           <img class="title logoBig" src="{{ asset('icon/shops.png') }}" alt="Shop-icon">
+                       </a>
+                   </div>
                </div>
                <div class="line"></div>
                {% for shop in lastShops %}
@@ -110,41 +190,23 @@
                            <h3>{{ shop.description }}</h3><br>
                        </div>
                    </div>
+                   <div class="card-ic">
+                       <div id="adm-btn" class="adm-btn">
+                           <div class="ic" ><a id="link1" href="{{ path('profile_shop', {"id": shop.id}) }}"><img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir le shop">
+                                   <br><h4 class="pad5">Voir le shop</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link2" href="{{ path('profile_shop_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer un shop">
+                                   <br><h4 class="pad5">Créer un shop</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link3" href="{{ path('profile_shop_update', {"id": shop.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier un shop">
+                                   <br><h4 class="pad5">Modifier un shop</h4></a>
+                           </div>
+                           <div class="ic" ><a id="link4" href="{{ path('profile_shop_delete', {"id": shop.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le shop">
+                                   <br><h4 class="pad5">Supprimer le shop</h4></a>
+                           </div>
+                       </div>
+                   </div>
                {% endfor %}
-               <a href="{{ path('profile_shops') }}">Voir tous les shops</a>
            </article>
        </section>
-       <!--
-       <section class="section">
-            for club in Clubs %}
-               <div class="card">
-                   <div class="card-text">
-                       <h2> club.title }}</h2>
-                         if session.finished  <h3>La session est finie depuis :  session.finished | datetime(D-m-Y) }}</h3>
-                   </div>
-                   <div class="card-image">
-                      <img src=" club.image }}" alt="image de la session">
-                   </div>
-               </div>
-           { endfor %}
-       </section>
-       -->
-       <!--
-        <article class="top">
-            <img class="title left logo resp top" src="{{ asset('icon/sessions_titre.png') }}" alt="session">
-            <img class="title right logo resp top" src="{{ asset('icon/session.png') }}" alt="session-icon">
-        </article>
-        <article class="top">
-            <img class="title" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
-            <img class="title" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark">
-        </article>
-        <article class="top">
-            <img class="title left logo resp top" src="{{ asset('icon/clubs_titre.png') }}" alt="Club">
-            <img class="title right logo resp top" src="{{ asset('icon/club.png') }}" alt="Club-icon">
-        </article>
-        <article class="top">
-            <img class="title" src="{{ asset('icon/shops_titre.png') }}" alt="Shop">
-            <img class="title" src="{{ asset('icon/shops.png') }}" alt="Shop">
-        </article>
-         -->
 {% endblock main %}

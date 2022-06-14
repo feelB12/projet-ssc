@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c04eb8d88e3d9eb0a49e9ba3425cf392",
+    "content-hash": "4b7fa4c17f97f170fa47dcb1a5252e0d",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7789,7 +7789,7 @@
         },
         {
             "name": "twig/extra-bundle",
-            "version": "v3.3.8",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/twig-extra-bundle.git",
@@ -7852,7 +7852,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.3.8"
+                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -7868,7 +7868,7 @@
         },
         {
             "name": "twig/intl-extra",
-            "version": "v3.3.5",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/intl-extra.git",
@@ -7921,7 +7921,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/intl-extra/tree/v3.3.5"
+                "source": "https://github.com/twigphp/intl-extra/tree/v3.4.0"
             },
             "funding": [
                 {

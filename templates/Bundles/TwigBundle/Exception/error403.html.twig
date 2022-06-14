@@ -9,24 +9,36 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block main %}
     <section class="section">
+        <div class="line"></div>
         <div class="">
-            <form action="{{ path('search_all') }}">
-                <article class="detail">
-                    <div class="card-text" id="divSearch">
-                        <div class="btn logo icon"><label for="userId"><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                {% block search %}
+                    <form action="{{ path('front_search_clubs') }}">
+                        <div id="divSearch">
+                            <div class="btn logo icon">
+                                <label for="userId">
+                                    <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                                </label>
+                            </div>
+                            <div class="btn">
+                                <input type="text" id="userId" name="query" placeholder="Ville, Code postal">
+                            </div>
+                            <input type="submit">
                         </div>
-                        <div class="btn"><input type="text" id="userId" name="query" placeholder="Ville, Code postal">
-                        </div>
-                        {% block search %}{% endblock search %}
-                    </div>
-                </article>
-            </form>
-        </div>
-        <div class="line">
+                    </form>
+                {% endblock search %}
+            </div>
+            <div class="line">
 
             <h1>La page n'a ps été trouvé car elle n'existe pas </h1>
             <a class="" href="{{ path('home') }}"><img src="{{ asset('uploads/fallin-nyjah.jpg') }}" alt="logo"></a>

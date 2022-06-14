@@ -5,17 +5,16 @@
 {% endblock metatitle %}
 
 {% block stylesheets %}
+    {{ parent()}}
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    {{ parent()}}
+    <link rel="stylesheet" href="{{ asset('css/card.scss') }}">
     {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock javascripts %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock javascripts %}
 
 {% block main %}
     <section class="">
@@ -27,18 +26,19 @@
             </div>
             <div class="element">
                 <a href="{{ path('profile_shops') }}">
-                    <img class="title logoBig" src="{{ asset('icon/skhop.png') }}" alt="Shop-icon">
+                    <img class="title logoBig" src="{{ asset('icon/shops.png') }}" alt="Shop-icon">
                 </a>
             </div>
         </div>
         <div class="line"></div>
         <div class="">
             {% block search %}
-                <form action="{{ path('profile_search_shops') }}">
+                <form action="{{ path('admin_search_shops') }}">
                     <div id="divSearch">
                         <div class="btn logo icon">
                             <label for="userId">
-                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                                <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                            </label>
                         </div>
                         <div class="btn">
                             <input type="text" id="userId" name="query" placeholder="Ville, Code postal">

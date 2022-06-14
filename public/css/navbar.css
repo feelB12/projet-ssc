@@ -37,10 +37,21 @@ footer {
     color: #ebd000;
 }
 
-.navbar{
-    :;
+.center{
+    display: flex;
 }
-
+.items {
+    margin-right: auto;
+    margin-left: auto;
+}
+.table {
+    text-align:right;
+    vertical-align:top;
+    width: 2rem;
+}
+th {
+    width: 10%;
+}
 .nav-child{
     display: flex;
     flex-wrap: nowrap;

@@ -26,19 +26,22 @@
     <!--Dans le title de ma page base, j'appelle la fonction block metatitle qui va me permettre
     d'afficher mon metatitle sur toutes les pages de mon site-->
     <title>{% block metatitle %}{% if app.user %} welcome {{ app.user.email }} {% endif %} Hello{% endblock metatitle%} | Skateboard Social Club</title>
-
-    <!--css-->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headers.css') }}">
+    <!--css-->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
+
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/headers.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/headers.scss') }}">
+        <link rel="stylesheet" href="{{ asset('css/card.scss') }}">
         {{ encore_entry_link_tags('app') }}
     {% endblock stylesheets %}
+
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock javascripts %}
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="bootstrap" viewBox="0 0 118 94">
             <title>Bootstrap</title>

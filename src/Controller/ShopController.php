@@ -13,9 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShopController extends AbstractController
 {
     /**
-     * @Route("front/shops", name="shops")
+     * @Route("front/shops", name="front_shops")
      */
-    public function shops(ShopRepository $shopRepository)
+    public function Shops(ShopRepository $shopRepository)
     {
         $shops = $shopRepository->findAll();
         return $this->render('front/shops.html.twig', [
@@ -24,9 +24,9 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("front/shop/{id}", name="shop")
+     * @Route("front/shop/{id}", name="front_shop")
      */
-    public function shop($id, ShopRepository $shopRepository)
+    public function Shop($id, ShopRepository $shopRepository)
     {
         $shop = $shopRepository->find($id);
 

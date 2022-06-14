@@ -59,7 +59,9 @@ nav {
 .left {
     float: left;
 }
-
+.logo {
+    height: 5vh;
+}
 .logoBig {
     height: 10vh;
 }
@@ -377,12 +379,11 @@ article {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
     list-style-type: disc;
 }
 .ic {
     display: flex;
-    padding: 1rem 2rem 0 2rem;
+    padding: 0 1rem 0 1rem;
 }
 
 .adm-btn li h4{

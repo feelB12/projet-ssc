@@ -10,9 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class SkateparkController extends AbstractController
 {
     /**
-     * @Route("front/skateparks", name="skateparks")
+     * @Route("front/skateparks", name="front_skateparks")
      */
-    public function skateparks(SkateparkRepository $skateparkRepository)
+    public function Skateparks(SkateparkRepository $skateparkRepository)
     {
         $skateparks = $skateparkRepository->findAll();
         return $this->render('front/skateparks.html.twig', [
@@ -20,9 +20,9 @@ class SkateparkController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/skatepark/{id}", name="skatepark")
+     * @Route("front/skatepark/{id}", name="front_skatepark")
      */
-    public function skatepark($id, SkateparkRepository $skateparkRepository)
+    public function Skatepark($id, SkateparkRepository $skateparkRepository)
     {
         $skatepark = $skateparkRepository->find($id);
 
@@ -39,7 +39,7 @@ class SkateparkController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/search", name="search_skateparks")
+     * @Route("front/search", name="front_search_skateparks")
      */
     public function searchSkateparks(SkateparkRepository $skateparkRepository, Request $request)
     {

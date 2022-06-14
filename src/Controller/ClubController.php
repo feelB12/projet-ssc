@@ -11,9 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClubController extends AbstractController
 {
     /**
-     * @Route("front/clubs", name="clubs")
+     * @Route("front/clubs", name="front_clubs")
      */
-    public function clubs(ClubRepository $clubRepository)
+    public function Clubs(ClubRepository $clubRepository)
     {
         $clubs = $clubRepository->findAll();
         return $this->render('front/clubs.html.twig', [
@@ -21,9 +21,9 @@ class ClubController extends AbstractController
         ]);
     }
     /**
-     * @Route("front/club/{id}", name="club")
+     * @Route("front/club/{id}", name="front_club")
      */
-    public function club($id, ClubRepository $clubRepository)
+    public function Club($id, ClubRepository $clubRepository)
     {
         $club = $clubRepository->find($id);
 

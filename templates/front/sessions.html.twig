@@ -4,7 +4,14 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
+    {{ parent()}}
+    {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock javascripts %}
 
 {% block metatitle %}
     Sessions | Skateboard Social Club
@@ -14,13 +21,13 @@
     <section class="">
         <div id="ico">
             <div class="element">
-                <a href="{{ path('sessions') }}">
-                    <img class="title logoBig" src="{{ asset('icon/sessions_titre.png') }}" alt="Sessions">
+                <a href="{{ path('front_sessions') }}">
+                    <img class="title logoBig" href="{{ path('front_sessions') }}" src="{{ asset('icon/sessions_titre.png') }}" alt="Sessions">
                 </a>
             </div>
             <div class="element">
-                <a href="{{ path('sessions') }}">
-                    <img class="title logoBig" src="{{ asset('icon/session.png') }}" alt="Sessions-icon">
+                <a href="{{ path('front_sessions') }}">
+                    <img class="title logoBig" href="{{ path('front_sessions') }}" src="{{ asset('icon/session.png') }}" alt="Sessions-icon">
                 </a>
             </div>
         </div>

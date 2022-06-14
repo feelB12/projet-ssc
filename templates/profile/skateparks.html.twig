@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
     {{ parent()}}
     {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
@@ -18,18 +18,19 @@
 {% endblock metatitle %}
 
 {% block main %}
-    <section class="">
+    <section class="section">
         <div id="ico">
             <div class="element">
-                <a href="{{ path('profile_skateparks') }}">
-                    <img class="title logoBig" src="{{ asset('icon/skateparks_titre.png') }}" alt="Skatepark">
+                <a href="{{ path('admin_skateparks') }}">
+                    <img class="title logoBig" href="{{ path('admin_skateparks') }}" src="{{ asset('icon/skateparks_titre.png') }}" alt="skateparks">
                 </a>
             </div>
             <div class="element">
-                <a href="{{ path('profile_skateparks') }}">
-                    <img class="title logoBig" src="{{ asset('icon/skateparks.png') }}" alt="Skatepark-icon">
+                <a href="{{ path('admin_skateparks') }}">
+                    <img class="title logoBig" href="{{ path('admin_skateparks') }}" src="{{ asset('icon/skateparks.png') }}" alt="skateparks-icon">
                 </a>
-            </div></div>
+            </div>
+        </div>
         <div class="line"></div>
         <div class="">
             <div class="">
@@ -38,7 +39,7 @@
                         <div id="divSearch">
                             <div class="btn logo icon">
                             <label for="userId">
-                                <img src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                                <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
                             </label>
                             </div>
                             <div class="btn">
@@ -53,29 +54,28 @@
             </div>
         </div>
     </section>
-    <section class="section">
-        <article class="book-detail">
-            <article class="">
-            </article>
+
+    <section class="section center">
+        <article class="items">
             <div>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d45267.45075272003!2d-0.571391187931922!3d44.837541008065486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sskatepark%20bordeaux!5e0!3m2!1sfr!2sfr!4v1653259114005!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </article>
     </section>
+
     <section class="section">
+        <article class="">
         <h3 class="al"> Aller à :</h3>
         {% for skatepark in skateparks %}
             <div class="card-text">
                 <div class="card-t">
                     <h1>{{ skatepark.title }}</h1>
                 </div>
-                <div id="abs5" class="absolute ban" alt="banner-address">
+                <div id="abs5" class="absolute" alt="banner-address">
                     <h2>{{ skatepark.address}} {{ skatepark.town}}</h2>
                 </div>
-                <div id="sta1" class="static">
-                    <b>
-                        <img class="img-card" src="{{ asset('uploads/cover/'~skatepark.coverFilename) }}" alt="photo-skatepark">
-                    </b>
+                <div id="sta1" class="static center">
+                        <img class="items img-card" src="{{ asset('uploads/cover/'~skatepark.coverFilename) }}" alt="photo-skatepark">
                 </div>
 
                 {#             {% if skatepark.club %} #}
@@ -83,10 +83,26 @@
                 {#                    {% endif %} #}
 
             </div>
-            <ul class="adm-btn">
-                <li><a id="link1" class="pad5" href="{{ path('profile_skatepark', {"id": skatepark.id}) }}"><img src="{{ asset('icon/open-blue.png') }}" alt="Voir le skatepark"><br><h4>Voir le skatepark</h4></a></li>
-                <li><a id="link2" class="pad5" href="{{ path('profile_skatepark_create', {"id": skatepark.id}) }}"><img src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark"><br><h4>Créer un skatepark</h4></a></li>
-               </ul>
+            <div class="card-ic">
+                <div id="adm-btn" class="adm-btn">
+                    <div class="ic" >
+                        <a id="link1" href="{{ path('profile_skatepark', {"id": skatepark.id}) }}">
+                            <img class="logo" src="{{ asset('icon/open-blue.png') }}" alt="Voir le skatepark"><br>
+                            <h4 class="pad5">Voir le skatepark</h4>
+                        </a>
+                    </div>
+                    <div class="ic" ><a id="link2" href="{{ path('profile_skatepark_create') }}"><img class="logo" src="{{ asset('icon/add-file-green.png') }}" alt="Créer un skatepark">
+                            <br><h4 class="pad5">Créer un skatepark</h4></a>
+                    </div>
+                    <div class="ic" ><a id="link3" href="{{ path('profile_skatepark_update', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/edit-pink.png') }}" alt="Modifier le skatepark">
+                            <br><h4 class="pad5">Modifier le skatepark</h4></a>
+                    </div>
+                    <div class="ic" ><a id="link4" href="{{ path('profile_skatepark_delete', {"id": skatepark.id}) }}"><img class="logo" src="{{ asset('icon/delete-orange.png') }}" alt="Supprimer le skatepark">
+                            <br><h4 class="pad5">Supprimer le skatepark</h4></a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
+        </article>
     </section>
 {% endblock main%}

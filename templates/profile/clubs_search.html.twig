@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/burger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.scss') }}">
     {{ parent()}}
     {{ encore_entry_link_tags('app') }}
 {% endblock stylesheets %}
@@ -38,14 +38,19 @@
         </div>
         <div class="line"></div>
         <div class="">
-            <form action="{{ path('search_clubs') }}">
+            <form action="{{ path('front_search_clubs') }}">
                 {% block search %}
                     <article class="detail">
                         <div class="card-text" id="divSearch">
-                            <div class="btn logo icon"><label><img src="{{ asset('icon/loupe.png') }}" alt="loupe"></label>
+                            <div class="btn logo icon">
+                                <label>
+                                    <img class="logo icon" src="{{ asset('icon/loupe.png') }}" alt="loupe">
+                                </label>
                             </div>
-                            <div class="btn"><input type="text" name="query" placeholder="Ville, Code postal">
+                            <div class="btn">
+                                <input type="text" name="query" placeholder="Ville, Code postal">
                             </div>
+                            <input type="submit">
                         </div>
                     </article>
                 {% endblock search %}
